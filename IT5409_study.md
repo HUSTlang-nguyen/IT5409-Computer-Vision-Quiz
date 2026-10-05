@@ -4162,7 +4162,7 @@ Butterworth Low-pass Filter có ưu điểm gì so với Ideal Low- pass?
 
 **Đáp án:** B. Không gây hiệu ứng ringing
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Butterworth có đáp ứng chuyển tiếp liên tục H(D) = 1 / [1 + (D/D0)^(2n)], nên thường giảm ringing so với bộ lọc Ideal cắt đột ngột tại D0. **Lưu ý:** B diễn đạt quá tuyệt đối: khi bậc n cao, Butterworth tiến gần dạng cắt sắc và vẫn có thể gây ringing; lợi thế đúng là giảm hiện tượng này với lựa chọn bậc phù hợp. Nó vẫn cần cutoff và bậc lọc, không mặc nhiên nhanh hay đơn giản hơn Ideal. Đối chiếu: [ghi chú về Butterworth](https://www.math.cuhk.edu.hk/~lmlui/suppnote8.pdf).
 
 </details>
 
@@ -4257,7 +4257,7 @@ Nguồn PDF: trang 31
 
 **Đáp án:** B. Notch filter (lọc loại dải hẹp tại tần số nhiễu)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Nhiễu tuần hoàn dạng sọc hoặc sóng tập trung năng lượng ở một số vị trí trong phổ Fourier, thay vì phân bố đều trên mọi tần số. Notch filter giảm những vùng phổ hẹp chứa nhiễu và, với ảnh thực, thường xử lý cả cặp vị trí đối xứng để giữ tính đối xứng liên hợp. Nhờ nhắm vào tần số nhiễu, nó giữ được nhiều thông tin ảnh hơn một low-pass loại rộng các chi tiết; high-pass cũng không bảo đảm loại đúng thành phần tuần hoàn. Tham chiếu: `IT5409 L3.2-ImageTransformFrequency.pdf`, trang 30.
 
 </details>
 
@@ -4447,7 +4447,7 @@ Nguồn PDF: trang 32
 
 **Đáp án:** A. Dịch chuyển trong miền không gian → Nhân với hàm mũ phức trong miền tần số
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Theo quy ước Fourier dùng số mũ âm, dịch ảnh đi (x0, y0) nhân phổ với exp[-i*2*pi*(u*x0/M + v*y0/N)]. Thừa số này có độ lớn bằng 1 nên làm đổi pha, không làm dịch các vị trí tần số hoặc đổi phổ biên độ. Với DFT hữu hạn, tính chất chính xác áp dụng cho dịch vòng; dịch ảnh rồi cắt mất nội dung ở biên không còn giữ nguyên mọi hệ số theo quy tắc đó. Đối chiếu: [định lý dịch của DFT](https://www.dsprelated.com/freebooks/mdft/Fourier_Theorems_DFT.html).
 
 </details>
 
@@ -4485,7 +4485,7 @@ Bộ lọc nào trong miền tần số tương đương với phép lấy trung
 
 **Đáp án:** B. Ideal Low-pass (gần như, do Mean filter là low-pass đơn giản)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mean filter lấy trung bình trong một cửa sổ, tức nhân chập với kernel hình hộp đã chuẩn hóa, và có tác dụng thông thấp. **Lưu ý:** B chỉ là lựa chọn gần nhất về nhóm chức năng, không phải tương đương toán học với Ideal Low-pass: Fourier của kernel hộp có dạng sinc hoặc sinc rời rạc với các thùy phụ, không phải mặt nạ cắt tần số dạng bậc thang. Slide minh họa trực tiếp cặp averaging và sinc, nên không nên học rằng hai bộ lọc tạo cùng kết quả. Tham chiếu: `IT5409 L3.2-ImageTransformFrequency.pdf`, trang 23, 26.
 
 </details>
 
@@ -4504,7 +4504,7 @@ Nguồn PDF: trang 32
 
 **Đáp án:** B. Làm nổi bật các cấu trúc sắc nét như xương, mô
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* High-pass ưu tiên những biến thiên cường độ nhanh, vì vậy có thể làm nổi bật ranh giới cấu trúc trong ảnh y tế khi ranh giới có đủ tương phản. B nói về tăng khả năng quan sát chi tiết, không có nghĩa bộ lọc biết đâu là xương hay mô hoặc tự thực hiện phân đoạn giải phẫu. Nhiễu cũng thường có thành phần tần số cao, nên lọc này có thể khuếch đại nhiễu và không được coi là một phép giảm nhiễu hay chẩn đoán.
 
 </details>
 
@@ -4542,7 +4542,7 @@ Circular convolution (nhân chập vòng) xuất hiện như thế nào khi làm
 
 **Đáp án:** B. Khi nhân phổ của hai tín hiệu, IDFT cho convolution vòng; cần zero- padding để tránh wrap-around
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Nhân hai DFT cùng kích thước rồi IDFT tạo nhân chập vòng vì DFT xem dữ liệu như một chu kỳ của tín hiệu tuần hoàn. Phần kết quả vượt biên sẽ quấn về đầu mảng, tạo wrap-around nếu muốn tính nhân chập tuyến tính. Với hai mảng dài M và K trên một trục, padding tới ít nhất M + K - 1 mẫu cho phép lấy kết quả tuyến tính; ảnh 2D cần đủ padding trên cả hai trục. Đối chiếu: [định lý nhân chập DFT](https://www.dsprelated.com/freebooks/mdft/Fourier_Theorems_DFT.html).
 
 </details>
 
@@ -4561,7 +4561,7 @@ Trong xử lý ảnh y tế, biến đổi Wavelet khác DFT ở điểm nào?
 
 **Đáp án:** B. Wavelet phân tích đồng thời theo cả tần số và vị trí; DFT chỉ phân tích tần số toàn cục
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* DFT toàn ảnh dùng các hàm cơ sở trải rộng trên ảnh, còn wavelet phân tích bằng những hàm được dịch và co giãn để giữ thông tin vị trí ở nhiều mức độ chi tiết. DWT 2D tạo các thành phần xấp xỉ và chi tiết theo nhiều hướng, giúp mô tả cấu trúc cục bộ ở các scale khác nhau. B đúng về kiểu biểu diễn, nhưng DFT vẫn chứa thông tin vị trí qua pha và có thể dùng theo cửa sổ; không nên hiểu rằng Fourier hoàn toàn mất vị trí. Đối chiếu: [DWT hai chiều](https://pywavelets.readthedocs.io/en/latest/ref/2d-dwt-and-idwt.html).
 
 </details>
 
@@ -4618,7 +4618,7 @@ Biến đổi Fourier và biến đổi Hartley (Hartley Transform) khác nhau n
 
 **Đáp án:** B. Hartley cho kết quả thực, trong khi DFT cho kết quả phức
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Hartley dùng hàm cơ sở thực cas(t) = cos(t) + sin(t), nên biến đổi dữ liệu thực thành hệ số thực. DFT dùng số mũ phức, do đó biểu diễn thông tin qua phần thực và phần ảo, dù một số dữ liệu đặc biệt có thể cho hệ số hoàn toàn thực. Hai biến đổi có quan hệ với nhau và đều áp dụng được cho ảnh; dạng hệ số thực không tự bảo đảm Hartley nhanh hơn FFT hoặc chỉ phù hợp với âm thanh. Đối chiếu: [Discrete Hartley Transform của FFTW](https://www.fftw.org/doc/The-Discrete-Hartley-Transform.html).
 
 </details>
 
@@ -4732,7 +4732,7 @@ Trong ứng dụng xử lý tín hiệu âm thanh, equalizer (EQ) hoạt động
 
 **Đáp án:** B. Khuếch đại hoặc giảm các dải tần số cụ thể (High-pass, Low-pass, Band- pass)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Equalizer điều chỉnh gain theo từng dải tần, chẳng hạn tăng dải bass nhưng giảm một vùng treble, nên đáp ứng tổng không nhất thiết là khuếch đại đều mọi thành phần. Bộ lọc có thể là shelving, peaking hoặc các bộ lọc chọn dải, vì vậy B mô tả đúng nguyên lý lựa chọn tần số dù danh sách trong ngoặc chưa đầy đủ. Thêm tiếng vang làm thay đổi tín hiệu theo cơ chế trễ, còn compressor chủ yếu điều khiển mức tín hiệu theo động học biên độ. Đối chiếu: [nguyên lý equalization](https://www.mathworks.com/help/audio/ug/equalization.html).
 
 </details>
 
@@ -4789,7 +4789,7 @@ Autocorrelation của ảnh trong miền tần số tương đương với?
 
 **Đáp án:** B. F(u,v) × F*(u,v) = |F(u,v)|²
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Tích F*F_conjugate = |F|² là phổ công suất hoặc năng lượng tương ứng, còn autocorrelation trong miền không gian thu được bằng biến đổi Fourier ngược của tích đó với hệ số chuẩn hóa thích hợp. **Lưu ý:** câu hỏi nói 'trong miền tần số' nên B có thể hiểu là phổ của autocorrelation, không phải chính hàm tương quan theo độ dịch. A và B cũng tương đương toán học, khiến câu một đáp án này chưa chặt chẽ; không có căn cứ xem A sai. Đối chiếu: [quan hệ Wiener-Khinchin](https://www.stat.cmu.edu/~cshalizi/dst/18/lectures/10/lecture-10.html).
 
 </details>
 
@@ -4808,7 +4808,7 @@ Lọc ảnh trong miền tần số có lợi thế gì so với miền không g
 
 **Đáp án:** B. Nhanh hơn đáng kể khi kernel lớn vì O(N² log N) thay vì O(N² × K²)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Với ảnh N x N và kernel K x K, nhân chập trực tiếp cần khoảng K² phép tính cho mỗi pixel, cho chi phí O(N²*K²). FFT thay phép nhân chập bằng biến đổi, nhân phổ và biến đổi ngược, với chi phí gần O(P²*log P) trên kích thước P đã padding. B đúng về lợi thế thường gặp khi kernel lớn, nhưng chi phí chuẩn bị, bộ nhớ và padding khiến FFT không luôn nhanh hơn cho kernel nhỏ; nó cũng không tự tạo kết quả chính xác hơn. Đối chiếu: [FFT convolution](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.fftconvolve.html).
 
 </details>
 
@@ -4827,7 +4827,7 @@ Biến đổi Hadamard (Hadamard Transform) khác DFT ở điểm nào?
 
 **Đáp án:** B. Hadamard chỉ dùng ±1 (không cần số phức), tính toán đơn giản hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Ma trận Hadamard chưa chuẩn hóa có các phần tử +1 và -1, nên nhân với dữ liệu thực có thể thực hiện bằng các phép cộng và trừ thay vì hệ số phức của DFT. Các hàng trực giao giúp biểu diễn tín hiệu bằng tổ hợp những mẫu dấu khác nhau; bản chuẩn hóa thêm một hệ số để bảo toàn chuẩn. B vì vậy đúng về cấu trúc tính toán, nhưng đầu vào không bị giới hạn ở ảnh nhị phân và tốc độ thực tế còn phụ thuộc kích thước, thuật toán, triển khai. Đối chiếu: [ma trận Hadamard](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.hadamard.html).
 
 </details>
 
@@ -5055,7 +5055,7 @@ Short-Time Fourier Transform (STFT) giải quyết hạn chế nào của DFT?
 
 **Đáp án:** B. DFT cho thấy tần số toàn cục nhưng không biết khi nào tần số đó xuất hiện; STFT phân tích tần số theo từng cửa sổ thời gian
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* STFT nhân tín hiệu với một cửa sổ cục bộ, tính Fourier của đoạn đó rồi trượt cửa sổ để thu phổ theo thời gian. Nhờ vậy có thể biết một thành phần tần số xuất hiện ở giai đoạn nào, khác với một DFT toàn đoạn chỉ tổng hợp các thành phần trên cả khoảng quan sát. Cửa sổ ngắn tăng khả năng định vị thời gian nhưng giảm phân giải tần số, còn cửa sổ dài tạo đánh đổi ngược lại; STFT không đơn giản là một DFT luôn chính xác hơn. Đối chiếu: [Short-Time Fourier Transform](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.stft.html).
 
 </details>
 
@@ -5131,7 +5131,7 @@ Bộ lọc Homomorphic (homomorphic filter) trong miền tần số được dù
 
 **Đáp án:** B. Chuẩn hóa chiếu sáng đồng đều qua ánh xạ log → lọc tần số → exp
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Mô hình homomorphic xem ảnh dương như tích của chiếu sáng và phản xạ, rồi lấy log để chuyển hai thành phần thành tổng. Dưới giả thiết chiếu sáng biến thiên chậm, lọc trong miền log giảm các thành phần tần số thấp tương ứng và giữ hoặc tăng chi tiết phản xạ trước khi lấy exp trở lại. B đúng về quy trình, nhưng đây là mô hình xấp xỉ: không thể bảo đảm loại mọi bóng hoặc làm chiếu sáng hoàn toàn đồng đều trong mọi cảnh. Đối chiếu: [homomorphic filtering](https://blogs.mathworks.com/steve/2013/06/25/homomorphic-filtering-part-1/).
 
 </details>
 
@@ -5264,7 +5264,7 @@ Nguồn PDF: trang 38
 
 **Đáp án:** B. Wavelet phù hợp hơn vì phân tích đa phân giải, phân tích cả tần số lẫn vị trí
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Wavelet đa phân giải có thể giữ đồng thời cấu trúc lớn và chi tiết cục bộ trong ảnh, nhờ các hệ số xấp xỉ và chi tiết ở nhiều mức. Đặc tính này hữu ích khi nhiệm vụ cần định vị một mẫu texture hoặc ranh giới thay vì chỉ đo thành phần tần số toàn ảnh. B nêu một lý do chọn wavelet, không phải bằng chứng wavelet luôn tốt hơn Fourier trên mọi ảnh y tế; lựa chọn còn phụ thuộc mục tiêu, dữ liệu và phép đánh giá. Đối chiếu: [phân rã wavelet 2D](https://pywavelets.readthedocs.io/en/latest/ref/2d-dwt-and-idwt.html).
 
 </details>
 
@@ -5362,7 +5362,7 @@ Biên (edge) trong ảnh được định nghĩa là gì?
 
 **Đáp án:** B. Vị trí có sự thay đổi nhanh về cường độ sáng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Biên là nơi cường độ ảnh biến thiên nhanh theo vị trí, chẳng hạn khi đường lấy mẫu đi từ nền tối sang đối tượng sáng. Vì vậy B mô tả dấu hiệu trên dữ liệu ảnh, không phải đường viền ngoài của cả khung hình hoặc chỉ một cặp màu cố định. Biến thiên đó có thể do vật thể, vật liệu hay chiếu sáng, nên một pixel tối nhất chưa đủ chứng minh có biên nếu các pixel xung quanh cũng tối tương tự. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 6.
 
 </details>
 
@@ -5381,7 +5381,7 @@ Biên trong ảnh tồn tại do những nguyên nhân nào? (Chọn tất cả 
 
 **Đáp án:** A. Sự thay đổi chiều sâu (depth discontinuity); B. Thay đổi hướng bề mặt; C. Thay đổi reflectance (màu sắc vật liệu); D. Thay đổi điều kiện chiếu sáng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gián đoạn độ sâu có thể tạo ranh giới che khuất, còn đổi hướng bề mặt làm thay đổi lượng ánh sáng được phản xạ tới camera. Vật liệu hoặc màu bề mặt khác nhau cũng làm cường độ đổi, và bóng đổ hay thay đổi chiếu sáng có thể tạo biên ngay trên cùng một bề mặt. Vì thế cả A, B, C, D đều là nguyên nhân có thể tạo biên; không thể suy từ mọi biên quan sát được rằng có hai vật thể riêng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 2.
 
 </details>
 
@@ -5400,7 +5400,7 @@ Loại biên nào có cường độ thay đổi đột ngột (như bậc thang
 
 **Đáp án:** B. Step edge
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Intensity profile của step edge chuyển từ một mức gần hằng sang mức khác trong một khoảng rất ngắn, giống hình bậc thang. Ramp edge có vùng chuyển tiếp trải rộng thành một đoạn dốc, còn roof edge tăng lên rồi giảm xuống tạo đỉnh. Phân biệt dựa trên hình dạng profile, không dựa vào vị trí trong ảnh; trong ảnh thực, step có thể bị làm mờ nên không còn là một bước nhảy lý tưởng hoàn toàn sắc. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 14.
 
 </details>
 
@@ -5419,7 +5419,7 @@ Tại vị trí biên dạng Step, đạo hàm bậc 1 có giá trị như thế
 
 **Đáp án:** B. Đạt cực trị
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi đi qua một step tăng cường độ, sai khác giữa các mẫu gần biên lớn hơn ở hai miền phẳng, nên đạo hàm bậc một có đáp ứng cực trị tại vùng biên. Với step giảm, đáp ứng đổi dấu, vì vậy nên xét cực trị của độ lớn thay vì cho rằng đạo hàm luôn dương. B được hiểu trong mô hình ảnh đã làm trơn hoặc đạo hàm rời rạc; bước nhảy liên tục lý tưởng có đạo hàm theo nghĩa phân phối chứ không phải một giá trị hữu hạn thông thường. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 6, 8, 15.
 
 </details>
 
@@ -5438,7 +5438,7 @@ Tại vị trí biên dạng Step, đạo hàm bậc 2 có giá trị như thế
 
 **Đáp án:** B. Có zero-crossing (đi qua 0)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sau khi làm trơn một step, đạo hàm bậc một tăng tới đỉnh rồi giảm, nên đạo hàm bậc hai đổi dấu quanh vị trí đỉnh đó. Zero-crossing của đạo hàm bậc hai vì vậy là dấu hiệu định vị biên, thay vì chỉ chọn một cực trị dương hay mọi giá trị âm. Trong dữ liệu rời rạc, điểm đổi dấu có thể nằm giữa hai pixel và không cần có một mẫu bằng 0 chính xác; nhiễu cũng có thể tạo zero-crossing không phải biên thật. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 6, 22-23.
 
 </details>
 
@@ -5457,7 +5457,7 @@ Gradient của ảnh tại (x,y) biểu diễn điều gì?
 
 **Đáp án:** B. Hướng và độ lớn của sự thay đổi cường độ sáng lớn nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gradient là vector gồm hai đạo hàm theo x và y, mô tả tốc độ biến thiên cường độ theo các hướng trên ảnh. Hướng vector cho hướng tăng cường độ nhanh nhất, còn độ lớn cho tốc độ tăng đó tại điểm đang xét. Vì vậy B chứa cả hướng và cường độ biến thiên; gradient không phải giá trị sáng gốc, màu của pixel hay một phép đo khoảng cách tới đường biên. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 9, 12.
 
 </details>
 
@@ -5476,7 +5476,7 @@ Gradient direction (hướng gradient) và hướng biên có mối quan hệ g�
 
 **Đáp án:** B. Vuông góc với nhau
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Dọc theo một biên cục bộ, cường độ thường thay đổi ít hơn so với khi đi từ phía này sang phía kia của biên. Gradient hướng theo biến thiên mạnh nhất nên nằm theo pháp tuyến, vuông góc với tiếp tuyến của đường biên. B mô tả quan hệ cục bộ trong mô hình biên mức cường độ; ở góc, giao điểm hoặc vùng nhiễu, hướng biên có thể không duy nhất hay không được ước lượng ổn định. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 12-13.
 
 </details>
 
@@ -5495,7 +5495,7 @@ Bộ lọc Robert (1965) dùng để làm gì?
 
 **Đáp án:** B. Xấp xỉ gradient bậc 1 (đầu tiên sử dụng cho phát hiện biên)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Roberts dùng các sai khác giữa pixel theo hai hướng chéo trong cửa sổ nhỏ để xấp xỉ đạo hàm bậc một. Từ hai đáp ứng có thể suy ra độ lớn biến thiên, nhờ đó phát hiện vị trí có khả năng là biên. Slide giới thiệu Robert filter với mốc 1965 như một bộ lọc xấp xỉ đạo hàm sớm; chức năng của nó không phải lấy trung bình để làm trơn hoặc xác định toàn bộ một vùng đồng nhất. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10.
 
 </details>
 
@@ -5514,7 +5514,7 @@ Bộ lọc Sobel khác Prewitt ở điểm nào?
 
 **Đáp án:** B. Sobel cho trọng số cao hơn cho pixel trung tâm theo hướng ngang (tích Gaussian × gradient)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sobel kết hợp sai phân [1, 0, -1] với trọng số làm trơn [1, 2, 1] trên trục vuông góc, còn Prewitt dùng trọng số đều [1, 1, 1]. Vì vậy hàng hoặc cột giữa được nhấn mạnh hơn tùy kernel x hay y, chứ không chỉ theo một hướng ngang cố định. B là khác biệt cấu trúc được nhắm tới; trọng số làm trơn có dạng nhị thức xấp xỉ Gaussian, và C có thể đúng như một nhận xét trong một số điều kiện nhưng không phải bảo đảm tuyệt đối. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10, 16-17.
 
 </details>
 
@@ -5533,7 +5533,7 @@ Bộ lọc Canny được coi là "optimal edge detector" vì lý do gì? (Chọ
 
 **Đáp án:** A. Good detection (ít bỏ sót và phát hiện nhầm); B. Good localization (biên được phát hiện gần vị trí thực); C. Minimal response (không có nhiều response cho 1 biên)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Good detection yêu cầu ít biên bị bỏ sót và ít phát hiện nhầm, good localization yêu cầu vị trí tìm được gần biên thật, còn single response hạn chế nhiều đáp ứng quanh cùng một biên. Ba tiêu chí A, B, C phản ánh đánh đổi về độ nhạy, vị trí và độ mỏng khi thiết kế Canny. 'Optimal' được đặt trong mô hình và tiêu chí cụ thể, không có nghĩa nhanh nhất hoặc luôn thắng mọi phương pháp trên mọi ảnh; D không thuộc bộ tiêu chí này. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 25.
 
 </details>
 
@@ -5552,7 +5552,7 @@ Các bước của Canny edge detector theo đúng thứ tự là?
 
 **Đáp án:** B. Gaussian smoothing → Gradient → Non-maximum suppression → Hysteresis thresholding
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gaussian smoothing giảm nhiễu trước khi lấy đạo hàm, sau đó gradient cung cấp độ lớn và hướng biến thiên. NMS dùng hướng này để giữ cực đại cục bộ và làm mỏng dải đáp ứng, rồi hysteresis phân loại và theo dõi biên bằng hai ngưỡng. B giữ đúng quan hệ phụ thuộc giữa các bước: không thể thực hiện NMS theo hướng gradient khi chưa tính gradient, và thresholding quá sớm sẽ bỏ mất thông tin cần cho các bước sau. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-28.
 
 </details>
 
@@ -5571,7 +5571,7 @@ Non-maximum suppression (NMS) trong Canny detector làm gì?
 
 **Đáp án:** B. Giữ lại chỉ các điểm cực đại cục bộ dọc theo hướng gradient
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** NMS so độ lớn gradient tại pixel với các vị trí lân cận theo hướng gradient, tức theo chiều đi qua biên. Nếu pixel không phải cực đại so với hai phía thì đáp ứng của nó bị loại, làm dải biên rộng co lại thành một đường mỏng. Thao tác này không loại mọi biên yếu: một cực đại có độ lớn thấp vẫn có thể qua NMS và được quyết định tiếp ở hysteresis; NMS cũng không tự chọn ngưỡng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26.
 
 </details>
 
@@ -5590,7 +5590,7 @@ Hysteresis thresholding trong Canny sử dụng hai ngưỡng T_low và T_high n
 
 **Đáp án:** B. Pixel > T_high: biên mạnh; T_low < pixel < T_high: biên yếu (chỉ giữ nếu kết nối với biên mạnh)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hai ngưỡng được áp dụng lên độ lớn gradient sau NMS, không phải trực tiếp lên cường độ ảnh gốc. Pixel trên ngưỡng cao là điểm biên chắc chắn; điểm giữa hai ngưỡng chỉ được giữ nếu có một chuỗi điểm biên yếu kết nối tới biên mạnh, còn điểm dưới ngưỡng thấp bị loại. B vì vậy giữ được phần yếu của đường biên nhưng tránh nhận mọi đáp ứng nhỏ; lấy trung bình hai ngưỡng sẽ làm mất cơ chế kết nối này. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 27.
 
 </details>
 
@@ -5609,7 +5609,7 @@ Tại sao Canny dùng Gaussian smoothing trước khi tính gradient?
 
 **Đáp án:** B. Để giảm nhiễu, tránh phát hiện biên nhầm từ noise
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đạo hàm phản ứng mạnh với những thay đổi nhanh, nên các dao động do nhiễu có thể tạo gradient lớn tương tự biên. Gaussian smoothing giảm những dao động nhỏ trước khi tính gradient, giúp hạn chế phát hiện nhầm trong khi vẫn giữ các cấu trúc ở scale phù hợp. B đúng về mục tiêu giảm nhiễu; làm trơn không làm ảnh tự chuyển sang grayscale hoặc tăng số pixel, và mức làm trơn quá mạnh có thể làm mất chi tiết thật. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 15, 19, 26.
 
 </details>
 
@@ -5628,7 +5628,7 @@ Khi σ của Gaussian trong Canny lớn, điều gì xảy ra?
 
 **Đáp án:** B. Phát hiện ít cạnh hơn, chỉ các cạnh lớn rõ ràng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sigma lớn làm Gaussian trung bình hóa trên phạm vi rộng hơn, giảm những biến thiên nhỏ và các biên ở scale tinh. Khi giữ cách đặt ngưỡng tương tự, kết quả thường còn các cấu trúc lớn rõ hơn và ít chi tiết hơn, đúng với ý B. Đây là xu hướng theo mức làm trơn, không phải định luật số biên luôn giảm trong mọi ảnh; vị trí và độ mạnh của biên cũng có thể thay đổi, còn hướng ngang không được ưu tiên riêng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 15, 28-29.
 
 </details>
 
@@ -5647,7 +5647,7 @@ Hough Transform dùng để phát hiện gì?
 
 **Đáp án:** B. Các hình dạng hình học như đường thẳng, đường tròn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hough tìm các cấu trúc có thể biểu diễn bằng tham số, chẳng hạn đường thẳng theo rho, theta hoặc đường tròn theo tâm và bán kính. Mỗi điểm biên bỏ phiếu cho các bộ tham số tương thích, rồi các cực đại số phiếu biểu thị những hình dạng được hỗ trợ mạnh. Vì vậy B đúng, nhưng không phải mọi hình dạng tùy ý đều được phát hiện tự động: cần chọn mô hình tham số và không gian tìm kiếm phù hợp. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 30, 32, 37.
 
 </details>
 
@@ -5666,7 +5666,7 @@ Trong Hough Transform cho đường thẳng y = mx + b, mỗi điểm ảnh (xi,
 
 **Đáp án:** B. Một đường thẳng b = yi - xi*m
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một điểm (xi, yi) thuộc đường y = m*x + b khi yi = m*xi + b, suy ra b = yi - xi*m. Khi m thay đổi, các cặp (m, b) thỏa điều kiện tạo thành một đường thẳng trong không gian tham số. Các điểm ảnh cùng nằm trên một đường thật sẽ tạo những đường tham số giao nhau tại cùng cặp (m, b), nên B mô tả đúng phép chuyển từ điểm ảnh sang tập giả thuyết đường thẳng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 31-32.
 
 </details>
 
@@ -5685,7 +5685,7 @@ Tại sao dùng dạng cực ρ = x*cosθ + y*sinθ trong Hough Transform thay v
 
 **Đáp án:** B. Vì dạng y=mx+b có m→∞ cho đường thẳng đứng; dạng cực xử lý mọi hướng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Biểu diễn y = m*x + b không xử lý đường thẳng đứng bằng một hệ số góc hữu hạn, nên không thuận tiện để tạo một lưới tham số có giới hạn. Dạng rho = x*cos(theta) + y*sin(theta) dùng khoảng cách tới gốc và góc của pháp tuyến, mô tả được cả đường đứng lẫn đường ngang. B giải thích lý do đổi biểu diễn; độ chính xác vẫn phụ thuộc cách lượng tử hóa rho, theta, không tự tăng chỉ vì dùng tọa độ cực. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 34.
 
 </details>
 
@@ -5704,7 +5704,7 @@ Nguồn PDF: trang 41
 
 **Đáp án:** B. Đường thẳng (hoặc hình dạng) được nhiều điểm biên bỏ phiếu nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mỗi ô accumulator đếm số điểm biên tương thích với một giả thuyết hình học, nên một peak là bộ tham số có nhiều phiếu hỗ trợ. Với Hough đường thẳng, bộ tham số ấy xác định cả một đường trong ảnh, không phải một pixel riêng lẻ. Peak mạnh chưa chắc là đối tượng mong muốn vì texture hoặc nhiễu có cấu trúc cũng có thể bỏ phiếu tập trung; thường cần ngưỡng phiếu và lọc thêm các kết quả. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-33, 37.
 
 </details>
 
@@ -5723,7 +5723,7 @@ RANSAC (Random Sample Consensus) được dùng để làm gì trong phát hiệ
 
 **Đáp án:** B. Fit mô hình hình học (đường thẳng) bền vững với outliers
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RANSAC thử các mô hình từ tập điểm nhỏ được lấy ngẫu nhiên rồi đánh giá mức đồng thuận của những điểm còn lại. Với đường thẳng, nó tìm giả thuyết được nhiều điểm nằm gần đường hỗ trợ, giảm tác động của các điểm không thuộc đường cần fit. Vì vậy B đúng về ước lượng hình học bền vững trước outliers; thuật toán không tính gradient hay cân bằng histogram và cũng không bảo đảm thành công nếu không lấy được mẫu tốt. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 38-42.
 
 </details>
 
@@ -5742,7 +5742,7 @@ Các bước của RANSAC theo đúng thứ tự là?
 
 **Đáp án:** B. Random sample → Fit model → Count inliers → Iterate → Best model
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RANSAC cần lấy mẫu trước để có dữ liệu tạo giả thuyết, fit mô hình từ mẫu đó rồi kiểm tra khoảng cách của các điểm còn lại để đếm inlier. Quá trình lặp lại trên những mẫu khác nhau và giữ mô hình có mức đồng thuận tốt nhất; sau đó có thể fit lại bằng toàn bộ inlier. B sắp xếp đúng luồng này, còn đếm inlier trước khi có mô hình là thiếu tiêu chuẩn để quyết định điểm nào phù hợp. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 40-45.
 
 </details>
 
@@ -5761,7 +5761,7 @@ RANSAC có ưu điểm gì so với Least Squares fitting?
 
 **Đáp án:** B. Bền vững với outliers (điểm ngoại lai); Least Squares bị ảnh hưởng nhiều bởi outliers
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Least Squares trên toàn bộ dữ liệu tối thiểu tổng bình phương sai số, nên một số điểm nằm rất xa có thể kéo mạnh đường fit ra khỏi phần dữ liệu thật. RANSAC thay vì tin mọi điểm sẽ chọn tập đồng thuận và có thể dùng Least Squares chỉ trên tập inlier để tinh chỉnh. B vì vậy nêu lợi thế với outliers; nó không phải cam kết luôn nhanh hoặc chính xác hơn khi dữ liệu sạch, và vẫn cần các tham số như ngưỡng sai số, số vòng thử. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 39-40, 45-46.
 
 </details>
 
@@ -5780,7 +5780,7 @@ Trong RANSAC, "inlier" và "outlier" được phân biệt dựa trên gì?
 
 **Đáp án:** A. Khoảng cách từ điểm đến mô hình hiện tại so với threshold
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với một đường đang xét, tính sai số hình học của từng điểm, thường là khoảng cách vuông góc từ điểm tới đường. Điểm có sai số nhỏ hơn dung sai được xem là inlier, còn điểm vượt dung sai là outlier đối với giả thuyết ấy. A đúng vì nhãn này phụ thuộc mô hình và ngưỡng, không phải chỉ màu hoặc vị trí; một điểm có thể là inlier của giả thuyết khác nên không phải thuộc tính cố định của nó. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 42, 45.
 
 </details>
 
@@ -5799,7 +5799,7 @@ Nguồn PDF: trang 41
 
 **Đáp án:** B. Tốn bộ nhớ và thời gian tính toán cho accumulator array, nhất là với hình dạng nhiều tham số
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Accumulator rời rạc hóa các tham số và cần lưu số phiếu cho mọi ô được xét; thêm tham số hoặc tăng độ phân giải làm số ô tăng mạnh. Mỗi điểm biên cũng phải bỏ phiếu cho nhiều giả thuyết, tạo chi phí tính toán, đặc biệt với mô hình nhiều tham số. B vì vậy mô tả hạn chế chính; Hough vẫn có thể phát hiện nhiều đường và chịu được một mức nhiễu, nên các nhận định không tìm được đường hoặc không hoạt động khi có nhiễu đều quá tuyệt đối. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-33, 37.
 
 </details>
 
@@ -5818,7 +5818,7 @@ Hough Transform cho đường tròn cần bao nhiêu tham số?
 
 **Đáp án:** C. 3 (tâm x, tâm y, bán kính)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đường tròn tổng quát thỏa (x - cx)² + (y - cy)² = r², với hai tọa độ tâm và một bán kính chưa biết. C vì vậy cho đúng ba tham số cần tìm; chỉ biết r không xác định được tâm, còn chỉ biết tâm không xác định được kích thước. Nếu bài toán đã cố định một trong các tham số thì không gian tìm kiếm có thể giảm, nhưng câu này nói tới đường tròn tổng quát. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 30, 37, về các cấu trúc tham số.
 
 </details>
 
@@ -5837,7 +5837,7 @@ LoG (Laplacian of Gaussian) tìm biên bằng cách nào?
 
 **Đáp án:** B. Tìm zero-crossing của đạo hàm bậc 2 sau khi làm mờ Gaussian
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** LoG làm trơn ảnh bằng Gaussian rồi lấy Laplacian, tức tổng các đạo hàm bậc hai theo x và y. Ranh giới được tìm ở các vị trí đáp ứng đổi dấu, vì đạo hàm bậc hai của một chuyển tiếp cường độ đã làm trơn có zero-crossing gần tâm chuyển tiếp. B đúng về cơ chế; chỉ tìm mọi mẫu bằng 0 mà không xét đổi dấu hoặc độ mạnh có thể nhận cả vùng phẳng và nhiễu thành biên. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 22-24.
 
 </details>
 
@@ -5856,7 +5856,7 @@ Khi tăng kích thước kernel Gaussian trong Canny, điều gì xảy ra với
 
 **Đáp án:** B. Giảm xuống (biên chi tiết nhỏ bị mất)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** B phản ánh trường hợp tăng cửa sổ Gaussian đi cùng tăng mức làm trơn, khiến những biến thiên nhỏ bị trung bình hóa và mất đáp ứng biên. **Lưu ý:** kích thước kernel và sigma không phải cùng một tham số; nếu giữ sigma cố định, tăng phần hỗ trợ của kernel chủ yếu giảm sai số cắt cụt và không bảo đảm số biên giảm. Số biên cuối còn phụ thuộc ngưỡng, nên đây là một xu hướng dưới thiết lập cụ thể chứ không phải kết luận tuyệt đối. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 28-29.
 
 </details>
 
@@ -5875,7 +5875,7 @@ Gradient magnitude được dùng để làm gì trong phát hiện biên?
 
 **Đáp án:** B. Đo độ "mạnh" (strength) của biên tại mỗi điểm ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Độ lớn gradient kết hợp Gx và Gy thành một số đo mức biến thiên, thường dùng sqrt(Gx² + Gy²) hoặc xấp xỉ |Gx| + |Gy|. Vị trí có giá trị lớn là ứng viên biên mạnh vì cường độ thay đổi nhanh qua lân cận. B đúng về strength, nhưng độ lớn không tự cho hướng, loại hình step/ramp hoặc tên đối tượng; thông tin hướng phải tính riêng từ hai thành phần gradient. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 12, 17, 26.
 
 </details>
 
@@ -5894,7 +5894,7 @@ Bộ phát hiện biên Prewitt dùng để tính đạo hàm theo chiều nào?
 
 **Đáp án:** B. Cả chiều x và chiều y (bằng 2 kernel riêng biệt)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Prewitt có hai mặt nạ: một lấy sai khác theo x kết hợp trung bình theo y, mặt nạ còn lại lấy sai khác theo y kết hợp trung bình theo x. Từ cả hai đáp ứng có thể tính vector gradient để nhận ra biên theo nhiều hướng. Vì vậy B đúng; dùng riêng một mặt nạ sẽ bỏ qua một thành phần biến thiên và không mô tả đầy đủ gradient ảnh, dù có thể đủ cho một bài toán chỉ tìm một hướng biên. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10, 17.
 
 </details>
 
@@ -5913,7 +5913,7 @@ Nguồn PDF: trang 42
 
 **Đáp án:** B. Cho giá trị khác 0 dọc theo toàn bộ độ dốc (ramp)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong phần dốc tuyến tính của ramp, cường độ tăng hoặc giảm đều theo vị trí, nên đạo hàm bậc một khác 0 trên cả đoạn chuyển tiếp. Hai vùng phẳng trước và sau ramp có đạo hàm gần 0, khác với step sắc tạo đáp ứng tập trung ở một khoảng rất hẹp. B đúng vì biên bị trải rộng thành một dải; làm mỏng hoặc chọn vị trí đại diện cần thêm bước xử lý thay vì xem mọi pixel trên dốc như các biên riêng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 6, 14.
 
 </details>
 
@@ -5932,7 +5932,7 @@ Canny edge detector tốt hơn Sobel đơn giản ở những điểm nào? (Ch�
 
 **Đáp án:** A. Sử dụng smoothing để giảm nhiễu; B. NMS giúp tìm biên mỏng (thin edges); C. Hysteresis kết nối các đoạn biên bị ngắt
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Làm trơn trước giúp giảm nhiễu, NMS giữ cực đại để làm mỏng đáp ứng, và hysteresis giữ những phần biên yếu có kết nối tới biên mạnh, nên A, B, C nêu các bước bổ sung của Canny. Cần hiểu C là theo dõi các ứng viên có sẵn, không phải tự vẽ qua khoảng trống bất kỳ. Sobel cũng có làm trơn theo một trục trong kernel, còn Canny chuẩn vẫn cần đặt hai ngưỡng nên D không phải đặc tính bắt buộc. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 16, 25-28.
 
 </details>
 
@@ -5951,7 +5951,7 @@ Trong không gian Hough (ρ, θ), một điểm tương ứng với điều gì 
 
 **Đáp án:** B. Một đường thẳng trong không gian ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một điểm (rho, theta) chốt khoảng cách và hướng pháp tuyến của đường rho = x*cos(theta) + y*sin(theta). Tập mọi pixel (x, y) thỏa phương trình đó là một đường thẳng trong ảnh, nên B đúng. Chiều ánh xạ ngược cần phân biệt rõ: một pixel ảnh chưa chọn hướng sẽ bỏ phiếu cho một đường cong trong không gian Hough, còn một điểm tham số đã cố định mô tả một đường ảnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 31-34.
 
 </details>
 
@@ -5970,7 +5970,7 @@ Nguồn PDF: trang 43
 
 **Đáp án:** B. Có đỉnh nhọn (peak) trong intensity profile, đạo hàm bậc 2 có hai zero- crossing
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Profile của roof edge tăng lên rồi giảm xuống tạo một đỉnh hẹp, đúng với phần đầu của B và hình trong slide. **Lưu ý:** số zero-crossing của đạo hàm bậc hai phụ thuộc profile và phép làm trơn: một đỉnh trơn kiểu Gaussian có thể có hai điểm đổi dấu ở hai phía, còn mái tam giác lý tưởng có đạo hàm suy rộng tại các chỗ gãy. Do đó không nên coi 'hai zero-crossing' là thuộc tính cố định của mọi roof edge. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 14; phân tích đạo hàm là kiến thức bổ sung.
 
 </details>
 
@@ -5989,7 +5989,7 @@ Vì sao biên không phải lúc nào cũng tương ứng với vật thể th�
 
 **Đáp án:** B. Vì chiếu sáng thay đổi cũng tạo ra biên, không liên quan đến ranh giới vật thể
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một bóng đổ hoặc vùng chiếu sáng thay đổi có thể làm cường độ đổi mạnh dù bề mặt vật thể vẫn liên tục. Bộ phát hiện biên chỉ quan sát biến thiên của ảnh nên có thể đánh dấu ranh giới sáng/tối ấy giống như ranh giới giữa hai vật thể. B vì vậy nêu một nguyên nhân cơ bản, không chỉ lỗi thuật toán hoặc độ phân giải; muốn suy ra biên ngữ nghĩa cần thêm ngữ cảnh và mô hình của cảnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 4.
 
 </details>
 
@@ -6008,7 +6008,7 @@ Bộ lọc nào phù hợp nhất để làm trơn ảnh trước khi phát hi�
 
 **Đáp án:** B. Gaussian filter
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gaussian là lựa chọn chuẩn trong pipeline Canny vì làm trơn trước khi lấy đạo hàm và cho phép điều khiển scale bằng sigma. Nó giảm dao động nhiễu gây đáp ứng đạo hàm giả, đồng thời kết hợp thuận tiện với phép đạo hàm của nhân chập. B đúng trong ngữ cảnh này, không có nghĩa Gaussian luôn phù hợp nhất với mọi loại nhiễu: median có thể tốt hơn cho nhiễu xung, còn Sobel chủ yếu là bộ lọc đạo hàm chứ không phải bước làm trơn riêng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 15-16, 26.
 
 </details>
 
@@ -6027,7 +6027,7 @@ Trong Canny, khi hai ngưỡng T_low và T_high quá gần nhau, điều gì x�
 
 **Đáp án:** B. Ít lợi ích của hysteresis, có thể bỏ sót biên liên tục
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi hai ngưỡng gần nhau, khoảng độ lớn gradient được phân loại là biên yếu trở nên hẹp. Một đoạn biên có đáp ứng thấp hơn ngưỡng dưới sẽ bị loại ngay, dù nó nằm tiếp nối một đoạn mạnh, nên hysteresis ít có cơ hội giữ lại chuỗi biên yếu. Vì vậy B mô tả sự suy giảm lợi ích của ngưỡng kép; độ mỏng chủ yếu do non-maximum suppression quyết định, không phải do khoảng cách hai ngưỡng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-27.
 
 </details>
 
@@ -6046,7 +6046,7 @@ Backward difference filter [0, 1, -1] tính đạo hàm hướng nào?
 
 **Đáp án:** B. Backward (dùng pixel hiện tại và pixel trước)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Theo quy ước stencil trong slide, backward difference lấy chênh lệch giữa mẫu hiện tại và mẫu đứng trước nó để xấp xỉ đạo hàm. Nó chỉ dùng thông tin ở một phía của vị trí đang xét, khác central difference dùng hai phía và forward difference dùng mẫu phía sau. Dấu của đáp ứng có thể đổi nếu triển khai bằng correlation thay cho convolution mà giữ nguyên kernel; tên backward nói về cặp vị trí lấy mẫu, không phải hướng chéo của biên. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 7-8.
 
 </details>
 
@@ -6065,7 +6065,7 @@ Central difference filter [1, 0, -1] có độ chính xác cao hơn Forward/Back
 
 **Đáp án:** B. Sai số xấp xỉ bậc 2 (O(h²)) thay vì bậc 1 (O(h))
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với hàm đủ trơn, công thức central difference chuẩn hóa là [f(x+h)-f(x-h)]/(2h); khai triển Taylor làm các số hạng sai số bậc một triệt tiêu, để lại sai số O(h²). Forward và backward difference một phía chỉ triệt tiêu ít số hạng hơn nên sai số cắt cụt là O(h). Kết luận B áp dụng cho xấp xỉ đạo hàm có chuẩn hóa và giả thiết trơn, không bảo đảm central difference luôn tốt hơn trên ảnh nhiễu hay tại điểm gián đoạn; kernel không chuẩn hóa trong câu chỉ thể hiện stencil, với dấu tùy quy ước nhân chập. *Kiến thức bổ sung (không có tham chiếu trong slide cho bậc sai số).* Tham khảo: [phân tích sai số sai phân của Langtangen và Linge](https://hplgit.github.io/fdm-book/doc/pub/book/sphinx/._book021.html).
 
 </details>
 
@@ -6084,7 +6084,7 @@ RANSAC cần bao nhiêu điểm tối thiểu để ước lượng đường th
 
 **Đáp án:** B. 2
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hai điểm phân biệt xác định duy nhất một đường thẳng, nên mỗi lượt RANSAC có thể lấy mẫu tối thiểu gồm hai điểm để tạo giả thuyết. Một điểm chưa xác định được hướng đường thẳng; ba hoặc bốn điểm không cần thiết cho bước lấy mẫu tối thiểu. Sau đó thuật toán vẫn phải đánh giá nhiều điểm còn lại để tìm inliers và có thể ước lượng lại đường thẳng bằng toàn bộ tập inliers. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 40-42.
 
 </details>
 
@@ -6103,7 +6103,7 @@ Nguồn PDF: trang 44
 
 **Đáp án:** C. Cả A và B đều đúng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Kernel đã cho lấy hiệu giữa các cột bên trái và bên phải, đồng thời dùng trọng số 1-2-1 để làm trơn theo chiều y. Vì cường độ thay đổi theo x khi đi ngang qua một biên dọc, Gx có đáp ứng mạnh với loại biên này. Do đó cả A và B đúng, chọn C; dấu của Gx phụ thuộc chiều tương phản và quy ước convolution, nhưng không đổi kết luận về hướng biên được nhấn mạnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10-11, 16.
 
 </details>
 
@@ -6122,7 +6122,7 @@ Tại sao biên thường được phát hiện trước khi thực hiện các 
 
 **Đáp án:** B. Vì biên chứa thông tin cấu trúc quan trọng của cảnh, giúp phân vùng và nhận dạng đối tượng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Biên biểu diễn những thay đổi cường độ có thể liên quan đến hình dạng, ranh giới và cấu trúc hình học trong cảnh. Bản đồ biên vì thế cung cấp đầu vào hữu ích cho phân vùng, tìm đường thẳng hoặc nhận dạng hình dạng ở các bước sau. B nêu đúng vai trò thông tin của biên; phát hiện biên không phải yêu cầu bắt buộc cho mọi pipeline, vì nhiều hệ thống nhận dạng có thể học trực tiếp từ ảnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 4; `IT5409 L1-2-IntroImageFormation.pdf`, trang 3.
 
 </details>
 
@@ -6141,7 +6141,7 @@ Bức tranh hang động Chauvet (30,000 năm trước) liên quan gì đến ng
 
 **Đáp án:** B. Minh chứng rằng con người từ cổ đại đã có khả năng nhận dạng hình dạng từ đường biên đơn giản (line drawings)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide dùng hình vẽ hang động để minh họa rằng các nét đường có thể truyền tải hình dạng đối tượng ngay khi không có ảnh màu hay bề mặt đầy đủ. Ý nghĩa đối với bài học là thông tin cấu trúc trong line drawing đủ giúp người xem nhận ra nhiều đối tượng, tương ứng với B. Đây là minh họa về biểu diễn hình dạng, không phải bằng chứng trực tiếp về một cơ chế thần kinh cụ thể; mốc niên đại trong câu và cách ghi trên slide không hoàn toàn giống nhau nên không dùng chúng để suy luận tuổi khảo cổ chính xác. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 3-4.
 
 </details>
 
@@ -6160,7 +6160,7 @@ Trong phát hiện biên, Sobel cho kết quả về gì?
 
 **Đáp án:** B. Gradient magnitude và direction tại mỗi pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hai phép lọc Sobel theo x và y trước hết tạo ra các thành phần đạo hàm Gx và Gy tại từng pixel. Từ chúng ta tính được độ lớn gradient, chẳng hạn sqrt(Gx²+Gy²), và hướng gradient, thường bằng atan2(Gy,Gx), nên B là thông tin đặc trưng mà Sobel cung cấp. Muốn có bản đồ biên nhị phân còn phải thêm ngưỡng hoặc các bước xử lý khác; Sobel tự nó không xuất danh sách tọa độ biên hay phổ Fourier. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 9-12, 17.
 
 </details>
 
@@ -6179,7 +6179,7 @@ Accumulator array trong Hough Transform có kích thước phụ thuộc vào g�
 
 **Đáp án:** B. Số tham số và độ phân giải của không gian tham số
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mỗi tham số của mô hình tạo một trục trong accumulator, còn độ phân giải quyết định số ô trên trục đó. Với đường thẳng dạng (rho, theta), số ô là số mức rho nhân số mức theta; giảm kích thước bin làm tăng bộ nhớ và độ chính xác lượng tử hóa. Kích thước ảnh có thể ảnh hưởng phạm vi rho, nhưng yếu tố mô tả trực tiếp cấu trúc accumulator là số tham số và cách rời rạc hóa chúng, nên chọn B. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-34, 37.
 
 </details>
 
@@ -6198,7 +6198,7 @@ Tìm "vanishing point" (điểm tụ) trong ảnh kiến trúc dùng kỹ thuậ
 
 **Đáp án:** B. Hough Transform để phát hiện đường thẳng, sau đó tìm điểm giao của chúng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong mô hình phối cảnh, ảnh của một nhóm đường thẳng song song trong không gian thường hội tụ về một điểm tụ chung. Có thể dùng Hough để lấy các đường thẳng ứng viên rồi tìm điểm giao hoặc điểm được nhiều đường cùng hỗ trợ, thay vì suy ra điểm tụ từ màu sắc. B mô tả một pipeline hình học hợp lý; trên ảnh nhiễu cần gom đúng nhóm hướng và ước lượng giao điểm robust, vì không phải mọi đường trong tòa nhà đều chung một điểm tụ. *Kiến thức bổ sung (không có tham chiếu trong slide cho toàn bộ pipeline tìm điểm tụ).*
 
 </details>
 
@@ -6217,7 +6217,7 @@ Nguồn PDF: trang 44
 
 **Đáp án:** B. MSAC là biến thể của RANSAC với hàm cost khác, ít nhạy cảm với threshold hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** MSAC vẫn sinh mô hình bằng lấy mẫu như RANSAC, nhưng đánh giá mô hình bằng tổng sai số được chặn thay vì chỉ đếm điểm nằm trong ngưỡng. Với residual r và ngưỡng t, dạng cost thường dùng là tổng min(r²,t²), nên hai mô hình có cùng số inliers vẫn có thể được phân biệt nhờ mức khớp của các inliers. B đúng về quan hệ biến thể và hàm cost; phần 'ít nhạy cảm với threshold hơn' là xu hướng trong một số tình huống, không có nghĩa MSAC không cần ngưỡng hoặc luôn ít nhạy hơn với mọi dữ liệu. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [Torr và Zisserman, phần MSAC trong nghiên cứu robust estimation](https://www.robots.ox.ac.uk/~vgg/publications/2000/Torr00/torr00.pdf).
 
 </details>
 
@@ -6236,7 +6236,7 @@ Hough Transform cho đường tròn cần accumulator có bao nhiêu chiều?
 
 **Đáp án:** C. 3D (cx, cy, r)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một đường tròn chưa biết được xác định bởi hai tọa độ tâm cx, cy và bán kính r. Hough cổ điển cho đường tròn phải cộng phiếu cho các bộ ba tham số này, vì một điểm biên có thể thuộc nhiều đường tròn với tâm và bán kính khác nhau. Vì vậy không gian accumulator là 3D trong bài toán tổng quát của câu hỏi; nếu cố định bán kính thì chỉ còn hai tham số tâm. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 30, 37-38.
 
 </details>
 
@@ -6255,7 +6255,7 @@ Khi áp dụng Canny với ngưỡng T_high quá cao, điều gì xảy ra?
 
 **Đáp án:** B. Bỏ sót nhiều biên thực
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** T_high quyết định điểm nào đủ mạnh để làm hạt giống cho quá trình truy vết biên bằng hysteresis. Khi nó quá cao, nhiều biên thực không có điểm nào đạt ngưỡng mạnh, nên cả các đoạn yếu nối với chúng cũng có thể bị loại. Điều này gây bỏ sót biên, chọn B; tăng ngưỡng trên không làm biên dày thêm và cũng không tự động giữ được nhiều điểm yếu hơn. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 27-29.
 
 </details>
 
@@ -6274,7 +6274,7 @@ Nguồn PDF: trang 45
 
 **Đáp án:** B. Nhiễu, thay đổi chiếu sáng, texture phức tạp tạo ra biên giả
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Các bộ phát hiện biên dựa vào biến thiên cường độ, nhưng biến thiên đó không chỉ xuất hiện ở ranh giới đối tượng. Nhiễu gây dao động cục bộ, bóng hoặc thay đổi chiếu sáng tạo chênh lệch sáng tối, còn texture tạo nhiều nét bên trong cùng một bề mặt. B vì thế nêu đúng khó khăn của ảnh thực: biên đo được có thể là biên cường độ thật nhưng không phải ranh giới đối tượng mà tác vụ cần tìm. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 14-15.
 
 </details>
 
@@ -6293,7 +6293,7 @@ Trong thị giác thần kinh (neural visual system), tế bào thần kinh tron
 
 **Đáp án:** B. Các biên và hướng cụ thể (orientation-selective cells, Hubel & Wiesel 1960s)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ví dụ Hubel và Wiesel trong bài học nhấn mạnh các tế bào chọn lọc hướng: đáp ứng của chúng phụ thuộc hướng và vị trí của nét hoặc biên trong trường tiếp nhận. Điều này liên hệ trực tiếp với việc dùng các bộ lọc theo hướng để mô tả cấu trúc ảnh, nên B là đáp án được nhắm tới. Không nên hiểu câu này là mọi tế bào vỏ não thị giác chỉ phát hiện biên, hay hệ thị giác không xử lý màu, chuyển động và độ sâu; phát biểu chỉ nói đến lớp đáp ứng chọn lọc hướng được nêu trong ví dụ. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 3.
 
 </details>
 
@@ -6312,7 +6312,7 @@ Gradient ảnh được tính theo hướng nào thường cho phản ứng mạ
 
 **Đáp án:** B. Theo chiều x (Gx)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đi qua một biên dọc theo chiều ngang sẽ gặp thay đổi cường độ lớn, nên đạo hàm theo x có trị tuyệt đối lớn. Di chuyển theo y dọc theo một biên dọc lý tưởng lại không đổi cường độ, nên Gy nhỏ hoặc bằng không. Vì thế chọn Gx ở B; hướng gradient là pháp tuyến của biên, không phải hướng chạy dọc theo đường biên. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 11-12.
 
 </details>
 
@@ -6331,7 +6331,7 @@ Nguồn PDF: trang 45
 
 **Đáp án:** C. Chỉ dùng 1 ngưỡng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Canny chuẩn dùng hai ngưỡng để phân biệt điểm mạnh, điểm yếu và điểm bị loại. Sau đó hysteresis chỉ giữ điểm yếu có đường nối qua các điểm biên tới một điểm mạnh, nên phát biểu 'chỉ dùng 1 ngưỡng' là sai. Gaussian smoothing và non-maximum suppression đều là bước có thật trong pipeline, vì vậy A, B và D không phải lựa chọn cần tìm trong câu hỏi phủ định này. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-27.
 
 </details>
 
@@ -6350,7 +6350,7 @@ Tại sao cần đến "Hysteresis Thresholding" trong Canny?
 
 **Đáp án:** B. Để kết nối các đoạn biên bị gián đoạn do noise, tạo biên liên tục
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đáp ứng gradient dọc một biên thực có thể lúc mạnh lúc yếu do nhiễu hoặc độ tương phản thay đổi. Hysteresis giữ các đoạn yếu nếu chúng nối được với đoạn mạnh, thay vì xóa mọi điểm dưới một ngưỡng cao duy nhất, nhờ đó biên được bảo toàn liên tục hơn. B đúng theo cơ chế này, nhưng thuật toán không tự vẽ thêm đường qua một khoảng trống tùy ý nơi mọi pixel đã bị loại; nó truy vết các ứng viên biên còn tồn tại sau NMS và ngưỡng dưới. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-27.
 
 </details>
 
@@ -6369,7 +6369,7 @@ Biên Canny cho kết quả biên dày hay mỏng?
 
 **Đáp án:** B. Biên mỏng (thin), 1 pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Canny dùng non-maximum suppression để chỉ giữ đỉnh đáp ứng khi xét ngang qua biên, làm dải gradient dày co về một đường mảnh. Vì vậy kết quả chuẩn được mô tả là biên mỏng, thường rộng một pixel, đúng với B. '1 pixel' là mục tiêu và mô tả điển hình chứ không phải bảo đảm hình học tuyệt đối tại mọi góc, chỗ giao nhau hay cách xử lý giá trị bằng nhau; ngưỡng chủ yếu quyết định điểm nào được giữ. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 25-27.
 
 </details>
 
@@ -6388,7 +6388,7 @@ Nguồn PDF: trang 46
 
 **Đáp án:** B. Phát hiện cạnh của biển số (hình chữ nhật) để định vị biển số
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sau khi lấy biên, Hough đường thẳng có thể tìm các cạnh dài tạo thành khung biển số và dùng quan hệ hình học của chúng để đề xuất vùng biển số. Đây là bước định vị, còn đọc từng ký tự cần các bước tách ký tự hoặc mô hình OCR riêng. Do đó B phù hợp với vai trò của Hough trong pipeline này; khung có thể bị nghiêng do phối cảnh và cần kiểm tra tỷ lệ, vị trí hoặc tính nhất quán của các cạnh để tránh nhầm với hình chữ nhật khác. *Kiến thức bổ sung (không có tham chiếu trong slide cho pipeline nhận dạng biển số).*
 
 </details>
 
@@ -6407,7 +6407,7 @@ RANSAC dừng lại khi nào?
 
 **Đáp án:** B. Khi số inliers vượt ngưỡng hoặc sau số vòng lặp tối đa
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RANSAC thử nhiều mẫu nhỏ vì một mẫu bất kỳ có thể chứa outliers và cho mô hình sai. Có thể dừng khi đạt mức đồng thuận yêu cầu hoặc khi dùng hết số lượt cho phép; số lượt cũng có thể được cập nhật theo tỷ lệ inliers và xác suất thành công mong muốn. B nêu hai điều kiện dừng thông dụng, không phải bảo đảm đã tìm được mô hình đúng tuyệt đối; hai điểm chỉ đủ tạo đường thẳng giả thuyết, chưa đủ kiểm chứng nó. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 40, 44-45.
 
 </details>
 
@@ -6426,7 +6426,7 @@ Bộ phát hiện góc Harris (Harris Corner Detector) liên quan đến phát h
 
 **Đáp án:** B. Phát hiện góc (corner) - nơi giao của hai hoặc nhiều biên, quan trọng trong feature detection
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Harris đánh giá sự thay đổi của một cửa sổ ảnh khi dịch theo các hướng, thông qua ma trận cấu trúc xây dựng từ gradient. Trên một biên, thường chỉ có một hướng biến thiên mạnh; ở một góc, cả hai trị riêng của ma trận đều lớn nên cửa sổ thay đổi đáng kể theo nhiều hướng. B mô tả đúng vai trò phát hiện góc dùng làm đặc trưng, nhưng Harris không cần tìm giao điểm tường minh của các biên và không thay thế Canny để xuất toàn bộ đường biên. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [OpenCV, Harris Corner Detection](https://docs.opencv.org/4.x/dc/d0d/tutorial_py_features_harris.html).
 
 </details>
 
@@ -6445,7 +6445,7 @@ Nguồn PDF: trang 46
 
 **Đáp án:** B. Roberts là 2×2 (đạo hàm theo đường chéo), Sobel là 3×3 (ít nhiễu hơn)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Roberts dùng các sai phân trên cửa sổ 2×2 theo hai hướng chéo, trong khi Sobel dùng hai kernel 3×3. Thành phần làm trơn 1-2-1 của Sobel giúp giảm ảnh hưởng của dao động nhiễu trước khi lấy sai phân, nên thường ổn định hơn Roberts trong điều kiện so sánh tương tự. B đúng về cấu trúc và xu hướng chống nhiễu; không nên diễn giải thành Sobel luôn chính xác hơn trong mọi ảnh, vì scale, kiểu nhiễu và yêu cầu định vị cũng ảnh hưởng kết quả. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10, 16.
 
 </details>
 
@@ -6464,7 +6464,7 @@ Intensity profile của ảnh là gì?
 
 **Đáp án:** B. Biểu diễn giá trị cường độ pixel dọc theo một đường trên ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Intensity profile lấy lần lượt giá trị cường độ tại các vị trí nằm trên một đường trong ảnh và biểu diễn chúng theo tọa độ dọc đường đó. Nó giữ thứ tự không gian, nên ta có thể thấy một bước nhảy sáng tối hoặc đoạn chuyển tiếp và xác định nơi gradient lớn. Histogram chỉ đếm tần suất mức xám mà không giữ vị trí, còn gradient là đạo hàm của profile chứ không phải bản thân profile; vì vậy chọn B. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 5-6.
 
 </details>
 
@@ -6483,7 +6483,7 @@ Tại sao thị giác người dễ nhận ra đối tượng từ line drawing 
 
 **Đáp án:** B. Vì biên chứa đủ thông tin hình dạng để não nhận dạng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một hình vẽ đường nét có thể giữ đường bao, các góc và quan hệ giữa những bộ phận đặc trưng của đối tượng. Những thông tin hình dạng này giúp người xem nhận ra nhiều đối tượng dù đã bỏ màu sắc và chi tiết bề mặt, nên B giải thích đúng ví dụ trong bài học. Tuy nhiên, 'đủ thông tin' chỉ đúng với nhiều trường hợp minh họa chứ không phải mọi đối tượng: có những vật cần màu, texture hoặc ngữ cảnh để phân biệt. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 3-4.
 
 </details>
 
@@ -6502,7 +6502,7 @@ Nguồn PDF: trang 46
 
 **Đáp án:** B. LoG nhạy cảm hơn với noise và không có cơ chế kết nối biên như hysteresis
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** LoG làm trơn Gaussian rồi tìm zero-crossing của đạo hàm bậc hai, còn Canny dùng đỉnh gradient kết hợp NMS và hysteresis. Đạo hàm bậc hai nhạy với dao động còn lại, và zero-crossing riêng lẻ không có quy tắc giữ chuỗi biên yếu nối tới biên mạnh như Canny, nên B nêu khác biệt quan trọng. Tuy vậy LoG đã có bước Gaussian chứ không phải Laplacian thô; mức nhạy nhiễu tương đối còn phụ thuộc sigma, ngưỡng và triển khai, không có thứ hạng tuyệt đối cho mọi cấu hình. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 22-27.
 
 </details>
 
@@ -6521,7 +6521,7 @@ Marr và Hildreth (1980) đề xuất dùng LoG vì lý do gì?
 
 **Đáp án:** B. LoG mô phỏng cơ chế xử lý biên trong hệ thống thị giác sinh học
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Marr và Hildreth xây dựng một mô hình phát hiện biến đổi cường độ ở nhiều thang đo, dùng Gaussian làm trơn và zero-crossing của Laplacian để biểu diễn vị trí biên. Cách tiếp cận gắn với các lập luận về tổ chức trường tiếp nhận và xử lý thị giác sinh học, nên B diễn đạt động cơ của mô hình. 'Mô phỏng' ở đây không có nghĩa LoG tái tạo toàn bộ hệ thị giác, và Gaussian vẫn cần tham số scale; cũng không thể xem tốc độ so với Canny là động cơ của công trình năm 1980. *Kiến thức bổ sung (slide chỉ giới thiệu tên Marr-Hildreth, chưa trình bày căn cứ sinh học).* Tham khảo: [Marr và Hildreth, Theory of edge detection (1980)](https://www.hms.harvard.edu/bss/neuro/bornlab/qmbc/beta/day4/marr-hildreth-edge-prsl1980.pdf).
 
 </details>
 
@@ -6540,7 +6540,7 @@ Nguồn PDF: trang 47
 
 **Đáp án:** B. RANSAC hoạt động tốt vì chọn ngẫu nhiên và đánh giá inliers, không bị dominated bởi outliers (nhiễu)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RANSAC tạo giả thuyết từ mẫu nhỏ rồi kiểm tra có bao nhiêu điểm nằm đủ gần đường thẳng đó. Khi lấy được mẫu toàn inliers, mô hình thường được nhiều điểm của đường thật ủng hộ, trong khi outliers không nhất quán ít có khả năng tạo đồng thuận lớn như vậy. B mô tả ưu thế so với việc khớp bình phương tối thiểu ngay trên toàn bộ dữ liệu; tuy nhiên RANSAC không miễn nhiễm với nhiễu, vì tỷ lệ inliers thấp, ngưỡng không hợp lý hoặc cấu trúc nhiễu có đồng thuận có thể làm nó thất bại. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 39-46.
 
 </details>
 
@@ -6559,7 +6559,7 @@ Khi dùng Hough Transform để phát hiện đường tròn với bán kính đ
 
 **Đáp án:** B. 2D (cx, cy) vì r đã biết
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi r đã được cho trước, mỗi ứng viên đường tròn chỉ còn cần xác định cx và cy. Mỗi điểm biên bỏ phiếu cho các tâm cách nó đúng r, và vị trí tâm nhận nhiều phiếu nhất là ứng viên tốt. Do đó accumulator chỉ cần hai trục tọa độ tâm, chọn B; chiều bán kính thứ ba chỉ cần khi phải tìm r, còn một trục không đủ biểu diễn tâm bất kỳ trên mặt phẳng ảnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 30, 37, kết hợp phương trình đường tròn với bán kính cố định.
 
 </details>
 
@@ -6578,7 +6578,7 @@ Nguồn PDF: trang 47
 
 **Đáp án:** B. Histogram equalization
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Pipeline Canny trong slide gồm làm trơn Gaussian, tính gradient, non-maximum suppression và ngưỡng kép với hysteresis. Histogram equalization thay đổi phân bố mức xám và không nằm trong các bước chuẩn đó, nên B là đáp án của câu hỏi 'KHÔNG'. Có thể thêm cân bằng histogram như một bước tiền xử lý của ứng dụng cụ thể, nhưng điều đó không biến nó thành thành phần bắt buộc của Canny. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-27.
 
 </details>
 
@@ -6597,7 +6597,7 @@ Phát hiện biên ở mức "Level 2" (Middle vision) phục vụ mục đích 
 
 **Đáp án:** B. Cung cấp ranh giới đối tượng, hỗ trợ phân vùng và nhận dạng ở High- level vision
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Theo phân cấp của môn học, middle vision trích xuất các đặc trưng như biên, góc, đường và hình dạng để làm cầu nối từ ảnh sang phân tích ngữ nghĩa. Biên cung cấp ứng viên ranh giới và cấu trúc cho phân vùng hoặc nhận dạng ở high-level vision, nên B phù hợp. Đây không phải thao tác làm ảnh đẹp hơn hoặc nén dữ liệu; đồng thời biên cường độ không tự xác định đối tượng, nên các bước sau vẫn cần gom nhóm và diễn giải. Tham chiếu: `IT5409 L1-2-IntroImageFormation.pdf`, trang 3; `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 4.
 
 </details>
 
@@ -6616,7 +6616,7 @@ Gradient direction của Sobel được tính bằng công thức nào?
 
 **Đáp án:** B. atan2(Gy, Gx)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gx và Gy là hai thành phần của vector gradient, nên góc của vector được tính bằng atan2(Gy,Gx). Hàm atan2 dùng dấu của cả hai thành phần để xác định đúng góc phần tư và xử lý trường hợp Gx bằng không tốt hơn phép arctan(Gy/Gx) đơn giản. A là độ lớn gradient chứ không phải hướng; C và D cũng không biểu diễn góc, nên chọn B. Chiều tăng của trục y và dấu kernel phải nhất quán khi diễn giải góc trên ảnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 9, 12, 26.
 
 </details>
 
@@ -6635,7 +6635,7 @@ Khi số lượng đường thẳng trong ảnh nhiều, Hough Transform gặp k
 
 **Đáp án:** B. Nhiều peak trong accumulator, khó phân biệt và chọn lọc; tăng false positives
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mỗi đường thẳng được nhiều điểm biên hỗ trợ sẽ tạo vùng phiếu cao trong accumulator, nên ảnh nhiều đường có thể tạo nhiều peak gần nhau hoặc có độ mạnh tương tự. Khi đó cần chọn ngưỡng, tách peak và kiểm tra độ dài hoặc ngữ cảnh để tránh gộp hai đường hoặc nhận đường không mong muốn. B nói đúng khó khăn về lựa chọn mô hình; Hough vẫn có khả năng tìm nhiều đường, và nhiều peak không có nghĩa tất cả đều do nhiễu. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-33, 37.
 
 </details>
 
@@ -6654,7 +6654,7 @@ Nguồn PDF: trang 48
 
 **Đáp án:** B. Sobel là ví dụ về filter thủ công; CNN học filter tương tự (phát hiện biên) một cách tự động từ dữ liệu
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sobel có các trọng số đạo hàm và làm trơn được ấn định trước bởi người thiết kế. Trong CNN, trọng số kernel được tối ưu từ dữ liệu và hàm mất mát; ở các lớp đầu, một số kernel có thể học đáp ứng với biên theo hướng giống vai trò của Sobel. B đúng về sự tương đồng chức năng, không có nghĩa CNN phải học đúng ma trận Sobel hoặc Sobel thay thế được cả mạng gồm nhiều tầng và đặc trưng khác. *Kiến thức bổ sung (không có tham chiếu trong slide cho so sánh trực tiếp Sobel với kernel học được).* Tham khảo: [Stanford CS231n, Convolutional Networks](https://cs231n.github.io/convolutional-networks/).
 
 </details>
 
@@ -6673,7 +6673,7 @@ Kết quả của Non-maximum suppression (NMS) trong Canny là gì?
 
 **Đáp án:** B. Biên mỏng: chỉ giữ lại điểm cực đại cục bộ dọc theo hướng gradient
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trên ảnh độ lớn gradient, NMS so sánh mỗi điểm với hai điểm lân cận theo hướng gradient, tức hướng đi ngang qua đường biên. Điểm không phải cực đại cục bộ bị đặt về không, còn đỉnh đáp ứng được giữ để tạo đường biên mảnh, nên chọn B. Kết quả ở giai đoạn này vẫn có thể mang giá trị độ lớn gradient, chưa nhất thiết là bản đồ nhị phân cuối cùng; bước ngưỡng và hysteresis mới quyết định các ứng viên nào trở thành biên đầu ra. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-27.
 
 </details>
 
@@ -6692,7 +6692,7 @@ Tại sao Hough Transform bền vững với noise và biên bị gián đoạn?
 
 **Đáp án:** B. Vì mỗi điểm biên bỏ phiếu độc lập; noise ít phiếu, đường thẳng thực nhiều phiếu hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Các điểm thuộc cùng một đường thẳng bỏ phiếu về cùng vùng tham số, nên chúng có thể tạo peak dù bị chia thành nhiều đoạn rời rạc. Nhiễu ngẫu nhiên thường phân tán phiếu trên nhiều ô thay vì tích tụ vào một mô hình chung, đó là cơ sở của tính bền vững ở B. Hough không nhất thiết lọc nhiễu trước và không cần kết hợp RANSAC; nếu nhiễu cũng tạo cấu trúc thẳng hoặc đường thật có quá ít điểm hỗ trợ, tính bền vững này vẫn có giới hạn. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-37.
 
 </details>
 
@@ -6711,7 +6711,7 @@ Kết quả của Canny edge detector là gì?
 
 **Đáp án:** B. Bản đồ biên nhị phân (binary edge map), biên mỏng 1 pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sau khi tính gradient và làm mảnh, Canny dùng ngưỡng kép cùng hysteresis để quyết định pixel nào thuộc biên. Đầu ra thông dụng là một bản đồ nhị phân với pixel biên và nền, các đường biên được làm mảnh nhờ NMS, tương ứng B. Ảnh Gaussian và ảnh gradient magnitude chỉ là kết quả trung gian; có thể trích tọa độ từ bản đồ cuối nhưng danh sách tọa độ không phải dạng đầu ra chuẩn được hỏi. Độ rộng một pixel là mô tả điển hình, không bảo đảm tuyệt đối ở mọi cấu hình và vị trí giao nhau. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 25-27.
 
 </details>
 
@@ -6730,7 +6730,7 @@ Nguồn PDF: trang 48
 
 **Đáp án:** B. Kích thước 2×2, tính đạo hàm theo đường chéo, là filter đơn giản nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Roberts tính hai sai phân giữa các cặp pixel đối diện trong cửa sổ 2×2, tương ứng hai hướng chéo. Cấu trúc nhỏ này rất ít phép toán nhưng không có bước làm trơn Gaussian, nên dễ bị ảnh hưởng bởi biến động nhiễu giữa các pixel lân cận. B đúng về kích thước và cách lấy đạo hàm; cụm 'đơn giản nhất' nên hiểu là một bộ lọc gradient rất đơn giản trong nhóm đang so sánh, không phải một định nghĩa hay thứ hạng tuyệt đối của mọi bộ lọc. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10, 15-16.
 
 </details>
 
@@ -6749,7 +6749,7 @@ Khi biên trong ảnh không sắc nét (blurry edges), Canny hoạt động nh�
 
 **Đáp án:** B. Vẫn phát hiện được, nhưng vị trí biên có thể kém chính xác hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Biên bị nhòe trải thay đổi sáng tối trên một vùng rộng, khiến gradient thấp hơn và đỉnh đáp ứng khó định vị rõ như biên sắc. Canny vẫn có thể giữ đỉnh đó nếu độ tương phản, scale làm trơn và ngưỡng phù hợp, nên B là mô tả hợp lý. Đây không phải bảo đảm luôn phát hiện được: khi gradient bị giảm dưới ngưỡng hoặc lẫn với nhiễu, biên có thể mất hoàn toàn; các lựa chọn A và C khẳng định kết quả cố định nên quá tuyệt đối. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 14-15, 25-29.
 
 </details>
 
@@ -6768,7 +6768,7 @@ Nguồn PDF: trang 48
 
 **Đáp án:** B. Gradient là vector có cả hướng và độ lớn; chỉ về hướng thay đổi cường độ lớn nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gradient gồm hai thành phần đạo hàm theo x và y, tạo thành vector hướng về phía cường độ tăng nhanh nhất. Mỗi thành phần có thể âm hoặc dương, trong khi độ lớn của vector là đại lượng không âm, nên A nhầm giữa thành phần gradient và magnitude. Gần biên có thay đổi cường độ nhanh, magnitude thường lớn chứ không phải bằng không; B vì vậy nêu đúng cả bản chất vector lẫn ý nghĩa hướng. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 9, 12.
 
 </details>
 
@@ -6787,7 +6787,7 @@ Phát hiện biên (edge detection) thuộc mức xử lý nào của Computer V
 
 **Đáp án:** B. Middle-level Vision
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong sơ đồ phân cấp của IT5409, phát hiện biên được liệt kê ở middle-level vision cùng trích góc, đường, texture và hình dạng. Hoạt động này biến dữ liệu pixel thành đặc trưng cấu trúc, chưa gán nhãn ngữ nghĩa cho đối tượng nên không phải high-level vision trong cách chia của môn. Chọn B theo tài liệu học phần; một số tài liệu khác dùng thuật ngữ low-level cho edge detection, vì vậy không nên xem tên mức là phân loại thống nhất ở mọi nguồn. Tham chiếu: `IT5409 L1-2-IntroImageFormation.pdf`, trang 3.
 
 </details>
 
@@ -6806,7 +6806,7 @@ Nguồn PDF: trang 49
 
 **Đáp án:** B. Có hai loại biên: strong (> T_high) và weak (T_low < x < T_high); weak chỉ giữ nếu kết nối strong
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sau NMS, hai ngưỡng được áp lên độ lớn gradient còn lại: trên ngưỡng cao là strong, trong khoảng hai ngưỡng là weak, còn dưới ngưỡng thấp bị loại. Một điểm weak được giữ nếu có chuỗi các điểm ứng viên kết nối nó tới một điểm strong, không chỉ khi bản thân nó vượt ngưỡng cao. B mô tả đúng cơ chế, và x trong lựa chọn phải hiểu là giá trị đáp ứng gradient chứ không phải tọa độ hay cường độ ảnh gốc; quy tắc tại đúng giá trị ngưỡng có thể khác theo triển khai. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-27.
 
 </details>
 
@@ -6825,7 +6825,7 @@ Nguồn PDF: trang 49
 
 **Đáp án:** B. m có thể vô cực với đường thẳng đứng → dùng dạng cực để tránh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong phương trình y=mx+b, một đường thẳng đứng không biểu diễn được bằng hệ số góc m hữu hạn. Dạng rho=x cos(theta)+y sin(theta) dùng hướng pháp tuyến và khoảng cách tới gốc để biểu diễn cả đường đứng lẫn các hướng khác mà không gặp vấn đề hệ số góc vô hạn. Do đó B giải thích lý do đổi tham số; m và b không bắt buộc là số nguyên, không bị cấm âm, và giao điểm b có thể nằm ngoài khung ảnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 31, 34.
 
 </details>
 
@@ -6844,7 +6844,7 @@ Nguồn PDF: trang 49
 
 **Đáp án:** B. Dùng cho mọi bài toán fitting mô hình hình học: đường tròn, homography, fundamental matrix, v.v.
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RANSAC là khung ước lượng mô hình từ mẫu nhỏ và đánh giá đồng thuận, không bị giới hạn ở phương trình đường thẳng. Slide nêu các mô hình hình học và ứng dụng như homography cho ghép ảnh, fundamental matrix cho hình học hai góc nhìn, nên B đúng về phạm vi ứng dụng rộng. Tuy nhiên từ 'mọi' quá mạnh: bài toán phải có cách ước lượng từ mẫu hợp lệ, thước đo residual và tiêu chí inlier phù hợp, đồng thời cần tránh mẫu suy biến; không phải cứ là fitting thì RANSAC luôn dùng tốt. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 38, 46.
 
 </details>
 
@@ -6863,7 +6863,7 @@ Phát hiện biên trong màn đêm (low-light) gặp khó khăn gì?
 
 **Đáp án:** B. Nhiễu nhiều hơn (noise-dominated), khó phân biệt biên thực với noise
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi tín hiệu ánh sáng yếu, tương phản hữu ích có thể nhỏ so với nhiễu của quá trình thu ảnh, nên tỷ lệ tín hiệu trên nhiễu thấp. Phép đạo hàm lại làm nổi các dao động cục bộ, khiến gradient do nhiễu khó phân biệt với gradient của biên thật, đúng với B. Khó khăn không phải ảnh bắt buộc nhỏ hay gradient luôn lớn; mức ảnh hưởng còn tùy cảm biến, phơi sáng và xử lý giảm nhiễu, còn làm trơn quá mạnh có thể xóa thêm biên yếu. *Kiến thức bổ sung (không có tham chiếu trong slide riêng về low-light).*
 
 </details>
 
@@ -6882,7 +6882,7 @@ Nguồn PDF: trang 49
 
 **Đáp án:** C. Multiple response
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ba tiêu chí của bộ phát hiện biên tối ưu trong bài học là phát hiện tốt, định vị tốt và chỉ có một đáp ứng cho mỗi biên thật. Multiple response tạo nhiều dấu biên cho cùng một chuyển tiếp, trái với tiêu chí single response nên C là lựa chọn 'KHÔNG'. NMS góp phần giảm đáp ứng dư quanh đỉnh gradient, nhưng tiêu chí tối ưu còn phải cân bằng với khả năng phát hiện và độ chính xác vị trí. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 25-26.
 
 </details>
 
@@ -6901,7 +6901,7 @@ Trong ứng dụng xe tự hành, phát hiện làn đường (lane detection) t
 
 **Đáp án:** B. Edge detection + Hough Transform để phát hiện đường thẳng làn đường
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong một pipeline phát hiện làn đường cổ điển, bộ phát hiện biên tạo các điểm ứng viên trên vạch làn, rồi Hough gom chúng thành đường thẳng hoặc đoạn thẳng được nhiều điểm hỗ trợ. B mô tả cách tận dụng đặc trưng hình học ấy; thường còn giới hạn vùng quan tâm và kiểm tra hướng, vị trí để loại đường từ xe hoặc cảnh nền. Đây không phải phương pháp duy nhất của xe tự hành: phân vùng màu và mô hình học sâu cũng có thể được dùng, còn làn cong không được mô tả đầy đủ bằng một đường thẳng duy nhất. *Kiến thức bổ sung (không có tham chiếu trong slide cho pipeline phát hiện làn đường).*
 
 </details>
 
@@ -6920,7 +6920,7 @@ Khi ảnh có biên với texture phức tạp (textured objects), phát hiện 
 
 **Đáp án:** B. Texture tạo ra nhiều biên giả, khó phân biệt biên của đối tượng với biên texture
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Texture chứa những thay đổi sáng tối lặp lại ngay bên trong một đối tượng, nên cũng tạo đáp ứng gradient mạnh. Bộ phát hiện biên cục bộ không tự biết đáp ứng nào là đường bao đối tượng và đáp ứng nào chỉ là hoa văn bề mặt, vì vậy B nêu đúng khó khăn phân biệt. Các 'biên giả' ở đây có thể là biến đổi cường độ thật nhưng sai đối với mục tiêu phân vùng đối tượng; chọn scale hoặc làm trơn có thể giảm chúng nhưng cũng làm mất chi tiết cần giữ. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 14-15, 17-19.
 
 </details>
 
@@ -6939,7 +6939,7 @@ Nguồn PDF: trang 50
 
 **Đáp án:** B. Pixel có gradient magnitude cao thường là biên
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Magnitude lớn cho biết cường độ biến đổi nhanh quanh pixel, nên pixel đó là ứng viên biên mạnh. Đây là lý do có thể áp ngưỡng lên ảnh gradient để chọn biên, tương ứng B. Tuy nhiên magnitude cao chưa chứng minh đó là ranh giới đối tượng vì nhiễu, texture hoặc bóng cũng tạo đáp ứng lớn; không có yêu cầu chung magnitude phải bằng 1, vì giá trị phụ thuộc thang cường độ và chuẩn hóa kernel. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 6, 12, 17-19.
 
 </details>
 
@@ -6958,7 +6958,7 @@ Prewitt filter với kernel Gx = [[-1,0,1],[-1,0,1],[-1,0,1]] phát hiện biên
 
 **Đáp án:** B. Dọc (vertical)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Kernel cộng các giá trị ở cột phải và trừ các giá trị ở cột trái, nên xấp xỉ biến thiên cường độ theo chiều x. Một biên dọc có sự thay đổi mạnh khi đi qua nó theo x, vì vậy đáp ứng Gx mạnh và chọn B. Ba hàng có trọng số bằng nhau tạo thành phần làm trơn theo y; việc đảo toàn bộ dấu kernel chỉ đổi dấu đạo hàm, không đổi hướng biên được nhấn mạnh. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10-11, 17.
 
 </details>
 
@@ -6977,7 +6977,7 @@ Tại sao phát hiện biên là bước quan trọng trong phân vùng ảnh?
 
 **Đáp án:** B. Vì biên là ranh giới giữa các vùng, giúp tách các đối tượng ra khỏi nhau
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một đường bao có thể đánh dấu nơi chuyển từ vùng ảnh này sang vùng khác, nên các biên được gom và khép kín giúp xác định vùng cần tách. B diễn đạt vai trò đó trong phân vùng, khác với việc tạo texture hoặc giảm kích thước dữ liệu. Tuy nhiên một bản đồ biên chưa phải kết quả phân vùng hoàn chỉnh: đường bao có thể đứt, và biên do chiếu sáng hay hoa văn không nhất thiết phân chia hai đối tượng, nên còn cần các bước liên kết hoặc kết hợp thông tin vùng. Tham chiếu: `IT5409 L1-2-IntroImageFormation.pdf`, trang 3; `IT5409 L4.1-EdgeDetection.pdf`, trang 2, 4.
 
 </details>
 
@@ -6996,7 +6996,7 @@ Nguồn PDF: trang 50
 
 **Đáp án:** B. Tính gradient cho từng kênh riêng và kết hợp (ví dụ: gradient magnitude lớn nhất qua các kênh)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Có thể tính Gx và Gy trên từng kênh màu, rồi kết hợp đáp ứng; chọn kênh có magnitude lớn nhất tại mỗi pixel là một cách giữ lại biến đổi mạnh ở bất kỳ kênh nào. Cách này tránh bỏ một ranh giới màu chỉ vì nó có độ sáng xám gần như không đổi, nên B là phương án hợp lệ. Tuy nhiên D cũng là cách xử lý hợp lệ nếu chuyển ảnh màu sang grayscale rồi tính gradient, dù có thể mất thông tin màu; câu hỏi một đáp án vì thế chưa loại trừ D rõ ràng, và đáp án gốc B được giữ chứ không có nghĩa D luôn sai. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [mã Canny đa kênh của OpenCV](https://github.com/opencv/opencv/blob/4.x/modules/imgproc/src/canny.cpp).
 
 </details>
 
@@ -7015,7 +7015,7 @@ Nguồn PDF: trang 50
 
 **Đáp án:** B. Hough voting-based, bền vững với noise; RANSAC random sampling, tốt với outliers nhưng không deterministic
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hough cổ điển duyệt các giả thuyết tham số và cộng phiếu từ điểm biên, còn RANSAC sinh một tập giả thuyết bằng các mẫu ngẫu nhiên rồi đánh giá inliers. Do đó B phân biệt đúng voting với random sampling và lý do hai phương pháp có hành vi khác nhau trước nhiễu. Cần hiểu 'không deterministic' là kết quả RANSAC có thể đổi khi đổi chuỗi lấy mẫu; cố định seed và điều kiện tính toán có thể cho kết quả lặp lại, trong khi Hough cũng có các biến thể xác suất. Không có bảo đảm RANSAC luôn tốt hơn Hough. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-37, 40-46.
 
 </details>
 
@@ -7034,7 +7034,7 @@ Nguồn PDF: trang 50
 
 **Đáp án:** C. Tốc độ O(1) không phụ thuộc kích thước ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hough cần xử lý các điểm biên để cập nhật accumulator và sau đó tìm các ô có nhiều phiếu. Với Hough đường thẳng cổ điển, E điểm biên và K mức theta thường tạo khoảng E×K lượt cập nhật, chưa kể quét accumulator để lấy peak, nên thời gian không thể độc lập hoàn toàn với dữ liệu như O(1). C là phát biểu sai; accumulator, khả năng tìm nhiều đường và chống nhiễu trong giới hạn đều đúng với mô tả trong slide. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 32-33, 37.
 
 </details>
 
@@ -7053,7 +7053,7 @@ Kết quả của Canny edge detection thường được dùng như thế nào 
 
 **Đáp án:** B. Làm đầu vào cho Hough Transform, phân vùng ảnh, hoặc trích chọn contour
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Bản đồ Canny biểu diễn các ứng viên đường biên thay vì toàn bộ cường độ ảnh, nên thích hợp để đưa vào bước gom cấu trúc hình học như Hough. Nó cũng có thể hỗ trợ tìm contour hoặc phân vùng dựa trên ranh giới, vì vậy B nêu những cách dùng phổ biến của kết quả biên. Không nên xem bản đồ này là ảnh gốc thay thế hoàn toàn vì nó bỏ màu và texture; đưa biên vào classifier vẫn có thể là một thiết kế riêng, nhưng không phải vai trò điển hình đang được hỏi. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 33, 36; `IT5409 L1-2-IntroImageFormation.pdf`, trang 3.
 
 </details>
 
@@ -7072,7 +7072,7 @@ Nguồn PDF: trang 50
 
 **Đáp án:** B. Cần accumulator 3D (cx, cy, r) và phức tạp hơn đường thẳng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đường thẳng dạng cực có hai tham số, trong khi đường tròn tổng quát cần tọa độ tâm và bán kính, tức ba tham số. Nếu lượng tử hóa trực tiếp cả ba trục, accumulator và quá trình bỏ phiếu tốn hơn, nên B đúng trong ngữ cảnh Hough cổ điển. Không phải mọi triển khai đều lưu accumulator 3D tường minh: phương pháp Hough gradient trong OpenCV tách tìm tâm và tìm bán kính để tăng hiệu quả, còn biết trước r cũng giảm bài toán xuống hai chiều. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 37. *Kiến thức bổ sung về triển khai ngoài slide:* [OpenCV, Hough Circle Transform](https://docs.opencv.org/4.x/d4/d70/tutorial_hough_circle.html).
 
 </details>
 
@@ -7091,7 +7091,7 @@ Nguồn PDF: trang 51
 
 **Đáp án:** B. Giữ lại nhiều biên yếu (noise), dẫn đến false positives
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Giảm T_low cho phép nhiều đáp ứng gradient nhỏ vượt điều kiện trở thành ứng viên biên yếu. Một phần trong số đó có thể do nhiễu và được giữ nếu nối qua chuỗi ứng viên tới biên mạnh, làm tăng false positives như B nêu. Không phải tất cả pixel vượt T_low đều được giữ, vì hysteresis vẫn yêu cầu kết nối tới strong edge; bước NMS đã quyết định làm mảnh nên hạ ngưỡng dưới không trực tiếp làm mọi biên dày lên. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 26-29.
 
 </details>
 
@@ -7110,7 +7110,7 @@ Bộ phát hiện biên nào ít nhạy cảm với noise nhất?
 
 **Đáp án:** B. Canny (có Gaussian smoothing)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Canny kết hợp làm trơn Gaussian trước đạo hàm với NMS và hysteresis, nên trong so sánh khái quát của câu hỏi nó được ưu tiên về kiểm soát nhiễu hơn các sai phân đơn giản. B là đáp án gốc theo ý này, nhưng không tồn tại thứ hạng 'ít nhạy nhất' tuyệt đối nếu không cố định loại nhiễu, scale và các ngưỡng. Đặc biệt D viết 'LoG không Gaussian' là sai ngay ở tên khái niệm: LoG là Laplacian of Gaussian và có làm trơn Gaussian, nên không được dùng mô tả sai đó để kết luận LoG luôn kém hơn Canny. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 15-16, 23-27.
 
 </details>
 
@@ -7129,7 +7129,7 @@ Trong xử lý ảnh y tế, phát hiện biên dùng để làm gì?
 
 **Đáp án:** B. Phân đoạn cấu trúc giải phẫu (xương, mô, khối u) trong ảnh MRI, CT
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong ảnh MRI hoặc CT, biến đổi cường độ quanh cấu trúc giải phẫu có thể cung cấp ứng viên ranh giới cho quá trình phân đoạn. Do đó B mô tả một vai trò của phát hiện biên, khác với tăng độ phân giải, cân bằng tương phản hay nén ảnh. Biên không tự xác định tên mô hoặc kết luận một vùng là khối u, và nhiễu, tương phản yếu hoặc ranh giới không rõ đòi hỏi kết hợp mô hình vùng hay kiến thức hình học; đây là bước hỗ trợ xử lý ảnh, không phải chẩn đoán tự động chỉ từ gradient. *Kiến thức bổ sung (không có tham chiếu trong slide cho ví dụ MRI/CT).*
 
 </details>
 
@@ -7148,7 +7148,7 @@ Nguồn PDF: trang 51
 
 **Đáp án:** B. Biên thường ở nơi gradient magnitude đạt cực trị cục bộ
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với một chuyển tiếp sáng tối đã làm trơn, magnitude thường tăng khi tiến tới tâm chuyển tiếp rồi giảm sau khi đi qua nó. Vì thế vị trí cực đại cục bộ theo hướng gradient là ứng viên vị trí biên, đúng với B và cũng là tiêu chí NMS sử dụng. Cực đại được xét ngang qua biên chứ không nhất thiết theo mọi hướng lân cận, và không có ngưỡng cố định 255 vì magnitude phụ thuộc phép lọc và thang cường độ. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 6, 15-16, 26.
 
 </details>
 
@@ -7167,7 +7167,7 @@ RANSAC có thể phát hiện nhiều đường thẳng trong cùng một ảnh 
 
 **Đáp án:** B. Bằng cách chạy lại RANSAC sau khi loại bỏ inliers của đường thẳng đã tìm được
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một lần RANSAC thông thường chọn mô hình có tập inliers tốt nhất trong các giả thuyết đã thử. Sau khi tìm một đường, có thể tách các inliers của nó khỏi dữ liệu và chạy lại trên phần còn lại để tìm đường khác, nên B nêu chiến lược phát hiện tuần tự. Cách này không tự bảo đảm tìm mọi đường: ngưỡng quá rộng có thể lấy nhầm điểm của đường khác, điểm giao có thể bị loại sớm, và các đường ít điểm hỗ trợ có thể bị bỏ sót. *Kiến thức bổ sung (slide nêu khó khăn với nhiều mô hình, chưa trình bày đầy đủ chiến lược loại inliers rồi chạy lại).*
 
 </details>
 
@@ -7186,7 +7186,7 @@ Nguồn PDF: trang 51
 
 **Đáp án:** C. Cả A và B đều đúng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Kernel Gy đã cho lấy hiệu giữa hàng trên và hàng dưới, đồng thời làm trơn theo x bằng trọng số 1-2-1. Một biên ngang gây thay đổi cường độ khi đi theo y qua biên, nên Gy nhấn mạnh nó và cả A lẫn B đúng, chọn C. Đổi dấu kernel hoặc đổi chiều trục y chỉ làm đổi dấu đáp ứng và quy ước góc, không làm Gy chuyển thành bộ phát hiện biên dọc. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 10-12, 16.
 
 </details>
 
@@ -7205,7 +7205,7 @@ Nguồn PDF: trang 51
 
 **Đáp án:** B. Phân loại màu sắc của đối tượng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hough tìm các mô hình hình học được tham số hóa từ những điểm hỗ trợ, chẳng hạn đường thẳng hoặc đường tròn. Vì vậy nó có thể tìm đường ray, đường chân trời hoặc đường bao tròn xấp xỉ của mống mắt, nhưng không có cơ chế tự gán lớp màu cho đối tượng. Chọn B cho câu hỏi phủ định; các ứng dụng hình học vẫn cần mô hình phù hợp và bước kiểm tra, vì đường chân trời không luôn thẳng và mống mắt trong ảnh phối cảnh không luôn là một đường tròn hoàn hảo. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 30, 37.
 
 </details>
 
@@ -7224,7 +7224,7 @@ Khi RANSAC chạy N vòng lặp, điều gì ảnh hưởng đến N tối ưu?
 
 **Đáp án:** B. Tỉ lệ outliers; nhiều outliers hơn cần nhiều vòng lặp hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Nếu tỷ lệ inliers là w và mỗi mẫu cần s điểm, xác suất một mẫu toàn inliers xấp xỉ w^s; khi outliers tăng thì xác suất này giảm. Để xác suất có ít nhất một mẫu tốt đạt p, số lượt thường được chọn theo N ≥ log(1-p)/log(1-w^s), rồi làm tròn lên. B vì thế đúng về ảnh hưởng của outliers, nhưng N còn phụ thuộc kích thước mẫu tối thiểu và mức tin cậy yêu cầu, không chỉ tỷ lệ outliers; công thức dùng giả thiết lấy mẫu độc lập và tỷ lệ inliers ước lượng phù hợp. Tham chiếu: `IT5409 L4.1-EdgeDetection.pdf`, trang 44-45.
 
 </details>
 
@@ -7243,7 +7243,7 @@ Nguồn PDF: trang 52
 
 **Đáp án:** B. Là đường mỏng sáng hoặc tối trên nền, có 2 biên (step edge) ở hai cạnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một vạch sáng mỏng trên nền tối có chuyển tiếp tối-sáng ở cạnh đầu và sáng-tối ở cạnh còn lại; vạch tối trên nền sáng có hai chuyển tiếp với dấu ngược lại. Vì vậy line edge được mô hình hóa như một dải gồm hai step edges, khác một step đơn chỉ có một lần chuyển mức, nên chọn B. Trên ảnh lấy mẫu hoặc bị nhòe, hai đáp ứng có thể chồng lên nhau khi vạch quá hẹp, nhưng mô hình hai cạnh vẫn giải thích nguồn gốc cấu trúc này; nó không bị giới hạn ở ảnh nhân tạo. *Kiến thức bổ sung (slide minh họa step, ramp và roof, không định nghĩa trực tiếp line edge).*
 
 </details>
 
