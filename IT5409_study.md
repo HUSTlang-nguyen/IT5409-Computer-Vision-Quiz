@@ -7588,7 +7588,7 @@ NCC (Normalized Cross-Correlation) được dùng để làm gì trong image mat
 
 **Đáp án:** B. Đo độ tương đồng giữa hai vùng ảnh, bất biến với thay đổi độ sáng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* NCC đo mức tương quan của hai vùng ảnh sau khi chuẩn hóa, nên điểm số cao biểu thị các mẫu cường độ tương đồng. **Lưu ý:** bất biến với cả độ lệch và hệ số độ sáng dương cần dạng đã trừ trung bình, thường gọi ZNCC; NCC chỉ chuẩn hóa độ dài vector không tự loại được độ lệch cộng. Ngay cả ZNCC cũng không bất biến với mọi thay đổi chiếu sáng phi tuyến hoặc bóng cục bộ. Đối chiếu: [các công thức so khớp của OpenCV](https://docs.opencv.org/4.x/de/da9/tutorial_template_matching.html).
 
 </details>
 
@@ -7607,7 +7607,7 @@ SSD (Sum of Squared Differences) trong image matching tính điều gì?
 
 **Đáp án:** B. Tổng bình phương hiệu các pixel giữa hai vùng ảnh; nhỏ hơn → giống nhau hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SSD = tổng (I_i - T_i)² trên các cặp pixel tương ứng của hai vùng cùng kích thước. Bình phương làm mọi sai khác đóng góp không âm, nên SSD bằng 0 khi hai vùng giống hệt nhau và tăng khi cường độ khác nhau. A là tổng sai khác tuyệt đối, không phải SSD; C có liên hệ với SSD vì SSD là bình phương khoảng cách Euclidean của các vector pixel, nhưng B mô tả trực tiếp đại lượng được hỏi. Đối chiếu: [công thức TM_SQDIFF](https://docs.opencv.org/4.x/de/da9/tutorial_template_matching.html).
 
 </details>
 
@@ -7626,7 +7626,7 @@ Homography là phép biến đổi gì?
 
 **Đáp án:** B. Phép biến đổi phối cảnh (projective) 2D, ánh xạ điểm từ mặt phẳng này sang mặt phẳng khác
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Homography ánh xạ tọa độ thuần nhất theo x' ~ Hx, với H là ma trận 3 x 3 khả nghịch và dấu ~ biểu thị bằng nhau tới một hệ số khác 0. Sau khi chia cho tọa độ thuần nhất, nó mô tả biến đổi phối cảnh giữa hai ảnh của một mặt phẳng, bao gồm cả quay, tịnh tiến hoặc scale như các trường hợp riêng. Với cảnh 3D có độ sâu khác nhau và camera tịnh tiến, một homography duy nhất thường không căn chỉnh đúng toàn cảnh. Đối chiếu: [khái niệm homography của OpenCV](https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html).
 
 </details>
 
@@ -7645,7 +7645,7 @@ Homography có bao nhiêu bậc tự do (DOF)?
 
 **Đáp án:** C. 8
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Ma trận homography 3 x 3 có chín phần tử, nhưng H và kH với k khác 0 tạo cùng ánh xạ tọa độ thuần nhất. Một hệ số tỷ lệ vì vậy không phải tham số độc lập, để lại tám bậc tự do. Có thể chuẩn hóa một phần tử phù hợp hoặc chuẩn hóa độ dài ma trận; không bắt buộc phần tử h33 luôn khác 0. Đây là DOF của biến đổi projective 2D tổng quát, còn affine chỉ có sáu DOF. Đối chiếu: [ma trận homography](https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html).
 
 </details>
 
@@ -7664,7 +7664,7 @@ Tại sao dùng RANSAC kết hợp với image matching?
 
 **Đáp án:** B. Để loại bỏ các matches sai (outliers) khi ước lượng homography
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Các descriptor giống nhau có thể tạo cặp ghép sai, nhất là khi ảnh có texture lặp lại, nên dùng mọi match để fit homography dễ làm mô hình lệch. RANSAC thử các tập nhỏ, ước lượng mô hình rồi đếm những match có sai số chiếu nhỏ để tìm tập inlier nhất quán. Nó không tạo descriptor hay tìm thêm match; vai trò chính ở đây là ước lượng hình học bền vững trước outliers, sau đó có thể fit lại trên các inlier. Đối chiếu: [feature matching và RANSAC](https://docs.opencv.org/4.x/d1/de0/tutorial_py_feature_homography.html).
 
 </details>
 
@@ -7683,7 +7683,7 @@ LBP (Local Binary Pattern) là loại đặc trưng gì?
 
 **Đáp án:** B. Đặc trưng texture cục bộ, so sánh pixel với hàng xóm
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* LBP cơ bản so sánh cường độ từng pixel lân cận với pixel trung tâm, mã hóa kết quả thành các bit và ghép chúng thành một mã nhị phân. Histogram các mã trong một vùng mô tả tần suất xuất hiện của những cấu trúc texture cục bộ. Vì vậy B đúng: LBP không chỉ đo màu và không khởi đầu từ một biểu diễn hình dạng toàn cục, dù histogram LBP có thể được tổng hợp thành đặc trưng của vùng hoặc ảnh. Đối chiếu: [nghiên cứu LBP của Đại học Oulu](https://oulurepo.oulu.fi/handle/10024/35942).
 
 </details>
 
@@ -7702,7 +7702,7 @@ SURF (Speeded Up Robust Features) so với SIFT có ưu điểm gì?
 
 **Đáp án:** B. Nhanh hơn nhờ sử dụng Integral Image và Haar wavelet
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SURF dùng box filters xấp xỉ đạo hàm Gaussian để phát hiện điểm và tính tổng vùng nhanh qua integral image. Các đáp ứng Haar wavelet cũng có thể tính hiệu quả bằng integral image để xác định hướng và xây dựng descriptor. Những lựa chọn này giảm chi phí tính toán so với cách xây dựng SIFT truyền thống; lợi thế tốc độ không bảo đảm SURF chính xác hơn trong mọi tình huống, không cần tham số hoặc bất biến với mọi phép biến đổi. Đối chiếu: [giới thiệu SURF](https://docs.opencv.org/4.x/df/dd2/tutorial_py_surf_intro.html).
 
 </details>
 
@@ -7721,7 +7721,7 @@ MSER (Maximally Stable Extremal Regions) phát hiện gì?
 
 **Đáp án:** B. Vùng ổn định qua nhiều ngưỡng threshold (region với ranh giới bền vững)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* MSER xét các thành phần liên thông khi thay đổi ngưỡng cường độ, rồi chọn những vùng có diện tích thay đổi tương đối ít trong một khoảng ngưỡng. Tính ổn định này giúp nhận lại một vùng qua những ảnh có điều kiện quan sát khác nhau, thay vì chỉ tìm một góc hoặc đường thẳng đơn lẻ. Cụm 'ranh giới bền vững' trong B là cách diễn đạt trực quan; tiêu chí MSER chủ yếu dựa trên sự ổn định của diện tích vùng theo ngưỡng, không đòi đường biên bất động tuyệt đối.
 
 </details>
 
@@ -7778,7 +7778,7 @@ Template matching (so khớp mẫu) dùng kỹ thuật nào?
 
 **Đáp án:** B. Cross-correlation hoặc SSD, tìm vùng ảnh giống mẫu nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Template matching trượt mẫu qua ảnh và tính một điểm so khớp ở mỗi vị trí. Với cross-correlation, thường chọn điểm cao nhất; với SSD, chọn điểm thấp nhất vì đó là sai khác nhỏ nhất. FFT có thể tăng tốc tính correlation, nhưng là cách triển khai chứ không thay thế tiêu chí tương đồng ở B. Đối chiếu: [API matchTemplate](https://docs.opencv.org/4.x/df/dfb/group__imgproc__object.html).
 
 </details>
 
@@ -7816,7 +7816,7 @@ Zernike moments khác Hu's moments ở điểm nào?
 
 **Đáp án:** B. Zernike là hệ trực giao hoàn chỉnh trên đĩa tròn đơn vị, ít nhiễu hơn khi tái tạo
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Zernike moments biểu diễn ảnh trên hệ đa thức trực giao trong đĩa đơn vị, nên các hệ số mô tả những thành phần cơ sở riêng và có thể dùng để tái tạo ảnh. Bảy bất biến Hu là các tổ hợp của moments hình học bậc thấp, không phải một hệ cơ sở trực giao đầy đủ để tái tạo. **Lưu ý:** tính trực giao giúp giảm dư thừa nhưng không bảo đảm 'ít nhiễu hơn' trong mọi trường hợp; độ bền còn phụ thuộc bậc moments, chuẩn hóa và lấy mẫu. Đối chiếu: [Teague, Image analysis via moments](https://opg.optica.org/abstract.cfm?uri=josa-70-8-920).
 
 </details>
 
@@ -7873,7 +7873,7 @@ FREAK (Fast Retina Keypoint) được lấy cảm hứng từ đâu?
 
 **Đáp án:** B. Cấu trúc của võng mạc mắt người (retina)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* FREAK lấy cảm hứng từ cách lấy mẫu ở võng mạc, với mẫu lấy thông tin dày hơn gần tâm và thưa hơn khi ra xa. Descriptor mã hóa các phép so sánh cường độ giữa những vùng lấy mẫu thành chuỗi bit, nhờ đó có thể so khớp bằng Hamming distance. B chỉ nguồn cảm hứng thiết kế, không có nghĩa thuật toán mô phỏng đầy đủ hoạt động sinh học của mắt; tên của nó cũng không xuất phát từ bộ nhớ máy tính hoặc bộ lọc Gabor. Đối chiếu: [bài báo FREAK](https://citeseerx.ist.psu.edu/document?doi=bfe2e9b42cca691dcddca8ca90a0d75c67cead58&repid=rep1&type=pdf).
 
 </details>
 
@@ -7949,7 +7949,7 @@ Nguồn PDF: trang 56
 
 **Đáp án:** B. Dùng binary descriptor, nhanh hơn SIFT/SURF nhờ Hamming distance
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* BRISK tạo descriptor nhị phân bằng so sánh các cặp mẫu cường độ và có cơ chế chuẩn hóa hướng, scale cho keypoint. Chuỗi bit có thể so khớp nhanh bằng XOR và đếm bit khác nhau, thay cho nhiều phép toán trên vector số thực như SIFT hoặc SURF. Vì vậy B nêu lợi thế tính toán hợp lý; tốc độ cả pipeline vẫn phụ thuộc detector, số keypoint và triển khai, không thể chỉ quy toàn bộ chênh lệch cho Hamming distance. Đối chiếu: [bài báo BRISK](https://dev.ipol.im/~reyotero/bib/bib_all/2011_Leutnegger_Chli_brisk_iccv.pdf).
 
 </details>
 
@@ -7968,7 +7968,7 @@ Khoảng cách Hamming được dùng để so sánh descriptor nào?
 
 **Đáp án:** B. Binary descriptor (BRISK, ORB)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Khoảng cách Hamming đếm số vị trí bit khác nhau giữa hai chuỗi cùng độ dài, nên phù hợp với descriptor nhị phân như BRISK và ORB. Ví dụ 1010 và 1001 khác nhau ở hai vị trí, cho khoảng cách 2; có thể tính bằng XOR rồi đếm bit 1. SIFT và HOG chuẩn là vector giá trị số, nên thường dùng khoảng cách trên vector thay vì diễn giải mỗi tọa độ như một bit. Đối chiếu: [chuẩn khoảng cách cho descriptor](https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html).
 
 </details>
 
@@ -7987,7 +7987,7 @@ ORB (Oriented FAST and Rotated BRIEF) là sự kết hợp của gì?
 
 **Đáp án:** B. FAST keypoint detector và BRIEF descriptor (với thêm rotation invariance)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* ORB dùng FAST để phát hiện keypoint, bổ sung ước lượng hướng từ phân bố cường độ rồi định hướng lại mẫu so sánh của BRIEF. Bởi BRIEF nguyên bản không tự chuẩn hóa hướng, bước xoay mẫu giúp descriptor bền hơn khi ảnh quay. Tên ORB vì thế mô tả sự kết hợp FAST và BRIEF có xử lý hướng, không phải ghép SIFT với SURF; tính bền với quay cũng không phải bất biến tuyệt đối trước mọi biến đổi hình học. Đối chiếu: [cấu trúc ORB](https://docs.opencv.org/4.x/d1/d89/tutorial_py_orb.html).
 
 </details>
 
@@ -8196,7 +8196,7 @@ Nguồn PDF: trang 58
 
 **Đáp án:** B. Mở rộng HOG bằng cách xem xét sự tương quan (co-occurrence) giữa các hướng gradient
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* HOG thông thường thống kê hướng gradient trong từng ô, còn Co-HOG thống kê sự đồng xuất hiện của cặp hướng tại những vị trí có độ lệch xác định. Thông tin cặp này bổ sung quan hệ không gian giữa các gradient, giúp biểu diễn cấu trúc hình dạng phong phú hơn một histogram hướng riêng lẻ. B đúng về cơ chế mở rộng; không có quy luật luôn chậm hơn mười lần, và phương pháp gốc được dùng cho phát hiện người chứ không giới hạn ở texture. Đối chiếu: [bài báo Co-HOG](https://www.jstage.jst.go.jp/article/ipsjtcva/2/0/2_0_39/_article).
 
 </details>
 
@@ -8310,7 +8310,7 @@ Nguồn PDF: trang 59
 
 **Đáp án:** B. Tính DFT của boundary contour (1D signal), dùng hệ số Fourier để mô tả hình dạng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Lấy các điểm biên theo thứ tự và biểu diễn chúng thành tín hiệu một chiều, chẳng hạn z(k) = x(k) + i*y(k), rồi tính DFT để thu các hệ số Fourier. Các hệ số tần số thấp mô tả hình dạng tổng thể, còn tần số cao mang chi tiết biên. Đây không phải Fourier trực tiếp trên toàn ảnh 2D; có thể chuẩn hóa descriptor để giảm ảnh hưởng của tịnh tiến, scale, quay hoặc điểm bắt đầu, nên D không phải hạn chế bắt buộc. Đối chiếu: [Fourier descriptors của đường biên](https://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/MORSE/boundary-rep-desc.pdf).
 
 </details>
 
@@ -8329,7 +8329,7 @@ Nguồn PDF: trang 59
 
 **Đáp án:** B. Dùng SIFT hoặc ORB để tìm matches, ước lượng homography, warp và blend ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Một pipeline ghép ảnh dựa trên đặc trưng tìm keypoint và descriptor, ghép các điểm tương ứng rồi ước lượng homography bền vững trước matches sai. Warp đưa ảnh về cùng hệ tọa độ, còn blending xử lý phần chồng lấp để giảm đường nối và khác biệt sáng. B mô tả pipeline phổ biến; homography phù hợp nhất khi cảnh gần phẳng hoặc camera quay quanh tâm, còn parallax do vật thể ở nhiều độ sâu có thể làm ảnh ghép lệch. Đối chiếu: [matching và homography](https://docs.opencv.org/4.x/d1/de0/tutorial_py_feature_homography.html).
 
 </details>
 
@@ -8348,7 +8348,7 @@ Phương pháp nào dùng để phát hiện keypoints nhanh nhất?
 
 **Đáp án:** B. FAST (Features from Accelerated Segment Test)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* FAST phát hiện góc bằng phép kiểm tra một dãy pixel trên vòng tròn quanh điểm ứng viên và có thể loại sớm nhiều điểm không thỏa điều kiện. Cách kiểm tra đơn giản được thiết kế cho tốc độ cao, khác với các bước xây dựng scale-space phức tạp hơn ở SIFT hoặc SURF. **Lưu ý:** B là lựa chọn dự kiến trong nhóm thuật toán của câu hỏi, không phải kết luận FAST luôn nhanh nhất trên mọi phần cứng, thư viện và bộ tham số. Đối chiếu: [thuật toán FAST](https://docs.opencv.org/4.x/df/d0c/tutorial_py_fast.html).
 
 </details>
 
@@ -8367,7 +8367,7 @@ Nguồn PDF: trang 59
 
 **Đáp án:** B. Binary descriptor nhanh hơn (Hamming distance) nhưng có thể kém chính xác hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Descriptor nhị phân lưu các kết quả so sánh thành bit, cho phép tính Hamming distance bằng thao tác bit nhanh và thường có biểu diễn gọn. Đổi lại, lượng thông tin và độ bền với biến đổi ảnh phụ thuộc cách chọn phép so sánh, nên hiệu quả matching có thể thấp hơn hoặc cao hơn một descriptor số thực trên từng nhiệm vụ. B diễn đạt một đánh đổi có thể xảy ra, không phải quy luật binary luôn kém chính xác; A, C, D cũng không đúng cho mọi thiết kế. Đối chiếu: [matching descriptor nhị phân và số thực](https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html).
 
 </details>
 
@@ -8386,7 +8386,7 @@ Nguồn PDF: trang 60
 
 **Đáp án:** B. Chia ảnh thành grid ở nhiều scale, tính đặc trưng cho từng ô, kết hợp lại → thêm thông tin vị trí
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Spatial Pyramid Matching chia ảnh thành các lưới ngày càng mịn, tính histogram đặc trưng cục bộ trong từng ô rồi tổng hợp chúng theo các mức. Hai ảnh có cùng số lượng visual words nhưng bố trí khác nhau nhờ đó không còn bị biểu diễn hoàn toàn giống nhau như bag-of-features không xét vị trí. Nó bổ sung cấu trúc không gian cho mô hình bag-of-words, không chỉ dùng với HOG và không loại bỏ nhu cầu chia ảnh. Đối chiếu: [bài báo Spatial Pyramid Matching](https://slazebni.cs.illinois.edu/publications/cvpr06b.pdf).
 
 </details>
 
@@ -8443,7 +8443,7 @@ Nguồn PDF: trang 60
 
 **Đáp án:** B. Chỉ nhìn qua một cửa sổ nhỏ, không thể xác định đủ hướng chuyển động; chỉ thấy component dọc theo biên
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Quan sát một đoạn biên thẳng trong cửa sổ nhỏ chỉ cung cấp một ràng buộc chuyển động, nên không đủ xác định cả hai thành phần optical flow. **Lưu ý: đáp án nguồn có lỗi diễn đạt:** thành phần quan sát được là theo gradient, tức vuông góc với biên, không phải 'dọc theo biên'; thành phần tiếp tuyến với biên chưa xác định. Cần thêm thông tin như gradient theo nhiều hướng ở góc hoặc giả thiết chuyển động trong lân cận để giải mơ hồ này. Đối chiếu: [aperture problem và normal flow](https://people.csail.mit.edu/fredo/comp-photo-book/07-matching-pixels-across-space-and-time-06-optical-flow.html).
 
 </details>
 
@@ -8462,7 +8462,7 @@ Nguồn PDF: trang 60
 
 **Đáp án:** B. SSD nhỏ hơn → match tốt hơn (hai vùng giống nhau hơn)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SSD cộng các bình phương sai khác tại pixel tương ứng, nên chọn vị trí có SSD nhỏ nhất để tìm vùng giống mẫu nhất. Nếu vùng bằng mẫu thì SSD bằng 0; thay đổi độ sáng có thể tăng sai khác dù cấu trúc giống nhau. Do đó SSD nguyên bản không bất biến với độ sáng hoặc quay, và chọn giá trị lớn nhất sẽ ưu tiên vùng khác mẫu. Đối chiếu: [TM_SQDIFF](https://docs.opencv.org/4.x/df/dfb/group__imgproc__object.html).
 
 </details>
 
@@ -8557,7 +8557,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Correlation f(x) ⋆ t(x) = ∑f(x+τ)t(τ), giống convolution nhưng không flip template
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Cross-correlation nhân mẫu với từng vùng ảnh ở vị trí đang xét rồi cộng các tích, không đảo thứ tự không gian của mẫu. Convolution theo định nghĩa toán học có bước đảo kernel, nên hai phép chỉ trùng trong những trường hợp như kernel đối xứng. FFT là một cách tính nhanh chứ không phải điều kiện bắt buộc, và correlation không chỉ dùng cho ảnh nhị phân. Đối chiếu: [TM_CCORR](https://docs.opencv.org/4.x/df/dfb/group__imgproc__object.html).
 
 </details>
 
@@ -8576,7 +8576,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Dùng trong AR (Augmented Reality), tracking, object recognition thời gian thực
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Các keypoint và descriptor SURF cho phép tìm lại chi tiết ảnh qua các khung hình hoặc góc nhìn, nên có thể làm thành phần của tracking, nhận dạng hoặc căn chỉnh đối tượng cho AR. Integral image và các bộ lọc xấp xỉ giúp giảm chi phí, nhưng khả năng chạy thời gian thực vẫn phụ thuộc ảnh, số điểm và phần cứng. B vì vậy mô tả ứng dụng khả thi, không phải bảo đảm tốc độ; tuyên bố 'miễn phí hoàn toàn' cũng không thể suy ra chỉ từ tính năng thuật toán. Đối chiếu: [cơ chế và tốc độ SURF](https://docs.opencv.org/4.x/df/dd2/tutorial_py_surf_intro.html).
 
 </details>
 
@@ -8709,7 +8709,7 @@ Nguồn PDF: trang 62
 
 **Đáp án:** B. Phân loại mô (benign/malignant) dựa trên đặc trưng texture trong ảnh siêu âm, MRI
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Từ GLCM của vùng mô, có thể tính các đặc trưng như contrast, energy hoặc homogeneity rồi đưa vào một mô hình phân loại đã huấn luyện với nhãn tương ứng. Khi các loại mô có phân bố texture khác nhau, những đặc trưng này có thể hỗ trợ phân biệt nhóm lành tính và ác tính; một nghiên cứu đã dùng GLCM kết hợp SVM cho ảnh siêu âm khối u gan. Đây là ứng dụng phân tích có đánh giá trên dữ liệu, không phải quy tắc GLCM tự chẩn đoán chính xác mọi ảnh MRI hay siêu âm. Đối chiếu: [nghiên cứu GLCM cho ảnh siêu âm](https://www.sciencedirect.com/science/article/abs/pii/S0957417410001065).
 
 </details>
 
@@ -8728,7 +8728,7 @@ Nguồn PDF: trang 62
 
 **Đáp án:** B. Image compression
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Feature matching tìm những điểm hoặc vùng tương ứng giữa các ảnh, phục vụ đối chiếu đối tượng, theo dõi mốc trong SLAM và tạo ràng buộc hình học cho dựng hình 3D. Nén ảnh thông thường nhằm mã hóa dữ liệu gọn hơn, không phải nhiệm vụ trực tiếp xác lập các cặp đặc trưng, nên B là đáp án dự kiến. **Lưu ý:** không nên hiểu rằng feature matching tuyệt đối không thể xuất hiện trong một hệ nén chuyên biệt; câu hỏi phân biệt các ứng dụng điển hình, không chứng minh sự loại trừ cho mọi hệ thống.
 
 </details>
 
@@ -8766,7 +8766,7 @@ Nguồn PDF: trang 62
 
 **Đáp án:** B. Có thể tính riêng cho từng kênh màu hoặc trên ảnh grayscale
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* GLCM cơ bản đếm sự đồng xuất hiện của các mức cường độ trong một ảnh vô hướng, nên có thể áp dụng trên grayscale hoặc riêng từng kênh màu. Với ảnh RGB, cách thứ hai tạo đặc trưng cho từng kênh rồi kết hợp, còn chuyển grayscale gộp thông tin màu thành cường độ trước khi tính. Không bắt buộc chuyển sang Lab; cũng cần nhớ tính riêng từng kênh không tự mô tả quan hệ giữa các kênh, muốn xét quan hệ đó phải dùng biến thể đặc trưng phù hợp.
 
 </details>
 
@@ -8788,7 +8788,7 @@ Mục tiêu của phân vùng ảnh (image segmentation) là gì?
 
 **Đáp án:** B. Chia ảnh thành các vùng có nghĩa tương ứng với đối tượng hoặc bộ phận của đối tượng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Phân vùng chia các pixel thành những vùng có ý nghĩa đối với nhiệm vụ đang xét, chẳng hạn vùng của một vật thể hoặc một bộ phận của nó. Kết quả có thể được biểu diễn bằng mask để tách thực thể cần xử lý khỏi phần còn lại của ảnh. Tăng độ phân giải và lọc nhiễu là các thao tác xử lý ảnh khác; phát hiện biên chỉ là một cách hỗ trợ xác định ranh giới vùng, không phải toàn bộ mục tiêu của phân vùng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 2-3.
 
 </details>
 
@@ -8807,7 +8807,7 @@ Phân vùng ảnh dựa trên những đặc trưng nào của pixel? (Chọn t�
 
 **Đáp án:** A. Cường độ xám (grey level); B. Màu sắc; C. Texture; D. Chuyển động (motion)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Cường độ xám giúp tách những miền có độ sáng khác nhau, còn màu sắc cung cấp thêm thông tin để phân biệt các vật thể có độ sáng gần giống nhau. Texture mô tả mẫu biến thiên trong một lân cận, nhờ đó có thể phân biệt vùng dù màu trung bình tương tự. Với chuỗi ảnh, chuyển động giúp gom các điểm cùng chuyển động thành một đối tượng hoặc tách đối tượng khỏi nền; vì vậy cả bốn đặc trưng đều có thể dùng, tùy loại dữ liệu và nhiệm vụ. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 2, 26-28, 39.
 
 </details>
 
@@ -8826,7 +8826,7 @@ Hai cách tiếp cận chính trong phân vùng ảnh dựa trên là gì?
 
 **Đáp án:** B. Discontinuities (biên) và Homogeneous zones (vùng đồng nhất)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Cách tiếp cận dựa trên discontinuities tìm những vị trí đặc trưng ảnh thay đổi đột ngột, xem đó là ứng viên cho ranh giới giữa các vùng. Cách tiếp cận dựa trên homogeneity gom các pixel có cường độ, màu hoặc texture tương tự vào cùng vùng. Một hướng tìm nơi vùng kết thúc, hướng kia tìm những điểm nên thuộc cùng vùng; các cặp local/global hay supervised/unsupervised là những cách phân loại khác, không phải hai cơ sở phân vùng được hỏi ở đây. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 4-5.
 
 </details>
 
@@ -8845,7 +8845,7 @@ Phương pháp Thresholding thuộc loại tiếp cận nào trong phân vùng?
 
 **Đáp án:** B. Pixel-based
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Thresholding quyết định nhãn của từng pixel bằng cách so sánh giá trị của pixel với một hoặc nhiều ngưỡng, nên thuộc nhóm pixel-based. Với một ngưỡng T, quy tắc trong slide gán 0 khi f(x, y) < T và gán 1 khi f(x, y) >= T. Cách này không trực tiếp xây dựng đường biên hoặc phát triển một vùng liên thông; các pixel cùng nhãn vẫn có thể nằm ở những thành phần rời nhau. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 6-7, 25.
 
 </details>
 
@@ -8864,7 +8864,7 @@ Global thresholding khác Local thresholding ở điểm nào?
 
 **Đáp án:** B. Global dùng một ngưỡng cho toàn bộ ảnh; Local dùng ngưỡng riêng cho từng vùng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Global thresholding áp dụng cùng giá trị T tại mọi vị trí của ảnh, còn local thresholding xác định ngưỡng theo từng phần hoặc lân cận. Khi nền ở một góc sáng hơn góc khác, một ngưỡng toàn cục có thể không tách được đối tượng ở cả hai nơi, trong khi ngưỡng cục bộ có thể thích ứng với khác biệt đó. Đây là khác biệt về phạm vi xác định ngưỡng, không phải một cam kết rằng phương pháp nào luôn nhanh hơn hoặc chính xác hơn. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 6, 12.
 
 </details>
 
@@ -8883,7 +8883,7 @@ Thuật toán Otsu tìm ngưỡng tối ưu bằng cách nào?
 
 **Đáp án:** D. Cả B và C đều đúng (tương đương nhau)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với mỗi ngưỡng T, Otsu chia histogram thành hai lớp và tính phương sai nội lớp có trọng số: P1 * sigma1² + P2 * sigma2². Tổng phương sai của ảnh cố định bằng phương sai nội lớp cộng phương sai giữa các lớp, nên giảm đại lượng thứ nhất đồng nghĩa với tăng đại lượng thứ hai. Vì vậy B và C là hai cách diễn đạt tương đương của cùng tiêu chí tối ưu; phải hiểu intra-class variance ở đây là tổng có trọng số, không phải một tổng tùy ý của hai phương sai. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 11.
 
 </details>
 
@@ -8902,7 +8902,7 @@ K-means clustering trong phân vùng ảnh hoạt động như thế nào?
 
 **Đáp án:** B. Lặp: gán pixel vào cluster trung tâm gần nhất → cập nhật trung tâm cluster
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** K-means biểu diễn mỗi pixel bằng một vector đặc trưng và khởi tạo K tâm cụm. Ở bước gán, pixel được đưa vào cụm có tâm gần nhất theo khoảng cách trong không gian đặc trưng; ở bước cập nhật, mỗi tâm được thay bằng trung bình các vector của cụm đó. Hai bước được lặp tới khi hội tụ, chứ không gom màu ngẫu nhiên ở mọi vòng lặp hoặc bắt buộc tìm biên trước. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 14-16.
 
 </details>
 
@@ -8921,7 +8921,7 @@ Nhược điểm của K-means khi áp dụng cho phân vùng ảnh là gì? (Ch
 
 **Đáp án:** A. Phải chỉ định K trước; B. Nhạy cảm với việc khởi tạo centroid; C. Có thể hội tụ về local minimum; D. Không tính đến vị trí không gian của pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** K-means cần biết K để khởi tạo số tâm cụm, và các tâm ban đầu khác nhau có thể dẫn tới cách chia cụm khác nhau. Do tối ưu bằng các bước gán và cập nhật luân phiên, thuật toán có thể dừng ở cực tiểu cục bộ thay vì nghiệm tốt nhất toàn cục. D đúng trong thiết lập chỉ dùng màu hoặc cường độ: hai pixel xa nhau vẫn có thể cùng cụm; đây không phải hạn chế bắt buộc của mọi biến thể, vì slide cũng minh họa việc thêm tọa độ x, y vào vector đặc trưng để xét vị trí. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 14, 18, 26-27.
 
 </details>
 
@@ -8940,7 +8940,7 @@ Region Growing (phát triển vùng) hoạt động như thế nào?
 
 **Đáp án:** B. Bắt đầu từ seed pixel(s), mở rộng vùng bằng cách thêm pixel lân cận thỏa mãn tiêu chí đồng nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Region Growing bắt đầu từ một hoặc nhiều seed được chọn thủ công hoặc tự động, rồi xét các pixel ở lân cận của vùng hiện tại. Pixel chỉ được thêm nếu thỏa tiêu chí đồng nhất, đồng thời quan hệ lân cận 4 hoặc 8 giúp duy trì tính liên thông của vùng. Quá trình mở rộng dừng khi không còn pixel phù hợp; chia nhỏ ảnh rồi gộp lại là cơ chế của Split and Merge, không phải cơ chế phát triển từ seed. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29-30.
 
 </details>
 
@@ -8959,7 +8959,7 @@ Tiêu chí đồng nhất trong Region Growing có thể là gì? (Chọn tất 
 
 **Đáp án:** A. Cường độ sáng tương tự; B. Màu sắc tương tự; C. Texture tương tự
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Tính đồng nhất đánh giá sự tương tự về nội dung ảnh, nên có thể dựa vào độ sáng, màu hoặc đặc trưng texture của pixel và vùng. Gần nhau về vị trí chỉ xác định pixel nào có thể được xét để giữ vùng liên thông, không bảo đảm chúng có đặc trưng giống nhau: hai pixel nằm hai phía một biên vẫn kề nhau. Vì vậy A, B, C là tiêu chí đồng nhất, còn D là điều kiện không gian cần phân biệt với tiêu chí đó. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 4, 26, 29-30.
 
 </details>
 
@@ -8978,7 +8978,7 @@ Split and Merge algorithm sử dụng cấu trúc dữ liệu nào?
 
 **Đáp án:** B. Quadtree
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mỗi lần split, một vùng không đồng nhất được chia thành bốn phần tư, nên một nút biểu diễn vùng có tối đa bốn nút con. Lặp lại thao tác này tạo cấu trúc quadtree, trong đó các lá biểu diễn những vùng không cần chia tiếp theo tiêu chí đã chọn. Cây nhị phân chỉ có hai nhánh tại mỗi lần chia, còn danh sách liên kết không thể hiện tự nhiên quan hệ phân cấp bốn phần như sơ đồ của thuật toán. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 31-32.
 
 </details>
 
@@ -8997,7 +8997,7 @@ Bước "Split" trong Split and Merge algorithm thực hiện điều gì?
 
 **Đáp án:** B. Chia vùng không đồng nhất thành 4 sub-vùng (quadrants)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Bước split kiểm tra một vùng bằng tiêu chí đồng nhất, ví dụ phương sai hoặc khoảng chênh giữa giá trị lớn nhất và nhỏ nhất. Nếu vùng không đạt tiêu chí, nó được chia thành bốn phần tư và phép kiểm tra được thực hiện đệ quy trên các phần đó. Việc tính đặc trưng chỉ phục vụ quyết định có chia hay không; gộp các vùng là bước merge riêng, không phải thao tác split. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 31-32.
 
 </details>
 
@@ -9016,7 +9016,7 @@ Bước "Merge" trong Split and Merge algorithm thực hiện điều gì?
 
 **Đáp án:** B. Gộp các vùng kề nhau thỏa mãn tiêu chí đồng nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Sau khi chia, các ô có thể quá nhỏ hoặc hai ô liền nhau thực chất thuộc cùng một miền ảnh. Bước merge xét các vùng kề nhau và gộp khi vùng hợp của chúng vẫn thỏa tiêu chí đồng nhất, giúp khắc phục việc chia quá chi tiết. Chỉ kề nhau chưa đủ để gộp, và xóa một vùng nhỏ cũng không tương đương với merge vì các pixel của vùng đó vẫn phải được phân vào kết quả. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29, 31-32.
 
 </details>
 
@@ -9035,7 +9035,7 @@ Watershed algorithm (thuật toán đầu nguồn) xem ảnh như thế nào?
 
 **Đáp án:** B. Như địa hình 3D với pixel sáng là đỉnh núi và pixel tối là thung lũng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Watershed dùng một ảnh vô hướng làm bề mặt địa hình: tọa độ pixel xác định vị trí trên mặt phẳng và giá trị ảnh xác định độ cao. Nếu dùng trực tiếp cường độ xám, giá trị sáng cao hơn tạo đỉnh, còn giá trị tối thấp hơn tạo thung lũng; các lưu vực được hình dung qua quá trình làm ngập địa hình. Slide có bước đảo ảnh trong ví dụ, nên cách diễn giải sáng/tối sẽ đảo theo phép biến đổi đó, không phải thuộc tính cố định của mọi đầu vào watershed. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 34-36.
 
 </details>
 
@@ -9054,7 +9054,7 @@ Nhược điểm lớn nhất của Watershed algorithm là gì?
 
 **Đáp án:** B. Over-segmentation (phân vùng quá mức) do nhiễu tạo ra nhiều vùng nhỏ
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong mô hình địa hình của watershed, các cực tiểu cục bộ tạo những lưu vực có thể phát triển thành vùng riêng. Nhiễu làm xuất hiện nhiều cực tiểu nhỏ không tương ứng với đối tượng thật, nên một đối tượng có thể bị chia thành nhiều mảnh, gọi là over-segmentation. Vấn đề nằm ở cấu trúc địa hình đầu vào và số lưu vực, không phải ở việc thuật toán tuyệt đối không xử lý được ảnh màu hoặc luôn quá chậm. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 34-37.
 
 </details>
 
@@ -9073,7 +9073,7 @@ Mean shift algorithm trong phân vùng ảnh dựa trên nguyên lý gì?
 
 **Đáp án:** B. Tìm điểm mode (đỉnh mật độ) của phân phối trong không gian đặc trưng bằng cách dịch về hướng gradient mật độ
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mean Shift đặt một cửa sổ trong không gian đặc trưng, tính tâm khối lượng của các điểm trong cửa sổ rồi dịch tâm cửa sổ về vị trí đó. Lặp thao tác này đưa các điểm tới những mode, tức cực đại cục bộ của mật độ; các quỹ đạo hội tụ về cùng mode có thể được gom thành một cụm. Khác K-means với K tâm đã định trước, cơ chế ở đây là tìm các đỉnh mật độ và miền hút của chúng, không phải phân tích Fourier hoặc lấy mẫu ngẫu nhiên. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 19-23.
 
 </details>
 
@@ -9092,7 +9092,7 @@ Active contours (Snakes) là gì?
 
 **Đáp án:** B. Đường cong co giãn được định nghĩa bởi năng lượng; cực tiểu hóa năng lượng để bám vào biên đối tượng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Snake biểu diễn một đường cong biến dạng và tối ưu năng lượng kết hợp tính trơn của đường với thông tin ảnh hoặc lực ràng buộc. Khi tối ưu, đường cong dịch chuyển để bám vào những đặc trưng như biên đối tượng, thay vì gom pixel bằng khoảng cách tới centroid. Vì vậy B đúng về cơ chế; kết quả phụ thuộc khởi tạo và năng lượng được chọn, nên không bảo đảm đường cong luôn tìm được mọi biên hoặc nghiệm tối ưu toàn cục. Đối chiếu: [Snakes: Active contour models](https://link.springer.com/article/10.1007/BF00133570).
 
 </details>
 
@@ -9111,7 +9111,7 @@ Năng lượng của Snakes (Active Contours) bao gồm những thành phần n�
 
 **Đáp án:** A. Internal energy (giữ đường cong trơn và không duỗi dài); B. Image energy (kéo đường cong về phía biên); C. External/constraint energy
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Internal energy phạt việc kéo giãn và uốn cong để điều chỉnh độ căng, độ trơn của snake; nó không cấm đường cong thay đổi chiều dài tuyệt đối. Image energy tạo lực từ dữ liệu ảnh để hút đường về cấu trúc cần tìm, còn constraint energy biểu diễn hướng dẫn hay ràng buộc bên ngoài, nên A, B, C thuộc mô hình snake cổ điển. Thermal energy không phải thành phần chuẩn ở đây; một số tài liệu gộp image và constraint vào nhóm external energy, nên cách đặt tên các hạng có thể khác nhau. Đối chiếu: [mô hình snakes](https://link.springer.com/article/10.1007/BF00133570).
 
 </details>
 
@@ -9130,7 +9130,7 @@ IoU (Intersection over Union) trong đánh giá phân vùng được tính như 
 
 **Đáp án:** A. Diện tích giao / Diện tích hợp
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với mask dự đoán P và mask chuẩn G, IoU = |P giao G| / |P hợp G|; ở ảnh rời rạc, diện tích chính là số pixel trong mỗi tập. Phần giao chỉ giữ các pixel đối tượng được dự đoán đúng, còn phần hợp bao gồm cả pixel dự đoán thừa và pixel đối tượng bị bỏ sót. Do đó IoU phạt cả hai loại sai lệch và bằng 1 khi hai mask trùng nhau với phần hợp khác rỗng; đảo tử và mẫu không còn là tỷ lệ chồng lấp chuẩn. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 18.
 
 </details>
 
@@ -9149,7 +9149,7 @@ Phân vùng ảnh là bước quan trọng trong những ứng dụng nào? (Ch�
 
 **Đáp án:** A. Nhận dạng đối tượng; B. Image retrieval; C. Phân tích ảnh y tế; D. Theo dõi đối tượng trong video
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong nhận dạng, mask phân vùng giúp tách đối tượng để phân tích; trong image retrieval, vùng ảnh có thể cung cấp đặc trưng của phần cần tìm thay vì toàn bộ nền. Với ảnh y tế, phân vùng xác định ranh giới cấu trúc cần đo hoặc phân tích, còn trong video nó giúp xác định vùng đối tượng để hỗ trợ theo dõi qua các khung hình. Slide liệt kê cả bốn nhóm ứng dụng này; điều đó không có nghĩa mọi hệ nhận dạng hay tracking đều bắt buộc phải có một bước phân vùng độc lập. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 3, 37.
 
 </details>
 
@@ -9168,7 +9168,7 @@ Graph-based segmentation (Felzenszwalb & Huttenlocher) xem ảnh như gì?
 
 **Đáp án:** B. Đồ thị có trọng số, pixel là nút, cạnh giữa pixel kề nhau có trọng số là sự khác biệt giữa chúng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Ảnh được chuyển thành đồ thị với nút là pixel, cạnh nối những pixel thuộc lân cận đã chọn và trọng số thể hiện độ khác nhau của đặc trưng như màu. Cạnh trọng số lớn là dấu hiệu hai pixel ít tương tự, còn các cạnh nhỏ hỗ trợ việc gom vùng. Phương pháp Felzenszwalb-Huttenlocher so sánh khác biệt giữa các vùng với mức biến thiên nội vùng để quyết định gộp, không chỉ cắt mọi cạnh vượt một ngưỡng cố định. Đối chiếu: [Efficient Graph-Based Image Segmentation](https://cs.brown.edu/people/pfelzens/papers/seg-ijcv.pdf).
 
 </details>
 
@@ -9187,7 +9187,7 @@ Normalized Cut (Ncut) là phương pháp phân vùng dựa trên gì?
 
 **Đáp án:** B. Phân chia đồ thị sao cho tối thiểu hóa cut giữa các cluster so với tổng connectivity
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Ncut biểu diễn pixel hoặc đơn vị ảnh thành đồ thị tương đồng rồi tìm cách tách đồ thị với kết nối yếu giữa các phần. Tiêu chí chuẩn hóa chi phí cut bằng tổng kết nối của từng phần với toàn đồ thị, thay vì chỉ tối thiểu số hoặc trọng số cạnh bị cắt. Sự chuẩn hóa này hạn chế xu hướng tách một nhóm rất nhỏ chỉ vì nó có ít cạnh, nên B phản ánh bản chất phân chia đồ thị, không phải chỉ ngưỡng hóa cường độ hay histogram. Đối chiếu: [Normalized Cuts and Image Segmentation](https://www.cis.upenn.edu/~jshi/papers/pami_ncut.pdf).
 
 </details>
 
@@ -9206,7 +9206,7 @@ Markov Random Field (MRF) trong phân vùng ảnh mô hình hóa điều gì?
 
 **Đáp án:** B. Sự phụ thuộc ngữ cảnh (contextual dependencies) giữa các pixel lân cận
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* MRF dùng các biến ngẫu nhiên cho nhãn pixel với cấu trúc phụ thuộc được quy định bởi đồ thị lân cận. Trong mô hình phân vùng phổ biến, một hạng năng lượng đánh giá nhãn phù hợp với dữ liệu, còn hạng tương tác khuyến khích những pixel có quan hệ phù hợp nhận nhãn nhất quán. B đúng vì quyết định không được đưa ra độc lập cho từng pixel; mức làm trơn phải cân bằng với dữ liệu để tránh xóa ranh giới thật, và MRF không chỉ mô hình chuyển động hay phổ màu. Đối chiếu: [mô hình MRF/CRF cho gán nhãn ảnh](https://www.microsoft.com/en-us/research/wp-content/uploads/2010/04/multi_scale.pdf).
 
 </details>
 
@@ -9225,7 +9225,7 @@ Superpixel là gì?
 
 **Đáp án:** B. Nhóm các pixel liền kề có đặc trưng tương tự, dùng làm đơn vị xử lý thay vì pixel đơn lẻ
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Superpixel là một vùng nhỏ liên thông gồm nhiều pixel có đặc trưng gần nhau, được tạo làm đơn vị cho các bước xử lý tiếp theo. Nó không phải pixel của cảm biến có độ phân giải cao hơn và thường cũng chưa tương ứng với toàn bộ một đối tượng ngữ nghĩa. Các superpixel có thể được gán nhãn hoặc gộp thêm để tạo kết quả cuối; chất lượng của chúng quan trọng vì ranh giới bị bỏ qua ở bước này có thể khó khôi phục về sau. Đối chiếu: [SLIC Superpixels](https://www.epfl.ch/labs/ivrl/research/slic-superpixels/).
 
 </details>
 
@@ -9244,7 +9244,7 @@ SLIC (Simple Linear Iterative Clustering) tạo ra loại gì?
 
 **Đáp án:** B. Superpixels dựa trên K-means trong không gian màu-vị trí (CIELAB + xy)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SLIC dùng biến thể phân cụm kiểu K-means trên vector gồm màu Lab và tọa độ x, y, đồng thời giới hạn việc tìm cụm trong lân cận để tính hiệu quả. Khoảng cách kết hợp độ giống màu và khoảng cách không gian, với tham số compactness điều chỉnh đánh đổi giữa bám biên và vùng gọn. Vì vậy đầu ra là các superpixel như B, không phải một histogram hoặc edge map; chỉ phân cụm theo màu mà bỏ x, y có thể gom cả những pixel xa nhau vào một cụm. Đối chiếu: [SLIC của nhóm tác giả](https://www.epfl.ch/labs/ivrl/research/slic-superpixels/).
 
 </details>
 
@@ -9263,7 +9263,7 @@ Tiêu chí đánh giá phân vùng nào đo tỉ lệ pixel được phân loạ
 
 **Đáp án:** B. Pixel Accuracy
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Pixel Accuracy lấy số pixel có nhãn dự đoán trùng nhãn chuẩn chia cho tổng số pixel được đánh giá. Chỉ số này trả lời trực tiếp câu hỏi có bao nhiêu pixel được phân loại đúng, nhưng một lớp nền chiếm phần lớn ảnh có thể làm kết quả cao dù các đối tượng nhỏ bị bỏ sót. IoU xét phần giao so với phần hợp của mask, còn F1 cân bằng precision và recall, nên không phải cùng phép đếm đúng trên tổng pixel. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 18-19.
 
 </details>
 
@@ -9282,7 +9282,7 @@ Mean IoU (mIoU) khác với Pixel Accuracy ở điểm nào?
 
 **Đáp án:** B. mIoU tính trung bình IoU qua các lớp, tránh bias do lớp dominant chiếm nhiều pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** mIoU tính IoU riêng cho từng lớp rồi lấy trung bình không trọng số trên các lớp được đánh giá; mỗi lớp đóng góp một hạng dù diện tích của chúng khác nhau. Pixel Accuracy lại cộng số pixel đúng trên toàn ảnh, nên lớp nền rất lớn có thể lấn át lỗi ở lớp nhỏ. Vì thế mIoU giảm sự chi phối của lớp đông pixel trong phép tổng hợp, nhưng không tự loại bỏ mọi vấn đề mất cân bằng dữ liệu và cũng không chỉ áp dụng cho hai lớp. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 18, về đánh giá theo pixel và IoU.
 
 </details>
 
@@ -9301,7 +9301,7 @@ Interactive segmentation cho phép người dùng làm gì?
 
 **Đáp án:** B. Cung cấp annotations (điểm, vùng) để hướng dẫn thuật toán phân vùng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Người dùng cung cấp thông tin về vùng cần tách, chẳng hạn chọn seed ở đối tượng, để thuật toán biết điểm xuất phát hoặc nhãn cần ưu tiên. Slide về Region Growing cho phép seed được chọn thủ công, minh họa cách một thao tác của người dùng hướng dẫn quá trình mở rộng vùng theo tiêu chí đồng nhất. Tương tác ở đây bổ sung thông tin cho quyết định phân vùng, khác với chỉ đổi màu nền, độ tương phản hoặc chọn một bộ lọc hiển thị. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 30.
 
 </details>
 
@@ -9320,7 +9320,7 @@ GrabCut là phương pháp phân vùng nào?
 
 **Đáp án:** B. Interactive, dùng Gaussian Mixture Models và graph cuts, người dùng vẽ bounding box
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* GrabCut có thể khởi tạo bằng một hình chữ nhật bao quanh đối tượng, xem phía ngoài là nền chắc chắn và phân loại dần vùng bên trong. Các GMM mô tả màu foreground và background, còn graph cut tìm cách gán nhãn cân bằng độ phù hợp màu với quan hệ giữa pixel. Người dùng có thể bổ sung nét đánh dấu để sửa vùng sai, nên B đúng về tính tương tác; đây không phải chỉ thresholding hoặc một mạng deep learning. Đối chiếu: [quy trình GrabCut](https://docs.opencv.org/4.x/d8/d83/tutorial_py_grabcut.html).
 
 </details>
 
@@ -9339,7 +9339,7 @@ Conditional Random Field (CRF) được dùng để làm gì trong phân vùng?
 
 **Đáp án:** B. Post-processing để làm sắc nét boundaries, tính đến pixel compatibility và spatial consistency
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* CRF kết hợp độ tin cậy của nhãn tại mỗi pixel với tương tác giữa các nhãn có xét dữ liệu ảnh, như màu và khoảng cách vị trí. Khi dùng sau một mạng phân vùng, nó có thể giảm những nhãn rời rạc và điều chỉnh mask theo biên ảnh, nên B mô tả một ứng dụng hậu xử lý phổ biến. Tuy nhiên CRF không nhất thiết chỉ là hậu xử lý hoặc chỉ xét pixel kề nhau; dense CRF còn có thể liên kết các cặp pixel xa nhau, và việc làm sắc biên không được bảo đảm trên mọi ảnh. Đối chiếu: [Fully Connected CRFs](https://arxiv.org/abs/1210.5644).
 
 </details>
 
@@ -9358,7 +9358,7 @@ Phân vùng ảnh y tế (Medical Image Segmentation) gặp thách thức gì đ
 
 **Đáp án:** A. Cấu trúc giải phẫu phức tạp và biến thiên lớn giữa bệnh nhân; B. Ranh giới mờ giữa các cấu trúc; C. Ít dữ liệu labeled (annotated) để huấn luyện; D. Ảnh thường có nhiễu (MRI, CT noise)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Biến thiên giải phẫu làm hình dạng và vị trí cấu trúc không cố định giữa các bệnh nhân, còn độ tương phản thấp khiến biên giữa mô khó phân biệt. Dữ liệu được gán nhãn chính xác có thể ít do cần công sức chuyên gia; nhiễu và artefact của quy trình thu nhận ảnh còn làm đặc trưng quan sát kém ổn định. Vì vậy cả A, B, C, D đều có thể là thách thức, nhưng mức độ phụ thuộc loại ảnh và bộ dữ liệu, không phải mọi ảnh CT hay MRI đều có cùng khó khăn. Đối chiếu: [thách thức cấu trúc và chất lượng ảnh](https://pmc.ncbi.nlm.nih.gov/articles/PMC6878163/), [nghiên cứu về chất lượng nhãn](https://pmc.ncbi.nlm.nih.gov/articles/PMC7484266/).
 
 </details>
 
@@ -9377,7 +9377,7 @@ Phương pháp nào là Semi-supervised segmentation?
 
 **Đáp án:** B. GrabCut và Active Contours
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Theo ý định của ngân hàng câu hỏi, B chỉ những phương pháp có thể nhận hướng dẫn ban đầu từ người dùng, như bounding box cho GrabCut hoặc khởi tạo đường cong cho snakes. **Lưu ý thuật ngữ:** cách này nên gọi là phân vùng tương tác hoặc có hướng dẫn; semi-supervised learning theo nghĩa hiện đại là học từ cả dữ liệu có nhãn và chưa có nhãn, nên B không phải phân loại chuẩn theo nghĩa đó. Active contours cũng có thể được khởi tạo tự động, vì vậy không thể khẳng định mọi biến thể của nó đều bán giám sát. Đối chiếu về tương tác: [GrabCut](https://docs.opencv.org/4.x/d8/d83/tutorial_py_grabcut.html), [snakes](https://link.springer.com/article/10.1007/BF00133570).
 
 </details>
 
@@ -9396,7 +9396,7 @@ Phân vùng dựa trên màu (color-based segmentation) hoạt động hiệu qu
 
 **Đáp án:** B. Khi đối tượng có màu sắc đặc trưng và khác biệt với nền
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Phân vùng theo màu cần các nhóm màu của đối tượng và nền đủ phân biệt trong không gian đặc trưng, khi đó thresholding hoặc clustering có cơ sở để gán nhãn khác nhau. Nếu chúng có màu gần giống nhau, chỉ thông tin màu không đủ quyết định pixel thuộc vùng nào; có thể cần thêm texture hoặc vị trí. Ánh sáng thay đổi còn làm màu quan sát biến đổi, nên không phải điều kiện bảo đảm hiệu quả, trong khi ảnh grayscale không cung cấp đầy đủ các kênh màu. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 4, 14-16, 26-28.
 
 </details>
 
@@ -9415,7 +9415,7 @@ Level Set Methods trong phân vùng dựa trên nguyên lý gì?
 
 **Đáp án:** B. Biểu diễn đường biên phân vùng như zero level set của hàm implicit (signed distance function)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Level Set biểu diễn đường biên gián tiếp bằng tập các điểm thỏa phi(x, y) = 0, thay vì lưu riêng một danh sách điểm đường cong. Hàm khoảng cách có dấu là một cách khởi tạo phổ biến: hai phía biên có dấu khác nhau và tại biên giá trị bằng 0. Khi cập nhật phi theo phương trình tiến hóa, đường biên di chuyển và có thể tự tách hoặc hợp; không bắt buộc phi luôn là hàm khoảng cách chính xác ở mọi bước. Đối chiếu: [giải thích của Sethian về Level Set](https://math.berkeley.edu/~sethian/Explanations/level_set_explain.html).
 
 </details>
 
@@ -9434,7 +9434,7 @@ Nguồn PDF: trang 67
 
 **Đáp án:** B. EM ước lượng parameters của Gaussian Mixture Model (GMM) để mô hình hóa phân phối pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Với GMM, bước E tính mức trách nhiệm của từng thành phần Gaussian đối với mỗi pixel, còn bước M cập nhật trọng số, trung bình và hiệp phương sai từ các trách nhiệm đó. B vì vậy mô tả một ứng dụng đúng của EM để ước lượng mô hình phân phối. **Lưu ý:** D không luôn sai: EM chuẩn là xác định khi dữ liệu và khởi tạo đã cố định; khởi tạo ngẫu nhiên có thể làm các lần chạy khác nhau. Do đó câu một đáp án này chưa chặt chẽ, không nên giải thích rằng EM vốn ngẫu nhiên. Đối chiếu: [GMM và EM](https://scikit-learn.org/stable/modules/mixture.html).
 
 </details>
 
@@ -9453,7 +9453,7 @@ Frequency-weighted IoU khác Mean IoU như thế nào?
 
 **Đáp án:** B. Cân nhắc tần suất (frequency) của từng lớp khi tính trung bình, các lớp phổ biến có weight cao hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Mean IoU lấy trung bình IoU với trọng số bằng nhau cho các lớp được đánh giá, còn frequency-weighted IoU dùng tỷ lệ pixel ground truth của từng lớp làm trọng số. Nếu nền chiếm 90% pixel, IoU của nền đóng góp 90% vào tổng có trọng số, thay vì chỉ một phần bằng các lớp khác. B vì vậy đúng về cách tổng hợp; cách này phản ánh độ phổ biến nhưng có thể làm lỗi ở lớp hiếm ít ảnh hưởng tới điểm chung hơn. Đối chiếu: [các metric trong bài báo FCN](https://arxiv.org/abs/1411.4038).
 
 </details>
 
@@ -9472,7 +9472,7 @@ Phân vùng ảnh satellite dùng để làm gì? (Chọn tất cả đúng)
 
 **Đáp án:** A. Phân loại địa hình; B. Phát hiện thay đổi đô thị; C. Phân tích nông nghiệp; D. Theo dõi biến đổi khí hậu
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Phân vùng ảnh vệ tinh có thể tạo bản đồ các vùng phủ bề mặt như nước, cây trồng hoặc khu xây dựng, hỗ trợ A và C. So sánh những bản đồ tương ứng qua thời gian giúp phát hiện mở rộng đô thị hoặc biến đổi diện tích lớp phủ, hỗ trợ B và cung cấp dữ liệu cho nghiên cứu môi trường, khí hậu ở D. Phân vùng chỉ là một bước trong chuỗi phân tích; thay đổi trên một ảnh đơn lẻ không đủ để kết luận nguyên nhân hoặc xu hướng biến đổi khí hậu. Đối chiếu: [ESA về bản đồ lớp phủ và ứng dụng](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2/Land-cover_maps_of_Europe_from_the_Cloud).
 
 </details>
 
@@ -9491,7 +9491,7 @@ Tiêu chí homogeneity (đồng nhất) trong phân vùng region-based có thể
 
 **Đáp án:** B. Cường độ, màu sắc, texture; kiểm tra predicat P trả về TRUE khi vùng đồng nhất
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Predicate P biểu diễn một phép kiểm tra mà vùng phải thỏa để được coi là đồng nhất, chẳng hạn phương sai cường độ nhỏ hơn một ngưỡng. Đặc trưng dùng cho P có thể là cường độ, màu hoặc texture, nên không bị giới hạn ở cường độ trung bình hay chỉ một loại đặc trưng. Trong Split and Merge, P giúp quyết định chia một vùng không đồng nhất và gộp hai vùng khi vùng hợp vẫn đồng nhất; tính kề nhau là điều kiện không gian riêng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 4, 26, 29-31.
 
 </details>
 
@@ -9510,7 +9510,7 @@ Nguồn PDF: trang 68
 
 **Đáp án:** B. Luôn cho kết quả tốt mà không cần xử lý thêm
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khẳng định có từ "luôn" không phù hợp với cách watershed phân chia địa hình: cấu trúc nhiễu hoặc quá nhiều cực tiểu có thể sinh những vùng không phục vụ mục tiêu cần tách. Bài giảng cũng nhấn mạnh không có phương pháp phân vùng nào phù hợp với mọi ảnh và việc kiểm soát dữ liệu hoặc tiền xử lý có thể cần thiết. Do đó B là nhận định sai; mô hình địa hình không tự bảo đảm rằng mỗi lưu vực sẽ tương ứng với một đối tượng có nghĩa. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 34-38.
 
 </details>
 
@@ -9529,7 +9529,7 @@ Instance segmentation khác semantic segmentation ở điểm nào?
 
 **Đáp án:** B. Instance segmentation phân biệt từng cá thể đối tượng (instance) riêng lẻ, ngay cả cùng class
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Semantic segmentation gán nhãn lớp cho từng pixel, nên pixel của hai người khác nhau đều có thể mang cùng nhãn "person" mà không chỉ rõ người nào. Instance segmentation bổ sung sự phân biệt cá thể, tạo mask riêng cho từng người dù cả hai thuộc cùng lớp. Sự khác biệt nằm ở thông tin đầu ra về danh tính từng đối tượng, không phải một quy tắc rằng semantic luôn nhanh hơn; slide minh họa đầu ra theo cá thể và mask của Mask R-CNN. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 2-3, 20-22.
 
 </details>
 
@@ -9548,7 +9548,7 @@ Nguồn PDF: trang 68
 
 **Đáp án:** B. Phân vùng dựa trên đường biên khép kín xung quanh đối tượng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một contour khép kín phân chia miền bên trong và bên ngoài, nhờ đó chuyển thông tin đường biên thành một vùng hoặc mask. Bài giảng nêu quan hệ giữa closed edges và regions: tìm được ranh giới khép kín là một cách xác định vùng mà không cần gom pixel từ seed. Vì vậy phương pháp có liên hệ với phát hiện biên, không chỉ dành cho ảnh đơn sắc; một tập các đoạn biên rời rạc chưa tự tạo thành phân vùng hoàn chỉnh. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 5, 33.
 
 </details>
 
@@ -9567,7 +9567,7 @@ Nguồn PDF: trang 68
 
 **Đáp án:** A. Sử dụng nhiều seed/markers để kiểm soát quá trình flooding
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Marker-controlled watershed khởi tạo những vùng mang nhãn xác định rồi cho quá trình flooding lan từ các marker, thay vì tạo vùng độc lập từ mọi cực tiểu do nhiễu. Những marker cho đối tượng và nền giúp kiểm soát số lưu vực và giảm phân vùng quá mức, nên A đúng. Marker có thể được tạo thủ công hoặc tự động; chất lượng của chúng vẫn ảnh hưởng kết quả, và thuật toán không bị giới hạn ở việc chỉ nhận ảnh grayscale. Đối chiếu: [watershed có marker trong OpenCV](https://docs.opencv.org/4.x/d3/db4/tutorial_py_watershed.html).
 
 </details>
 
@@ -9586,7 +9586,7 @@ Region Adjacency Graph (RAG) dùng để làm gì trong phân vùng?
 
 **Đáp án:** B. Biểu diễn quan hệ kề nhau giữa các vùng, hỗ trợ quyết định merge trong region merging
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Quan hệ kề nhau xác định những cặp vùng có thể xét để gộp: trong RAG, mỗi vùng là một nút và cạnh nối hai vùng kề nhau. Thông tin này hỗ trợ bước merge được mô tả trong slide, nhưng có cạnh chỉ có nghĩa là hai vùng kề nhau, không có nghĩa chúng chắc chắn đồng nhất. Quyết định gộp vẫn cần kiểm tra đặc trưng của vùng hợp; đồ thị kề vùng không thay thế phép tính histogram hoặc trực tiếp sinh mask nhị phân. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29, 31-32, về điều kiện gộp vùng kề nhau.
 
 </details>
 
@@ -9605,7 +9605,7 @@ Nguồn PDF: trang 68
 
 **Đáp án:** B. Các vùng đồng nhất nội tại, khác biệt với nhau, biên rõ ràng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một vùng nên đồng nhất theo đặc trưng đã chọn, còn hai vùng kề nhau phải đủ khác biệt để không thể gộp mà vẫn giữ tính đồng nhất. Ranh giới rõ giúp xác định pixel thuộc vùng nào, nhưng đồng nhất không đòi hỏi mọi pixel có giá trị hoàn toàn bằng nhau; thường nó được kiểm tra bằng một dung sai hoặc predicate. Chỉ tối thiểu hay tối đa số vùng không bảo đảm chất lượng, vì có thể lần lượt gộp nhầm đối tượng hoặc chia đối tượng thành quá nhiều mảnh. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29, 31, 37.
 
 </details>
 
@@ -9624,7 +9624,7 @@ Phân vùng dựa trên texture (texture-based segmentation) dùng đặc trưng
 
 **Đáp án:** B. GLCM features, Gabor filter responses, LBP
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** GLCM mô tả quan hệ giữa các mức xám ở một khoảng cách và hướng, Gabor cung cấp đáp ứng lọc theo cấu trúc không gian, còn LBP là một mô tả texture cục bộ. Các đặc trưng này giữ thông tin về cách mẫu cường độ phân bố trong lân cận, phù hợp để tách hai vùng có màu trung bình gần nhau nhưng texture khác nhau. Histogram màu đơn thuần không ghi lại quan hệ không gian đó; HOG và Hu moments chủ yếu mô tả gradient hoặc hình dạng thay vì bộ đặc trưng texture được nêu ở B. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 2, 4-6, 15; `IT5409 L5-Segmentation.pdf`, trang 27-28.
 
 </details>
 
@@ -9643,7 +9643,7 @@ Semantic segmentation trong autonomous driving phân loại pixel thành những
 
 **Đáp án:** A. Road / sidewalk; B. Vehicle; C. Pedestrian; D. Sky / Building
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Semantic segmentation của cảnh đường phố gán nhãn cho các vùng mặt đường, vỉa hè, phương tiện và người đi bộ để mô tả môi trường xe đang quan sát. Bầu trời và tòa nhà cũng là lớp ngữ nghĩa của cảnh, dù không phải đối tượng cần tránh trực tiếp, nên cả A, B, C, D đều có thể được gán nhãn. Tập lớp chính xác phụ thuộc dataset hoặc hệ thống; segmentation phân biệt lớp theo pixel, không tự suy ra khoảng cách an toàn hay quyết định điều khiển xe. Đối chiếu: [các lớp của Cityscapes](https://www.cityscapes-dataset.com/dataset-overview/).
 
 </details>
 
@@ -9662,7 +9662,7 @@ Nguồn PDF: trang 69
 
 **Đáp án:** B. Có quá ít vùng; nhiều đối tượng khác nhau bị gom vào cùng một vùng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Under-segmentation xảy ra khi một vùng kết quả bao phủ những phần đáng lẽ phải tách riêng, chẳng hạn gom đối tượng và nền hoặc hai đối tượng khác nhau. Khi đó số vùng quá ít so với cấu trúc cần nhận diện, chứ không phải càng ít vùng thì càng tốt. Ngược lại, nhiều vùng nhỏ là over-segmentation; mức phân chia phù hợp phải được xác định theo mục tiêu và độ chi tiết của bài toán, như lưu ý trong phần kết luận của bài giảng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29, 37-38.
 
 </details>
 
@@ -9681,7 +9681,7 @@ Phương pháp nào sau đây là unsupervised segmentation?
 
 **Đáp án:** B. K-means, Mean Shift, Watershed
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** K-means phân nhóm từ khoảng cách tới các tâm, Mean Shift tìm các mode của mật độ, còn watershed chia các lưu vực của địa hình ảnh; các cơ chế này không cần học từ một tập mask chuẩn có nhãn. Chúng vẫn cần tham số hoặc lựa chọn xử lý đầu vào, nên unsupervised không có nghĩa là hoàn toàn không cần thiết lập. B nói tới các phiên bản không được hướng dẫn bằng nhãn; supervised CNN cần dữ liệu huấn luyện có nhãn, còn một quy trình tương tác không thuộc cùng thiết lập thuần không giám sát. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 14-15, 19-25, 34-36.
 
 </details>
 
@@ -9700,7 +9700,7 @@ Nguồn PDF: trang 69
 
 **Đáp án:** B. Phân vùng giúp isolate đối tượng quan tâm trước khi nhận dạng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mask phân vùng giữ lại pixel của đối tượng quan tâm và loại phần nền khỏi vùng được đưa vào bước phân tích tiếp theo. Điều này có thể giúp đặc trưng phục vụ nhận dạng phản ánh đối tượng thay vì các chi tiết nền không liên quan. Tuy nhiên, tách được vùng chưa cho biết đối tượng thuộc lớp nào, nên phân vùng không thay thế nhận dạng; slide cũng lưu ý đôi khi có thể tránh bước phân vùng, vì vậy B mô tả một ứng dụng hữu ích chứ không phải điều kiện bắt buộc của mọi hệ nhận dạng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 3, 37-38.
 
 </details>
 
@@ -9719,7 +9719,7 @@ Nguồn PDF: trang 69
 
 **Đáp án:** B. Dùng n ngưỡng chia ảnh thành n+1 lớp
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với n ngưỡng phân biệt được sắp tăng dần, miền cường độ được chia thành một khoảng dưới ngưỡng đầu, n-1 khoảng giữa các ngưỡng và một khoảng trên ngưỡng cuối, tổng cộng n+1 lớp. Ví dụ hai ngưỡng tạo ba lớp tối, trung gian và sáng. Đây là phép chia theo khoảng giá trị, không tự quy định cách chọn n hoặc bảo đảm kết quả tốt hơn một ngưỡng; mỗi lớp giá trị cũng có thể gồm nhiều vùng không liên thông. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 7-8.
 
 </details>
 
@@ -9738,7 +9738,7 @@ Trong phân vùng ảnh y tế, tại sao Deep Learning (U-Net) ngày càng ph�
 
 **Đáp án:** B. Vì nó học được đặc trưng phức tạp tự động, vượt trội so với traditional methods
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mạng phân vùng học đặc trưng qua các lớp tích chập và tạo dự đoán theo pixel, thay vì chỉ dùng một quy tắc ngưỡng hoặc đặc trưng được thiết kế sẵn. Slide giới thiệu U-Net cho phân vùng ảnh y sinh và U-Net++ khai thác đặc trưng đa tỉ lệ qua các kết nối skip. B nêu lợi thế học biểu diễn phức tạp, nhưng "vượt trội" không nên hiểu là bảo đảm thắng mọi phương pháp trên mọi bộ dữ liệu; mô hình vẫn cần huấn luyện và hiệu quả phụ thuộc dữ liệu, thiết lập đánh giá, tài nguyên. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 4-6, 16-17.
 
 </details>
 
@@ -9757,7 +9757,7 @@ Superpixel-based segmentation có ưu điểm gì?
 
 **Đáp án:** B. Giảm số đơn vị xử lý từ pixel → superpixel, giữ cấu trúc vùng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Gom nhiều pixel thành một superpixel làm giảm số nút hoặc đơn vị phải gán nhãn ở bước phân tích tiếp theo, trong khi vẫn giữ thông tin về các vùng liên thông và ranh giới gần đúng. Đây là ưu điểm trực tiếp ở B; tiết kiệm bộ nhớ cũng có thể xảy ra nhưng phụ thuộc cấu trúc dữ liệu và việc có giữ ảnh gốc hay không. Superpixel không loại mọi nhiễu và không bảo đảm chính xác hơn xử lý từng pixel, nhất là khi một superpixel vượt qua biên thật của đối tượng. Đối chiếu: [mục đích của superpixels](https://www.epfl.ch/labs/ivrl/research/slic-superpixels/).
 
 </details>
 
@@ -9776,7 +9776,7 @@ Nguồn PDF: trang 69
 
 **Đáp án:** B. Trừ frame hiện tại với ảnh nền (background model) để phát hiện foreground (chuyển động)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Background subtraction so sánh khung hình hiện tại với ảnh hoặc mô hình nền và đánh dấu những pixel có sai khác đủ lớn là foreground. Trong thiết lập camera cố định, vùng khác nền thường biểu thị vật thể mới xuất hiện hoặc đang chuyển động; mô hình nền có thể được cập nhật để thích ứng với thay đổi theo thời gian. Camera chuyển động không phải điều kiện cần, và sai khác do bóng hay ánh sáng cũng có thể tạo foreground giả, nên phép trừ không đồng nghĩa với nhận biết chuyển động hoàn hảo. Tham chiếu: `IT5409 L3.1-ImageEnhancement.pdf`, trang 26; `IT5409 L6-Motion.pdf`, trang 46, 50-51.
 
 </details>
 
@@ -9795,7 +9795,7 @@ Nguồn PDF: trang 70
 
 **Đáp án:** B. Classification gán nhãn cho toàn ảnh; Segmentation gán nhãn cho từng pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong image classification, đầu ra cho biết lớp của ảnh nhưng không chỉ vị trí chính xác của các pixel thuộc đối tượng. Semantic segmentation tạo bản đồ nhãn có kích thước không gian tương ứng với ảnh, nên mỗi pixel nhận một lớp và cấu trúc vị trí được giữ lại. Vì câu hỏi đang so sánh hai nhiệm vụ này, B đúng; cần phân biệt với phân vùng truyền thống, vốn có thể chỉ chia vùng đồng nhất mà chưa gán tên lớp ngữ nghĩa. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 2-5; `IT5409 L5-Segmentation.pdf`, trang 38.
 
 </details>
 
@@ -9814,7 +9814,7 @@ F-measure (F1-score) trong đánh giá phân vùng được tính từ gì?
 
 **Đáp án:** B. Harmonic mean của Precision và Recall
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** F1 = 2 * Precision * Recall / (Precision + Recall), là trung bình điều hòa của hai đại lượng khi mẫu số khác 0. Nó thấp nếu một trong hai rất thấp, nên không cho một precision cao che lấp việc bỏ sót nhiều pixel đối tượng, hoặc một recall cao che lấp nhiều dự đoán thừa. Tích và tổng riêng lẻ không phải công thức F1; chẳng hạn precision = 1 và recall = 0,5 cho F1 khoảng 0,667. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 19.
 
 </details>
 
@@ -9833,7 +9833,7 @@ Nguồn PDF: trang 70
 
 **Đáp án:** B. Lựa chọn seed pixel và tiêu chí đồng nhất (homogeneity criterion)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Seed xác định vị trí bắt đầu của vùng, còn tiêu chí đồng nhất quyết định pixel lân cận nào được nhận vào ở từng bước mở rộng. Seed ở sai cấu trúc có thể làm vùng phát triển từ phần không mong muốn; tiêu chí quá lỏng có thể cho vùng vượt qua ranh giới, còn quá chặt khiến nó dừng sớm. Vì hai lựa chọn này trực tiếp điều khiển quá trình tạo vùng, chất lượng không thể được giải thích chỉ bằng kích thước ảnh, màu ảnh hoặc dung lượng bộ nhớ. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29-30.
 
 </details>
 
@@ -9852,7 +9852,7 @@ Adaptive thresholding (ngưỡng thích nghi) dùng để giải quyết vấn �
 
 **Đáp án:** B. Chiếu sáng không đồng đều trên ảnh (uneven illumination)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi chiếu sáng không đều, cùng một loại nền hoặc đối tượng có thể mang cường độ rất khác nhau ở các vị trí, khiến một ngưỡng toàn cục phân loại sai một phần ảnh. Adaptive thresholding tính ngưỡng theo vùng hoặc cửa sổ cục bộ để thích ứng với biến thiên đó. Kích thước cửa sổ vẫn quan trọng: quá lớn có thể bỏ qua thay đổi cục bộ, quá nhỏ dễ làm quyết định thiếu ổn định; phương pháp này không tự thay thế một bộ lọc nhiễu muối tiêu. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 12-13.
 
 </details>
 
@@ -9871,7 +9871,7 @@ Nguồn PDF: trang 70
 
 **Đáp án:** B. Không cần K; tự tìm số cluster; bất biến với outliers
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Mean Shift tìm các mode của mật độ ước lượng rồi gom những điểm hội tụ về cùng mode, nên không cần đặt số cụm K trước; số cụm còn phụ thuộc bandwidth và cách gộp mode. **Lưu ý: B chỉ đúng một phần:** tính robust với outliers không đồng nghĩa với 'bất biến'; điểm ngoại lai vẫn có thể ảnh hưởng mật độ, tạo mode phụ hoặc làm thay đổi kết quả. Thuật toán cũng không luôn nhanh hơn K-means, nên không có lựa chọn hoàn toàn chính xác theo cách viết hiện tại. Đối chiếu: [Mean Shift: A Robust Approach](https://comaniciu.net/Papers/MsRobustApproach.pdf).
 
 </details>
 
@@ -9890,7 +9890,7 @@ Nguồn PDF: trang 70
 
 **Đáp án:** B. Nén video không mất thông tin (lossless compression)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Phân vùng ký tự, vùng tổn thương hoặc vùng đối tượng giúp xác định phần ảnh cần nhận dạng, phân tích hay theo dõi, nên A, C, D là các ứng dụng điển hình. B là đáp án dự kiến vì mục tiêu trực tiếp của nén không mất thông tin là mã hóa sao cho khôi phục chính xác dữ liệu, không phải chia ảnh thành vùng có nghĩa. **Lưu ý:** điều này không chứng minh phân vùng không thể hỗ trợ một phương pháp nén theo vùng; cách hỏi loại trừ tuyệt đối chưa chặt chẽ.
 
 </details>
 
@@ -9909,7 +9909,7 @@ Nguồn PDF: trang 70
 
 **Đáp án:** A. Mỗi pixel thuộc đúng 1 vùng, vùng nội tại đồng nhất và khác biệt với vùng kề
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Phân vùng cứng tạo một phép chia phủ toàn bộ ảnh: các vùng không chồng nhau, nên mỗi pixel được gán vào đúng một vùng. Mỗi vùng phải đồng nhất theo tiêu chí đã chọn, còn hợp của hai vùng kề nhau phải không đồng nhất, nếu không chúng chưa có lý do để tách riêng. Điều kiện này loại cả hai cực đoan chia mỗi pixel thành một vùng hoặc gom tất cả vào một vùng, trừ những ảnh đặc biệt thực sự thỏa tiêu chí tương ứng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 29.
 
 </details>
 
@@ -9928,7 +9928,7 @@ Nguồn PDF: trang 70
 
 **Đáp án:** A. Được phát triển năm 1979 bởi Nobuyuki Otsu
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Bài báo 'A Threshold Selection Method from Gray-Level Histograms' của Nobuyuki Otsu được công bố trong IEEE Transactions on Systems, Man, and Cybernetics năm 1979, nên A đúng về tác giả và mốc công bố. Phương pháp chọn ngưỡng tự động từ histogram bằng tiêu chí phương sai, không cần người dùng gán nhãn một tập huấn luyện. Nó thường được áp dụng trên ảnh cường độ xám, nên các nhận định chỉ dùng cho ảnh màu hoặc bắt buộc thao tác bằng tay đều không đúng. Đối chiếu: [bài báo Otsu năm 1979](https://ieeexplore.ieee.org/document/4310076).
 
 </details>
 
@@ -9947,7 +9947,7 @@ Phân vùng dựa trên biên (edge-based) và dựa trên vùng (region- based)
 
 **Đáp án:** B. Có, hybrid approach dùng biên để hỗ trợ region-based hoặc ngược lại
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Bài giảng trình bày edge-based và region-based như hai hướng có thể bổ trợ nhau, đồng thời nêu quan hệ giữa đường biên khép kín và vùng. Thông tin biên có thể hạn chế việc mở rộng hoặc gộp vượt sang đối tượng khác, còn thông tin vùng có thể hỗ trợ xác định những ranh giới có ý nghĩa. Do hai hướng mô tả các mặt khác nhau của cùng phép chia ảnh, việc kết hợp không bị giới hạn ở deep learning hoặc ảnh màu. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 4-5.
 
 </details>
 
@@ -9966,7 +9966,7 @@ Nguồn PDF: trang 71
 
 **Đáp án:** B. Cùng ảnh có thể phân vùng khác nhau ở các scale khác nhau (multi-scale segmentation)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mức chi tiết cần giữ quyết định cấu trúc nào được xem là một vùng: ở mức thô có thể giữ toàn bộ đối tượng, còn mức tinh có thể tách các bộ phận hoặc texture bên trong. Các tham số như độ rộng cửa sổ Mean Shift ảnh hưởng việc các đỉnh đặc trưng được gom lại hay tách ra, nên cùng ảnh có thể có những phân vùng khác nhau. Slide nhấn mạnh phải chọn mức chính xác và chi tiết theo mục tiêu, thay vì cho rằng chỉ phân vùng ở scale nhỏ nhất mới đúng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 25, 37-38.
 
 </details>
 
@@ -9985,7 +9985,7 @@ Nguồn PDF: trang 71
 
 **Đáp án:** B. So sánh mask (nhãn pixel) dự đoán với ground truth bằng các metrics như IoU, pixel accuracy
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mask chuẩn và mask dự đoán phải được đối chiếu tại cùng vị trí ảnh để biết pixel nào đúng, thừa hoặc bị bỏ sót. Pixel Accuracy đếm nhãn đúng trên tổng pixel, còn IoU đo phần giao trên phần hợp của vùng dự đoán và vùng chuẩn. Chỉ so số vùng hoặc diện tích không đủ: hai mask có cùng diện tích nhưng nằm ở vị trí khác nhau vẫn có thể không giao nhau, và màu hiển thị của mask không quyết định độ chính xác nhãn. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 18-19.
 
 </details>
 
@@ -10004,7 +10004,7 @@ Nguồn PDF: trang 71
 
 **Đáp án:** A. Pascal VOC và Cityscapes là hai benchmark phổ biến
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* PASCAL VOC có bài toán đánh giá phân vùng đối tượng theo lớp, còn Cityscapes cung cấp nhãn theo pixel cho cảnh đường phố; cả hai được dùng để so sánh các hệ thống semantic segmentation. Benchmark gồm dữ liệu, nhãn và quy trình đánh giá chung, không phải thuật toán chỉ dành cho deep learning. A vì vậy đúng; việc có nhiều dataset cũng phản ánh khác biệt về miền ảnh và tập lớp, nên kết quả trên một benchmark không tự bảo đảm khả năng khái quát sang mọi miền khác. Đối chiếu: [VOC2012](https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/), [Cityscapes](https://www.cityscapes-dataset.com/dataset-overview/).
 
 </details>
 
@@ -10023,7 +10023,7 @@ Nguồn PDF: trang 71
 
 **Đáp án:** B. Nhiều pixel foreground bị phân loại sai thành background
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đáp án giả định quy ước trong slide: đối tượng sáng là foreground, pixel có f(x, y) >= T nhận nhãn 1 và pixel dưới T nhận nhãn 0. Nếu T bị nâng quá cao, các pixel đối tượng có cường độ nằm giữa ngưỡng đúng và ngưỡng mới bị chuyển sang background, làm tăng false negatives. Đây là ảnh hưởng của ngưỡng bị đặt sai, không phải bảo đảm Otsu luôn chọn ngưỡng quá cao; nếu đối tượng tối và dùng quy ước nhãn đảo thì kết luận cần đổi tương ứng. Tham chiếu: `IT5409 L5-Segmentation.pdf`, trang 7, 11.
 
 </details>
 
@@ -10042,7 +10042,7 @@ Nguồn PDF: trang 71
 
 **Đáp án:** B. Dùng đặc trưng texture (Gabor, GLCM) vì mây có pattern khác biệt
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Nếu vùng mây và nền có mẫu biến thiên không gian khác nhau như giả thiết của câu hỏi, texture cung cấp dấu hiệu phân biệt ngoài màu trung bình. GLCM ghi nhận quan hệ mức xám giữa các điểm ở khoảng cách và hướng xác định, còn đáp ứng Gabor mô tả cấu trúc theo hướng và tần số không gian. B vì thế phù hợp với phân vùng theo texture, nhưng không có nghĩa mọi ảnh mây đều tách được chỉ bằng hai đặc trưng này; mức phân biệt còn phụ thuộc ảnh và điều kiện quan sát. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 4-6; `IT5409 L5-Segmentation.pdf`, trang 27-28.
 
 </details>
 
@@ -10061,7 +10061,7 @@ Precision trong đánh giá phân vùng nhị phân được tính như thế n�
 
 **Đáp án:** B. TP / (TP + FP)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong phân vùng nhị phân, TP là pixel đối tượng được dự đoán đúng, còn FP là pixel nền bị dự đoán nhầm thành đối tượng. Tổng TP + FP chính là tất cả pixel được mô hình gán nhãn đối tượng, nên precision đo phần đúng trong các dự đoán dương tính đó. A là recall vì dùng FN ở mẫu số, còn C là accuracy khi Total tính tất cả pixel; các công thức này trả lời những câu hỏi đánh giá khác nhau. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 19; `IT5409 L7.2-ObjectDetection.pdf`, trang 40.
 
 </details>
 
@@ -10080,7 +10080,7 @@ Recall trong đánh giá phân vùng được tính như thế nào?
 
 **Đáp án:** B. TP / (TP + FN)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Recall hỏi trong tất cả pixel thực sự thuộc đối tượng, mô hình đã tìm được bao nhiêu pixel. Tập pixel đối tượng trong ground truth gồm TP được tìm đúng và FN bị bỏ sót, nên tỷ lệ cần tính là TP / (TP + FN). A là precision với tập dự đoán dương tính ở mẫu số, còn C đo tỷ lệ dự đoán đúng trên các pixel nền; recall cao vẫn có thể đi kèm nhiều FP nếu mô hình gán foreground quá rộng. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 19; `IT5409 L7.2-ObjectDetection.pdf`, trang 40-41.
 
 </details>
 
@@ -10099,7 +10099,7 @@ Nguồn PDF: trang 72
 
 **Đáp án:** B. Học được đặc trưng phức tạp, cho kết quả vượt trội trên nhiều benchmark
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** CNN cho phân vùng học các bộ lọc từ dữ liệu và có thể kết hợp thông tin qua nhiều tầng, thay vì chỉ dựa vào một ngưỡng hay đặc trưng thủ công. Mạng fully convolutional trong slide tạo điểm số C x H x W rồi chọn lớp cho mỗi vị trí, nên đầu ra có thể chứa nhiều lớp chứ không bị giới hạn ở phân vùng nhị phân. Đây là cơ sở của lợi thế biểu diễn trong B; tốc độ, nhu cầu dữ liệu và mức vượt trội thực tế phụ thuộc kiến trúc, phần cứng và tập đánh giá, không thể suy ra các khẳng định tuyệt đối ở A hoặc C. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 4-6, 16-17, 22-25.
 
 </details>
 
