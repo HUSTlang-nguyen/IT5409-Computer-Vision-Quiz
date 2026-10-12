@@ -7265,7 +7265,7 @@ Nguồn PDF: trang 52
 
 **Đáp án:** B. Toàn cục mô tả toàn bộ ảnh như một đối tượng; cục bộ mô tả từng vùng nhỏ/điểm đặc trưng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đặc trưng toàn cục tóm tắt ảnh hoặc vùng đối tượng đang xét thành một biểu diễn chung, chẳng hạn histogram màu hay moment hình dạng. Đặc trưng cục bộ được tính trên từng vùng nhỏ, thường quanh keypoint, nên có thể so khớp một phần ảnh ngay cả khi những phần khác bị che khuất. B phân biệt đúng phạm vi mô tả; kích thước ảnh không quyết định loại đặc trưng, và tốc độ còn phụ thuộc cách trích xuất cũng như số vùng cần xử lý. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 2, 12-13.
 
 </details>
 
@@ -7284,7 +7284,7 @@ Histogram màu là loại đặc trưng nào?
 
 **Đáp án:** B. Đặc trưng toàn cục
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong ngữ cảnh này, histogram màu đếm các pixel thuộc từng khoảng màu trên toàn ảnh và biểu diễn kết quả bằng một vector chung. Nó không giữ vị trí từng pixel nên là đặc trưng toàn cục, chọn B, thay vì một mô tả riêng cho mỗi keypoint. Nếu tính histogram trên từng ô hoặc từng vùng nhỏ thì có thể dùng nó như một thành phần mô tả cục bộ; phân loại toàn cục ở câu hỏi giả định histogram được lấy trên toàn ảnh. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 2-3.
 
 </details>
 
@@ -7303,7 +7303,7 @@ Nguồn PDF: trang 52
 
 **Đáp án:** A. Đơn giản để tính; B. Bất biến với phép quay, dịch, zoom
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Histogram dễ tính bằng cách cộng số pixel vào các bin, nên A đúng. Vì bỏ thông tin vị trí, histogram không đổi khi chỉ hoán vị các pixel; điều đó giải thích tính bất biến hình học được slide nêu và đáp án B, nhưng với zoom cần chuẩn hóa tần suất và giả định phân bố màu không đổi, còn cắt ảnh, nội suy hoặc thêm nền có thể làm histogram thay đổi. C sai vì histogram thông thường không mô tả cách màu sắp xếp trong không gian, và D sai vì pixel nền cũng được đếm nếu không tách vùng đối tượng. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 3.
 
 </details>
 
@@ -7322,7 +7322,7 @@ GLCM (Grey Level Co-occurrence Matrix) là loại đặc trưng nào?
 
 **Đáp án:** B. Đặc trưng kết cấu (texture feature)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** GLCM mô tả quan hệ giữa các mức xám của những pixel ở vị trí tương đối xác định, thay vì chỉ thống kê từng pixel riêng lẻ. Quan hệ này phản ánh cách các mức sáng sắp xếp và lặp lại trên bề mặt, là thông tin về texture nên chọn B. 'Cục bộ' nói về phạm vi tính còn 'texture' nói về nội dung được mô tả: GLCM có thể lấy trên một vùng nhỏ hoặc cả ảnh, nhưng trong phân loại theo loại thông tin ở câu này nó là đặc trưng kết cấu. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 4-5.
 
 </details>
 
@@ -7341,7 +7341,7 @@ GLCM được tính dựa trên nguyên lý nào?
 
 **Đáp án:** B. Đếm tần suất xuất hiện của cặp mức xám theo hướng và khoảng cách nhất định
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với một độ dịch xác định bởi hướng và khoảng cách, ô (i,j) của GLCM đếm số lần pixel mức xám i có pixel mức xám j ở vị trí lệch đó. Chẳng hạn khoảng cách một pixel theo chiều ngang chỉ xét các cặp hàng xóm ngang, nên đổi hướng hoặc khoảng cách có thể tạo ma trận khác. B diễn đạt đúng cơ chế đồng xuất hiện; histogram mức xám chỉ đếm một mức riêng lẻ, còn gradient và Fourier là các phép mô tả khác, không phải cách xây dựng GLCM. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 5.
 
 </details>
 
@@ -7360,7 +7360,7 @@ Các tham số quan trọng được ước lượng từ GLCM bao gồm gì? (C
 
 **Đáp án:** A. Energy (năng lượng); B. Entropy; C. Contrast; D. Inverse Differential Moment (IDM)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với GLCM đã chuẩn hóa thành phân bố p(i,j), energy cộng các bình phương xác suất và phản ánh mức tập trung, còn entropy đo mức phân tán hoặc khó dự đoán của các cặp mức xám. Contrast dùng trọng số (i-j)² để nhấn mạnh các cặp chênh lệch sáng lớn; IDM dùng trọng số 1/[1+(i-j)²] nên cao khi nhiều cặp tập trung gần đường chéo. Cả A, B, C và D đều là thống kê được trích từ GLCM, không phải bốn cách xây dựng ma trận riêng biệt. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 6.
 
 </details>
 
@@ -7379,7 +7379,7 @@ Haralick features từ GLCM gồm bao nhiêu tham số?
 
 **Đáp án:** B. 14
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide ghi rằng mỗi GLCM có thể cho 14, hoặc 13 trong một số cách triển khai, giá trị đặc trưng Haralick. Vì câu hỏi hỏi số lượng của bộ nguyên gốc được nêu, B tương ứng 14 là đáp án phù hợp; energy, entropy và contrast chỉ là vài thành phần trong bộ đó. Không nên nhầm số đặc trưng với số mức xám hay số hướng GLCM, và khi dùng thư viện thực tế cần xem nó tính đủ 14 hay chỉ một tập con. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 6.
 
 </details>
 
@@ -7398,7 +7398,7 @@ HOG (Histogram of Oriented Gradients) là loại đặc trưng nào?
 
 **Đáp án:** B. Đặc trưng hình dạng/gradient, phổ biến cho phát hiện người
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** HOG cộng phiếu hướng gradient trong các ô không gian rồi chuẩn hóa theo block, qua đó mô tả cấu trúc biên và đường bao. Vì giữ mẫu hướng và vị trí tương đối thay vì chỉ đếm màu, nó phù hợp với nhận diện hình dạng người và đáp án B. Đặc trưng cần đi cùng bộ phân loại trong bài toán phát hiện người, không tự gán nhãn người chỉ từ histogram. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 2. *Kiến thức bổ sung về cách tính HOG:* [Dalal và Triggs, Histograms of Oriented Gradients for Human Detection](https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf).
 
 </details>
 
@@ -7417,7 +7417,7 @@ Hu's moments (moment bất biến Hu) có thuộc tính gì? (Chọn tất cả 
 
 **Đáp án:** A. Bất biến với phép tịnh tiến (translation); B. Bất biến với phép biến đổi tỉ lệ (scale); C. Bất biến với phép quay (rotation)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hu xây dựng các tổ hợp từ moment trung tâm đã chuẩn hóa để loại ảnh hưởng của vị trí, kích thước và góc quay trong mô hình hình dạng lý tưởng. Do đó A, B và C là các tính bất biến được nêu, còn nhiễu Gaussian làm thay đổi giá trị pixel và có thể làm đổi moment nên D không đúng. Trên ảnh rời rạc, phép quay và đổi kích thước thường có nội suy hoặc sai số lấy mẫu, vì vậy các giá trị Hu thường gần bằng nhau chứ không bảo đảm bằng nhau tuyệt đối. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 8-9.
 
 </details>
 
@@ -7436,7 +7436,7 @@ Harris Corner Detector xác định góc dựa trên tiêu chí nào?
 
 **Đáp án:** B. Điểm mà cường độ sáng thay đổi mạnh theo ít nhất hai hướng khác nhau
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Harris xét mức thay đổi của cửa sổ ảnh khi dịch nó một lượng nhỏ theo các hướng. Ở vùng phẳng, dịch hướng nào cũng ít thay đổi; trên cạnh, dịch dọc cạnh ít thay đổi; tại góc, cửa sổ thay đổi mạnh theo các hướng độc lập. Vì vậy B đúng theo ý gradient mạnh theo ít nhất hai hướng, không phải chọn pixel sáng nhất hoặc bất kỳ pixel nằm trên biên. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 16-17, 21.
 
 </details>
 
@@ -7455,7 +7455,7 @@ Trong Harris Corner Detector, giá trị R được tính như thế nào?
 
 **Đáp án:** B. R = det(M) - k × trace(M)²
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Harris dùng R=det(M)-k[trace(M)]² để đánh giá góc mà không phải tính trực tiếp hai trị riêng. Vì det(M)=λ1λ2 và trace(M)=λ1+λ2, tích tăng khi cả hai hướng có biến thiên mạnh, trong khi số hạng trace bình phương phạt trường hợp một hướng chi phối. B có đúng vị trí của định thức, trace và lũy thừa; đảo hai đại lượng như A hoặc nhân, chia chúng như C và D sẽ không còn là hàm đáp ứng Harris chuẩn. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 22-23.
 
 </details>
 
@@ -7474,7 +7474,7 @@ Khi R > 0 (lớn) trong Harris, điểm đó được phân loại là gì?
 
 **Đáp án:** B. Góc (corner)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi hai trị riêng của M đều lớn và không quá chênh lệch, tích λ1λ2 đủ lớn so với số hạng k(λ1+λ2)², tạo R dương lớn. Điều đó cho biết cửa sổ thay đổi mạnh theo nhiều hướng, nên điểm là ứng viên góc và chọn B. Trong detector thực tế còn phải vượt ngưỡng đáp ứng và là cực đại cục bộ; chỉ R hơi dương chưa đủ kết luận chắc chắn rằng một pixel là góc ổn định. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 21-25.
 
 </details>
 
@@ -7493,7 +7493,7 @@ Khi R < 0 trong Harris, điểm đó được phân loại là gì?
 
 **Đáp án:** B. Biên
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Tại một cạnh, một trị riêng lớn còn trị riêng kia nhỏ vì cửa sổ chỉ thay đổi mạnh khi dịch ngang qua cạnh. Khi đó det(M) nhỏ so với k[trace(M)]² và R trở thành âm, nên B là phân loại trong sơ đồ Harris. Vùng phẳng có cả hai trị riêng nhỏ nên đáp ứng gần không, còn góc có đáp ứng dương lớn; dấu âm là tiêu chí mô hình cạnh, không phải một phép nhận dạng ngữ nghĩa hay bằng chứng loại trừ hoàn toàn nhiễu. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 21-22.
 
 </details>
 
@@ -7512,7 +7512,7 @@ SIFT (Scale-Invariant Feature Transform) có tính bất biến với gì? (Ch�
 
 **Đáp án:** A. Scale (tỉ lệ); B. Rotation (phép quay); C. Illumination (chiếu sáng đến mức nhất định)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT tìm scale đặc trưng qua cực trị DoG và chuẩn hóa mô tả theo hướng chủ đạo, nên có khả năng bất biến theo scale và rotation. Dùng gradient cùng chuẩn hóa descriptor giảm ảnh hưởng của thay đổi sáng và tương phản, hỗ trợ C trong giới hạn nhất định. A, B, C đúng còn D sai: đặc trưng cục bộ có thể chịu che khuất một phần nếu còn vùng nhìn thấy, nhưng không thể so khớp đặc trưng đã bị che khuất hoàn toàn. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 13, 35-37, 40-41.
 
 </details>
 
@@ -7531,7 +7531,7 @@ SIFT descriptor được mô tả bằng vector bao nhiêu chiều?
 
 **Đáp án:** B. 128
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Descriptor SIFT chuẩn chia vùng quanh keypoint thành 4×4 ô không gian và tạo histogram tám hướng gradient cho mỗi ô. Ghép 16 histogram lại cho 16×8=128 thành phần, nên chọn B. Con số này là chiều của vector mô tả, không phải số keypoints hoặc số mức scale; tọa độ, scale và orientation của keypoint là thông tin đi kèm riêng. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 37-38, 41.
 
 </details>
 
@@ -7550,7 +7550,7 @@ Scale space trong SIFT được xây dựng bằng cách nào?
 
 **Đáp án:** B. Áp dụng Gaussian blur với σ tăng dần, tạo nhiều phiên bản ảnh ở các scale khác nhau
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gaussian scale space gồm các ảnh L(x,y,σ)=G(x,y,σ)*I(x,y), với sigma tăng để quan sát cấu trúc ở mức làm trơn rộng hơn. SIFT xây dựng các mức Gaussian và nhiều octave, rồi lấy hiệu các mức lân cận để tạo DoG phục vụ tìm keypoint. B đúng về cơ chế tạo scale space; tăng kích thước ảnh hoặc đặt nhiều ngưỡng không thay thế được việc phân tích đáp ứng ở nhiều mức Gaussian. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 31-36.
 
 </details>
 
@@ -7569,7 +7569,7 @@ DoG (Difference of Gaussian) trong SIFT dùng để làm gì?
 
 **Đáp án:** B. Xấp xỉ LoG để phát hiện keypoints ổn định theo scale
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** DoG lấy hiệu của hai ảnh đã làm trơn ở sigma và k·sigma, tạo xấp xỉ của Laplacian-of-Gaussian chuẩn hóa theo scale, tới một hệ số phụ thuộc k. Cực trị của đáp ứng này trong cả vị trí và scale giúp chọn vùng có cấu trúc nổi bật và scale đặc trưng, nên B đúng. Mục đích không chỉ làm mờ ảnh: làm mờ là thao tác trung gian trước khi lấy hiệu, còn kết quả DoG được dùng để phát hiện keypoints. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 31-36.
 
 </details>
 
@@ -7740,7 +7740,7 @@ Feature matching bằng NNC (Nearest Neighbor Classifier) hoạt động như th
 
 **Đáp án:** B. Tìm đặc trưng trong tập tham chiếu có khoảng cách nhỏ nhất đến đặc trưng truy vấn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Cho một descriptor truy vấn, nearest-neighbor matching tìm descriptor tham chiếu có khoảng cách nhỏ nhất theo thước đo đã chọn, chẳng hạn L2 cho vector SIFT. B mô tả tiêu chí chọn match; cách thực hiện có thể duyệt hết như brute force hoặc tìm gần đúng bằng một cấu trúc chỉ mục, nên không bắt buộc so mọi cặp. Descriptor gần nhất vẫn có thể là ghép sai nếu không có điểm tương ứng thật trong tập tham chiếu, vì thế thường cần thêm ratio test hoặc kiểm tra hình học. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 45-46.
 
 </details>
 
@@ -7759,7 +7759,7 @@ Lowe's ratio test trong SIFT matching dùng để làm gì?
 
 **Đáp án:** B. Loại bỏ matches không rõ ràng; nếu khoảng cách tới NN nhỏ nhất và nhì quá gần nhau → match không đáng tin
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ratio test so d1, khoảng cách đến descriptor gần nhất, với d2, khoảng cách đến descriptor gần thứ hai. Khi d1/d2 gần 1, hai ứng viên tốt gần như ngang nhau nên lựa chọn mơ hồ; chỉ giữ tỷ lệ đủ nhỏ để match tốt nhất tách biệt rõ với đối thủ thứ hai. B đúng về việc loại ghép không rõ ràng; đây không phải bước tính homography và cũng không đơn thuần tăng số matches. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 46-47.
 
 </details>
 
@@ -7797,7 +7797,7 @@ Nguồn PDF: trang 55
 
 **Đáp án:** B. Rõ ràng, bền vững, dễ localize và match giữa các ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ở một góc, dịch cửa sổ theo hai hướng độc lập đều làm thay đổi nội dung, nên vị trí thường được định vị tốt hơn một điểm trên cạnh dài có thể trượt dọc cạnh. Cấu trúc quanh góc cũng dễ phân biệt hơn vùng phẳng, hỗ trợ phát hiện lặp lại và xây dựng descriptor để matching, tương ứng B. Góc không mặc nhiên bất biến theo scale, và bản thân detector chỉ chọn vị trí; vẫn cần descriptor phù hợp để xác nhận correspondence giữa hai ảnh. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 13, 16-17, 26.
 
 </details>
 
@@ -7835,7 +7835,7 @@ Nguồn PDF: trang 56
 
 **Đáp án:** B. HOG tính ở nhiều mức độ phân giải không gian (spatial pyramid)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** PHOG chia ảnh thành các ô ở nhiều mức của một spatial pyramid, tính histogram hướng gradient cho từng ô rồi ghép chúng thành mô tả. Các mức thô giữ hình dạng tổng quát, còn mức chia nhỏ bổ sung vị trí của cấu trúc, nên B phân biệt đúng nhiều độ phân giải không gian. Đây không đơn giản là chạy HOG trên các bản ảnh phóng to, thu nhỏ; trọng tâm là cách phân chia không gian của ảnh thành nhiều mức. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 10.
 
 </details>
 
@@ -7854,7 +7854,7 @@ Keypoint descriptor trong SIFT mô tả gì?
 
 **Đáp án:** B. Đặc trưng gradient hướng xung quanh keypoint trong vùng 4×4 với 8 hướng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT descriptor tổng hợp các hướng và độ lớn gradient trong vùng lân cận keypoint đã chuẩn hóa theo scale và orientation. Vùng được chia thành 4×4 ô, mỗi ô có histogram tám hướng, nên B mô tả đúng nội dung vector. 4×4 là số ô histogram chứ không phải chỉ một vùng 4×4 pixel cố định; vị trí và kích thước keypoint xác định nơi lấy vùng nhưng không phải nội dung trực tiếp của 128 thành phần mô tả. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 37-41.
 
 </details>
 
@@ -7892,7 +7892,7 @@ Nguồn PDF: trang 56
 
 **Đáp án:** B. Tính theo nhiều hướng (0°, 45°, 90°, 135°) và khoảng cách khác nhau
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một GLCM được xác định bởi độ dịch giữa hai pixel, nên thay hướng hoặc khoảng cách sẽ thay những cặp mức xám được đếm. Có thể lấy nhiều ma trận ở 0°, 45°, 90°, 135° và các khoảng cách khác nhau để mô tả cấu trúc có hướng hoặc nhiều độ rộng, đúng với B. Không bắt buộc mọi ứng dụng dùng đủ các cấu hình này, nhưng GLCM không tự độc lập với hướng; muốn tăng bất biến quay có thể cần gộp thống kê qua nhiều hướng. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 5-6.
 
 </details>
 
@@ -7911,7 +7911,7 @@ Image Moments dùng để mô tả gì?
 
 **Đáp án:** B. Thông tin hình dạng và phân phối của pixel trong ảnh/vùng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Raw moment cộng các giá trị pixel hoặc trọng số vùng với các lũy thừa tọa độ, nên mô tả cách khối lượng ảnh phân bố trong không gian. Với vùng nhị phân, moment bậc không cho diện tích, tỷ số moment bậc một với diện tích cho trọng tâm, còn các bậc cao hơn bổ sung thông tin hình dạng. B phù hợp với ý nghĩa đó; moment không tự là một đặc trưng chuyển động hay chỉ biểu diễn màu, và phải phân biệt raw moment với moment trung tâm hoặc bất biến. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 7-9.
 
 </details>
 
@@ -7930,7 +7930,7 @@ Central moments (moment trung tâm) khác raw moments ở điểm nào?
 
 **Đáp án:** B. Central moments bất biến với phép tịnh tiến (tính quanh centroid)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Raw moment dùng tọa độ tính từ gốc ảnh, nên dịch đối tượng thường làm các moment bậc cao hơn thay đổi. Central moment thay x,y bằng x-x̄,y-ȳ, tức đo quanh trọng tâm; khi đối tượng và trọng tâm cùng dịch một lượng, các tọa độ tương đối giữ nguyên. B vì vậy đúng về bất biến tịnh tiến, với giả thiết vùng đối tượng được giữ đầy đủ; central moments chưa tự bất biến theo scale hoặc rotation nếu không có chuẩn hóa và tổ hợp thêm. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 8-9.
 
 </details>
 
@@ -8006,7 +8006,7 @@ Nguồn PDF: trang 57
 
 **Đáp án:** B. Phân loại màu sắc đơn giản
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Local feature matching tìm correspondence giữa các vùng ảnh, hữu ích để căn chỉnh panorama, hỗ trợ tái dựng hình học từ nhiều ảnh và tìm ảnh chứa một phần đối tượng truy vấn. Phân loại màu sắc đơn giản thường chỉ cần thống kê màu và một quy tắc hoặc bộ phân loại, không cần xác định các cặp keypoints tương ứng. Vì vậy B là lựa chọn không thuộc ứng dụng điển hình đang hỏi; matching vẫn có thể hỗ trợ một pipeline lớn hơn có dùng màu, nhưng không phải bản chất của bài toán phân loại màu đơn giản. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 3, 53-56.
 
 </details>
 
@@ -8025,7 +8025,7 @@ Histogram Oriented Gradients (HOG) được Dalal và Triggs giới thiệu năm
 
 **Đáp án:** B. 2005, phát hiện người đi bộ (pedestrian detection)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Dalal và Triggs trình bày công trình HOG cho phát hiện người tại CVPR 2005, nên B khớp cả năm và ứng dụng. Công trình nghiên cứu cách biểu diễn hướng gradient cục bộ cùng chuẩn hóa theo block để phân biệt cửa sổ chứa người với nền. HOG là đặc trưng đầu vào cho hệ thống phát hiện chứ không đồng nghĩa với một bộ nhận dạng khuôn mặt hay một phương pháp phân loại ảnh xuất hiện năm 2012. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 58. Tham khảo: [bài báo gốc của Dalal và Triggs (2005)](https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf).
 
 </details>
 
@@ -8044,7 +8044,7 @@ Nguồn PDF: trang 57
 
 **Đáp án:** B. Lưu tổng tích lũy của pixel, cho phép tính nhanh tổng bất kỳ vùng hình chữ nhật trong O(1)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Integral image lưu tại mỗi vị trí tổng cường độ trên vùng từ góc trên trái tới vị trí đó. Tổng của hình chữ nhật song song với trục ảnh được lấy bằng cộng trừ bốn giá trị ở các góc theo nguyên lý bao hàm-loại trừ, nên mỗi truy vấn tốn O(1), đúng với B. Chi phí dựng bảng ban đầu vẫn là O(W×H), và tính hằng thời gian không tự áp dụng cho mọi vùng xoay hay hình dạng bất kỳ; bảng này không phải histogram hoặc phổ tần số. Tham chiếu: `IT5409 L7.2-ObjectDetection.pdf`, trang 13-14.
 
 </details>
 
@@ -8063,7 +8063,7 @@ Nguồn PDF: trang 57
 
 **Đáp án:** B. Tìm ảnh tương đồng trong cơ sở dữ liệu dựa trên khoảng cách đặc trưng (feature distance)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong retrieval dựa trên đặc trưng, ảnh truy vấn và ảnh trong cơ sở dữ liệu được chuyển thành những biểu diễn có thể so sánh. Hệ thống xếp hạng theo khoảng cách hoặc mức tương đồng giữa các biểu diễn, hoặc theo số correspondence cục bộ được hỗ trợ, nên B diễn đạt đúng nguyên lý. Tìm theo mô tả text, ngày chụp hoặc kích thước là các tiêu chí khác; khoảng cách đặc trưng nhỏ cũng không bảo đảm ảnh tương đồng về mọi mặt ngữ nghĩa nếu đặc trưng được chọn không phù hợp. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 50-52, 56-58.
 
 </details>
 
@@ -8082,7 +8082,7 @@ Harris corner detection có tính bất biến nào? (Chọn tất cả đúng)
 
 **Đáp án:** A. Bất biến với phép tịnh tiến; B. Bất biến với phép quay nhỏ; C. Bất biến với thay đổi chiếu sáng đến mức nhất định
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Harris dùng gradient trong cửa sổ quanh điểm, nên dịch ảnh sẽ dịch vị trí đáp ứng tương ứng, còn quay ảnh giữ các trị riêng của ma trận cấu trúc trong mô hình có cửa sổ Gaussian đẳng hướng. Vì vậy A và B được chấp nhận; C chỉ là bất biến một phần, do cộng độ sáng hằng không đổi gradient nhưng nhân tương phản làm đổi độ lớn đáp ứng và có thể ảnh hưởng ngưỡng. Harris chuẩn không tự chọn scale tương ứng khi đối tượng phóng to hoặc thu nhỏ nên D sai; trên ảnh rời rạc, lấy mẫu và nội suy cũng hạn chế tính bất biến quay. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 22, 26-27.
 
 </details>
 
@@ -8101,7 +8101,7 @@ Tại sao SIFT được coi là mạnh mẽ (robust) cho image matching?
 
 **Đáp án:** B. Vì đặc trưng SIFT bất biến với scale, rotation và chiếu sáng, nên matching tin cậy hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT tìm scale đặc trưng bằng DoG, gán hướng chủ đạo rồi tính descriptor theo hệ tọa độ đã chuẩn hóa đó. Nhờ vậy hai vùng cùng cấu trúc ở kích thước hoặc góc quay khác nhau có thể cho descriptor tương đồng, còn gradient và chuẩn hóa vector giúp giảm ảnh hưởng của thay đổi độ sáng và tương phản. B giải thích cơ sở matching bền vững, nhưng 'bất biến với chiếu sáng' không bao gồm mọi bóng đổ, chói hoặc bão hòa; descriptor 128 chiều cũng không phải rất ngắn và thuật toán vẫn có tham số. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 35-37, 40-43.
 
 </details>
 
@@ -8120,7 +8120,7 @@ Tại sao Harris corner không bất biến với scale?
 
 **Đáp án:** B. Vì Harris không xây dựng scale space; cùng vật thể ở scale khác nhau có thể không cho ra corner
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Harris chuẩn đánh giá cấu trúc ở một kích thước cửa sổ và mức làm trơn đã chọn. Khi phóng lớn đối tượng, vùng trong cùng cửa sổ có thể chỉ còn một cạnh hoặc gần như phẳng thay vì chứa góc, nên đáp ứng không được bảo toàn theo scale. B đúng cho Harris cơ bản; các mở rộng như Harris-Laplacian có thêm chọn scale để xử lý hạn chế này, vì vậy không nên gán tính không bất biến cho mọi biến thể mang tên Harris. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 26-28, 35.
 
 </details>
 
@@ -8139,7 +8139,7 @@ Nguồn PDF: trang 58
 
 **Đáp án:** B. Tính histogram gradient hướng xung quanh keypoint, chọn hướng dominant
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT gom các gradient trong vùng lân cận theo scale của keypoint vào histogram hướng và làm mịn histogram. Hướng tại peak chủ đạo được dùng làm mốc để chuẩn hóa descriptor, nên B khác với việc chỉ lấy hướng của một pixel có gradient mạnh nhất như A. Nếu có nhiều peak nổi bật, có thể tạo nhiều keypoints cùng vị trí và scale nhưng khác orientation; việc gán hướng không phải chọn ngẫu nhiên hoặc lấy cạnh gần nhất. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 37, 40.
 
 </details>
 
@@ -8158,7 +8158,7 @@ Nguồn PDF: trang 58
 
 **Đáp án:** B. Bất biến với thay đổi chiếu sáng additive và multiplicative ở mức nhất định
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Nếu I'=aI+b với a dương và các pixel không bị clipping, cộng b không đổi gradient còn nhân a chỉ nhân độ lớn gradient với a. Chuẩn hóa descriptor về chuẩn đơn vị giảm ảnh hưởng của hệ số a, nên B đúng đối với mô hình thay đổi sáng cộng và nhân trong giới hạn đó. SIFT còn chặn các thành phần lớn rồi chuẩn hóa lại để giảm ảnh hưởng chói, nhưng bóng cục bộ, biến đổi phi tuyến hoặc bão hòa vẫn có thể làm descriptor thay đổi đáng kể; A vì vậy quá tuyệt đối. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 41.
 
 </details>
 
@@ -8177,7 +8177,7 @@ Nguồn PDF: trang 58
 
 **Đáp án:** B. Eigenfaces (PCA) hoặc LBP
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Eigenfaces dùng PCA để học một không gian con của ảnh khuôn mặt và biểu diễn mỗi khuôn mặt bằng các hệ số trong không gian đó, nên B nêu một phương pháp nhận dạng khuôn mặt điển hình. LBP là lựa chọn khác: mô tả mẫu texture cục bộ rồi tổng hợp chúng theo vùng khuôn mặt, thay vì dùng các thành phần phương sai toàn cục như PCA. Các đặc trưng khác vẫn có thể tham gia hệ thống nhận dạng, nên đáp án không có nghĩa HOG hoặc GLCM tuyệt đối không dùng được. Tham chiếu: `IT5409 L3.2-ImageTransformFrequency.pdf`, trang 39-41. *Kiến thức bổ sung về ứng dụng LBP:* [nghiên cứu của Ahonen tại University of Oulu](https://oulurepo.oulu.fi/handle/10024/35142).
 
 </details>
 
@@ -8215,7 +8215,7 @@ Nguồn PDF: trang 58
 
 **Đáp án:** B. Bất biến với affine transformation hoàn toàn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT chuẩn hóa theo scale và hướng quay nhưng không ước lượng đầy đủ hình dạng affine của vùng lân cận. Nó có thể matching ổn định trước một mức biến dạng góc nhìn, song shear hoặc co giãn khác nhau theo hai trục đủ lớn vẫn làm cấu trúc trong descriptor thay đổi. B vì vậy là phát biểu sai cần chọn: độ bền vững với affine không đồng nghĩa bất biến affine hoàn toàn, còn scale, rotation và descriptor 128 chiều là các đặc điểm đúng của SIFT chuẩn. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 35-43.
 
 </details>
 
@@ -8234,7 +8234,7 @@ Affine-covariant regions khác scale-covariant regions (SIFT) ở điểm nào?
 
 **Đáp án:** B. Affine covariant xử lý được cả perspective distortion và slant, không chỉ scale và rotation
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Affine-covariant regions thích ứng cả hình dạng vùng, chẳng hạn một vùng tròn biến thành ellipse do co giãn không đều hoặc shear, thay vì chỉ chọn scale và orientation. B đúng theo ý xử lý biến dạng do góc nhìn, nhưng affine chỉ xấp xỉ phối cảnh cục bộ, không bao phủ mọi biến đổi projective hay che khuất. Covariant nghĩa vùng biến đổi tương ứng với ảnh; chuẩn hóa vùng mới hỗ trợ descriptor bất biến. *Kiến thức bổ sung (slide chỉ liệt kê detector affine).* Tham khảo: [Mikolajczyk và Schmid, Scale & Affine Invariant Interest Point Detectors](https://www.robots.ox.ac.uk/~vgg/research/affine/det_eval_files/mikolajczyk_ijcv2004.pdf).
 
 </details>
 
@@ -8253,7 +8253,7 @@ Geometric verification trong image matching dùng để làm gì?
 
 **Đáp án:** B. Xác nhận tính hợp lệ của matches bằng cách kiểm tra tính nhất quán hình học (ví dụ RANSAC với homography)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hai descriptor gần nhau chưa bảo đảm chúng chỉ cùng một điểm vật lý, đặc biệt với texture lặp lại. Geometric verification kiểm tra các cặp ghép có phù hợp với một mô hình biến đổi chung không; RANSAC có thể tìm mô hình được nhiều cặp hỗ trợ rồi loại outliers, nên B đúng. Homography chỉ phù hợp trong những điều kiện như mặt phẳng hoặc quay camera quanh tâm, không phải mô hình đúng cho mọi cảnh 3D; bước này kiểm chứng matches, không phải phát hiện keypoints. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 46, 48; `IT5409 L4.1-EdgeDetection.pdf`, trang 46.
 
 </details>
 
@@ -8272,7 +8272,7 @@ Nguồn PDF: trang 59
 
 **Đáp án:** B. Tìm cực đại và cực tiểu của DoG qua scale và không gian ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ở mỗi mẫu DoG, SIFT so sánh đáp ứng với các điểm lân cận trong ảnh hiện tại và hai mức scale kề nhau, tạo lân cận 3×3×3. Điểm được chọn nếu lớn hơn hoặc nhỏ hơn mọi láng giềng còn lại, nên cả cực đại và cực tiểu đều là ứng viên, đúng với B. Chỉ tìm cực đại trên một ảnh DoG sẽ bỏ các cực tiểu và không bảo đảm chọn được scale đặc trưng; các ứng viên sau đó còn phải qua bước tinh chỉnh và kiểm tra ổn định. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 36-37.
 
 </details>
 
@@ -8291,7 +8291,7 @@ Tại sao cần "Keypoint Localization" (refinement) sau bước phát hiện ke
 
 **Đáp án:** B. Để loại bỏ keypoints tại cạnh/ảnh hưởng bởi contrast thấp, tăng chính xác vị trí
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Cực trị thô được tìm trên lưới pixel và scale rời rạc, nên cần nội suy để ước lượng vị trí, scale chính xác hơn. SIFT loại các ứng viên tương phản thấp dễ bị nhiễu và các đáp ứng dạng cạnh có vị trí kém ổn định theo hướng dọc cạnh, nên B đúng về mục tiêu refinement. Đây không phải bước gán hướng hay giảm chiều descriptor, và điểm có đáp ứng lớn vẫn có thể bị loại nếu cấu trúc chỉ là một cạnh. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 36. *Kiến thức bổ sung về tiêu chí loại điểm:* [OpenCV, Keypoint Localization trong SIFT](https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html).
 
 </details>
 
@@ -8405,7 +8405,7 @@ Nguồn PDF: trang 60
 
 **Đáp án:** B. Affine transformation estimation
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT gồm tìm cực trị scale-space, tinh chỉnh keypoint, gán orientation và tính descriptor. Ước lượng một phép biến đổi affine giữa hai ảnh là bước có thể thực hiện sau khi matching các descriptor, không phải bước bắt buộc để trích xuất SIFT trên một ảnh. Vì vậy B là lựa chọn 'KHÔNG'; đừng nhầm chuẩn hóa vùng theo scale và orientation với việc giải một ma trận affine từ các correspondence giữa ảnh. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 36-41, 48.
 
 </details>
 
@@ -8424,7 +8424,7 @@ Tại sao đặc trưng SIFT dùng 4×4 grid × 8 orientations = 128 chiều?
 
 **Đáp án:** B. Vì đây là trade-off giữa discriminability và robustness; nhiều hơn → quá nhạy với nhiễu
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Lưới 4×4 giữ phân bố không gian của gradient, còn tám bin hướng trong mỗi ô giữ thông tin hình dạng, tạo 128 thành phần. Cấu hình này cho cân bằng thực nghiệm giữa phân biệt và chịu biến dạng trong đánh giá của Lowe, nên B đúng về trade-off. Tuy nhiên 'nhiều hơn thì quá nhạy với nhiễu' không phải quy luật tuyệt đối: tăng độ chi tiết có thể tăng nhạy với biến dạng hoặc che khuất, còn cấu hình tốt nhất phụ thuộc dữ liệu. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 41-42. Tham khảo: [Lowe, phần kiểm thử descriptor](https://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf).
 
 </details>
 
@@ -8481,7 +8481,7 @@ Feature matching tốt yêu cầu descriptor phải có tính chất gì?
 
 **Đáp án:** B. Đặc trưng (distinctive) để phân biệt và bền vững (robust) trước biến đổi
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Descriptor cần phân biệt các vùng khác nhau để tránh nhiều ứng viên giống nhau, đồng thời giữ được mức tương đồng của cùng một vùng khi ảnh thay đổi theo những điều kiện cho phép. Distinctiveness quá thấp gây matches mơ hồ, còn quá nhạy với biến đổi khiến cùng một điểm bị ghép hụt, nên B nêu đúng hai yêu cầu bổ sung cho nhau. Tốc độ và độ gọn cũng quan trọng, nhưng chỉ nhanh hoặc ngắn nhất không bảo đảm matching chính xác; không có yêu cầu descriptor chỉ cần hai chiều. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 13, 40, 43.
 
 </details>
 
@@ -8500,7 +8500,7 @@ Nguồn PDF: trang 60
 
 **Đáp án:** B. Chọn các điểm có tính distinctive cao: góc, blobs, không phải vùng phẳng hay cạnh đơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Vùng phẳng gần như không đổi khi dịch cửa sổ, còn cạnh đơn thường không xác định tốt vị trí theo hướng dọc cạnh. Góc và blob có cấu trúc cục bộ rõ hơn theo nhiều hướng hoặc scale, nên là ứng viên interest points phù hợp như B nêu. Không chỉ chọn pixel sáng: độ sáng tuyệt đối không bảo đảm tính lặp lại hay đặc trưng của vùng, và chọn mọi pixel sẽ bao gồm rất nhiều điểm không ổn định cho matching. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 13, 16-17, 32-37.
 
 </details>
 
@@ -8519,7 +8519,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Tùy ứng dụng: màu (histogram), texture (GLCM, LBP), hình dạng (HOG, moments), hoặc kết hợp
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Màu, texture và hình dạng mô tả các khía cạnh khác nhau của ảnh, nên loại đặc trưng phù hợp phụ thuộc tiêu chí tương đồng của ứng dụng. Histogram có thể hữu ích cho phân bố màu, GLCM hoặc LBP cho kết cấu, còn HOG và moments cho cấu trúc hoặc hình dạng; kết hợp chúng có thể bổ sung thông tin, đúng với B. Không cần luôn chọn chỉ toàn cục hay chỉ cục bộ: slide còn nêu cách tổng hợp local features thành biểu diễn toàn cục như BoW để phục vụ retrieval. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 2-10, 15, 50-52, 57.
 
 </details>
 
@@ -8538,7 +8538,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Bất biến với scale
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Harris chuẩn dùng cửa sổ ở scale cố định, nên khi ảnh đổi kích thước, cấu trúc được quan sát và đáp ứng góc có thể đổi; B là tính chất không đúng. Với Gaussian đẳng hướng, hàm đáp ứng giữ tính bất biến quay trong mô hình lý tưởng và được tính từ ma trận cấu trúc M. C nên hiểu là khả năng giảm ảnh hưởng nhiễu nhờ làm trơn và tổng hợp trong cửa sổ, không phải miễn nhiễm với nhiễu Gaussian ở mọi mức; ảnh rời rạc cũng có giới hạn lấy mẫu khi quay. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 20-23, 26-27.
 
 </details>
 
@@ -8595,7 +8595,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Tìm correspondence (điểm tương ứng) giữa hai hoặc nhiều ảnh của cùng cảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Image matching xác định những vị trí hoặc vùng tương ứng giữa các ảnh, kể cả khi chúng khác góc nhìn, scale hay điều kiện chụp. Những correspondence đó cho phép căn chỉnh ảnh, theo dõi điểm hoặc suy ra quan hệ hình học, nên B diễn đạt đúng nhiệm vụ đang xét. Chỉ giống màu không đủ xác nhận cùng một điểm, còn ảnh không cần giống hệt nhau; ngoài keypoint matching vẫn tồn tại các phương pháp trực tiếp dựa trên giá trị ảnh nên không nên coi mọi matching đều bắt buộc dùng đặc trưng rời rạc. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 11-13, 45-48, 55.
 
 </details>
 
@@ -8614,7 +8614,7 @@ SIFT được phát triển bởi ai và năm nào?
 
 **Đáp án:** B. David Lowe, 1999/2004
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT gắn với David G. Lowe: công trình năm 1999 giới thiệu cách tiếp cận, còn bài IJCV năm 2004 trình bày và phát triển đầy đủ hơn. Vì vậy B ghi hai mốc có ý nghĩa khác nhau, không phải hai tác giả hay hai thuật toán riêng. Viola và Jones gắn với bộ phát hiện đối tượng dùng cascade, còn Hubel và Wiesel thuộc nghiên cứu thị giác thần kinh, không phải tác giả SIFT. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 35, 39, 41. Tham khảo: [bài SIFT của Lowe (2004)](https://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf).
 
 </details>
 
@@ -8633,7 +8633,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Bất biến với các phép biến đổi affine bao gồm translation, rotation, scale, và shear
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Affine invariance là giữ biểu diễn đặc trưng dưới phép biến đổi tọa độ x'=Ax+b, bao gồm tịnh tiến, quay, co giãn và shear khi phép biến đổi hợp lệ. Vì vậy B rộng hơn chỉ quay nhưng hẹp hơn 'mọi phép biến đổi': phối cảnh tổng quát hoặc biến dạng phi tuyến không thuộc cùng nhóm. Detector thường biến đổi vùng theo ảnh, rồi chuẩn hóa vùng để tính descriptor bất biến. *Kiến thức bổ sung (không có định nghĩa đầy đủ trong slide).* Tham khảo: [Mikolajczyk và Schmid về đặc trưng affine](https://www.robots.ox.ac.uk/~vgg/research/affine/det_eval_files/mikolajczyk_ijcv2004.pdf).
 
 </details>
 
@@ -8652,7 +8652,7 @@ Nguồn PDF: trang 61
 
 **Đáp án:** B. Xây dựng Gaussian pyramid với nhiều octaves; mỗi octave tăng gấp đôi σ và giảm resolution
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SIFT tạo các mức Gaussian với sigma tăng trong một octave, rồi giảm mỗi chiều ảnh xuống một nửa để chuyển sang octave tiếp theo. Tính theo đơn vị tọa độ ảnh gốc, octave kế tiếp bao phủ các scale lớn gấp đôi, nên B diễn đạt đúng ý đa octave. Sau khi downsample, sigma tính bằng pixel của ảnh nhỏ có thể trở về cùng giá trị cơ sở; không nên hiểu rằng sigma số luôn nhân hai trên mọi ảnh octave hoặc chỉ cần một phép zoom là tạo đủ scale space. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 36-37. *Kiến thức bổ sung về cách chuyển octave:* [OpenCV, Gaussian pyramid trong SIFT](https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html).
 
 </details>
 
@@ -8671,7 +8671,7 @@ Nguồn PDF: trang 62
 
 **Đáp án:** B. M = Σ [Ix², IxIy; IxIy, Iy²] tổng hóa trên cửa sổ xung quanh điểm
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** M được tính bằng tổng có trọng số các tích gradient Ix², IxIy và Iy² trong cửa sổ, tạo ma trận 2×2 đối xứng. Với một dịch chuyển nhỏ d=[u,v], mức thay đổi cửa sổ được xấp xỉ bằng dᵀMd, nên M tóm tắt mức biến thiên theo các hướng quanh điểm. B là công thức đúng nếu hiểu trọng số cửa sổ được lấy bằng một hoặc được bổ sung như Gaussian; M không phải một số vô hướng hay ma trận identity cố định và phụ thuộc trực tiếp vào gradient. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 17-21.
 
 </details>
 
@@ -8690,7 +8690,7 @@ Eigenvalues của ma trận M trong Harris cho biết điều gì?
 
 **Đáp án:** B. λ1, λ2: biên độ thay đổi theo 2 hướng chính; cả hai lớn → corner
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hai trị riêng của M biểu diễn mức biến thiên theo hai hướng chính trực giao của cửa sổ, không nhất thiết trùng trục x và y. Cả hai lớn cho biết dịch theo hướng nào cũng tạo thay đổi đáng kể, nên là ứng viên góc; một lớn một nhỏ gợi ý cạnh, còn cả hai nhỏ gợi ý vùng phẳng. B vì vậy đúng, nhưng trị riêng không tự đo màu hoặc khoảng cách tới biên và còn phải kết hợp ngưỡng đáp ứng, lựa chọn scale và NMS để chọn keypoint. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 21-25.
 
 </details>
 
@@ -8747,7 +8747,7 @@ Nguồn PDF: trang 62
 
 **Đáp án:** B. Mô tả hình dạng ký tự bất biến
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Các Hu moments tổng hợp phân bố hình dạng ký tự từ moment trung tâm chuẩn hóa, nên có thể so sánh ký tự sau dịch chuyển, đổi kích thước hoặc quay trong giới hạn mô hình. B nói đúng về mô tả hình dạng bất biến, không có nghĩa Hu tự gán nhãn ký tự mà không cần phép so sánh hoặc bộ phân loại. Bộ Hu chuẩn có bảy thành phần chứ không cần 256 chiều; nhiễu và phân đoạn sai vẫn làm kết quả thay đổi, và bất biến quay có thể làm mất khác biệt giữa những ký tự chỉ phân biệt bởi hướng. Tham chiếu: `IT5409 L4.2-FeatureExtractionAndImageMatching.pdf`, trang 8-9.
 
 </details>
 
@@ -10121,7 +10121,7 @@ Video được định nghĩa là gì trong bối cảnh Computer Vision?
 
 **Đáp án:** B. Chuỗi frames I(x,y,t) được capture theo thời gian
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong bài học, video mở rộng ảnh tĩnh bằng trục thời gian: mỗi frame là một ảnh I(x,y,t) tại thời điểm t. Vì vậy B giữ cả hai tọa độ không gian và thứ tự thời gian, là cơ sở để so sánh correspondence hoặc chuyển động giữa frames. Video không bắt buộc là ảnh màu, và gọi nó là file đa phương tiện chỉ mô tả cách lưu trữ chứ chưa diễn đạt cấu trúc dữ liệu thị giác cần phân tích. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 2, 45.
 
 </details>
 
@@ -10140,7 +10140,7 @@ Optical flow được định nghĩa là gì?
 
 **Đáp án:** B. Chuyển động biểu kiến (apparent motion) của các pattern cường độ sáng trong ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Optical flow mô tả cách các mẫu cường độ dường như dịch chuyển trên mặt phẳng ảnh giữa những thời điểm gần nhau. B vì vậy nói về apparent motion, khác chuyển động 3D thật của điểm vật lý hoặc vận tốc camera. Chuyển động camera và vật thể đều có thể tạo flow, nhưng thay đổi chiếu sáng cũng có thể làm mẫu sáng tối dịch chuyển khi cảnh không chuyển động; vì thế không được đồng nhất mọi flow quan sát được với chuyển động vật lý. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 6-9.
 
 </details>
 
@@ -10159,7 +10159,7 @@ Optical flow và motion field khác nhau như thế nào?
 
 **Đáp án:** B. Motion field là chuyển động 3D thực chiếu lên ảnh; optical flow là apparent motion có thể khác motion field
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Motion field là các vận tốc ảnh nhận được khi chiếu chuyển động tương đối của điểm 3D và camera lên mặt phẳng ảnh. Optical flow lại được ước lượng từ sự dịch chuyển của mẫu sáng, nên hai trường có thể khác nhau khi không có texture rõ hoặc khi chiếu sáng thay đổi. B phân biệt đúng nguồn gốc hình học và nguồn gốc biểu kiến; cả hai được biểu diễn bằng vector 2D trên ảnh, không phải optical flow là một trường 3D. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 6-9.
 
 </details>
 
@@ -10178,7 +10178,7 @@ Giả thiết "Brightness Constancy" trong optical flow phát biểu gì?
 
 **Đáp án:** B. Cường độ sáng của một điểm không thay đổi khi nó di chuyển qua các frames
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Brightness constancy giả định một điểm có cùng cường độ khi được quan sát ở vị trí mới trong frame tiếp theo, tức I(x,y,t)=I(x+u,y+v,t+1). Đây là giữ độ sáng dọc theo correspondence chuyển động, không phải giữ độ sáng tại một tọa độ pixel cố định hay yêu cầu toàn bộ ảnh sáng đều. B đúng về nội dung giả thiết; bóng đổ, chói, thay đổi phơi sáng hoặc che khuất có thể làm nó bị vi phạm trong dữ liệu thực. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 9-11.
 
 </details>
 
@@ -10197,7 +10197,7 @@ Giả thiết "Small Motion" trong optical flow có nghĩa là gì?
 
 **Đáp án:** B. Các điểm không di chuyển quá xa giữa hai frames liên tiếp (u, v < 1 pixel hoặc nhỏ)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Small motion yêu cầu dịch chuyển giữa hai ảnh đủ nhỏ để xấp xỉ Taylor bậc một của cường độ vẫn có ích. B đúng theo cách diễn đạt của slide, nhưng '<1 pixel' là mô tả điển hình chứ không phải ngưỡng tuyệt đối cho mọi ảnh; phải xét độ lớn dịch chuyển và mức biến thiên của vùng ảnh, không chỉ dấu của u,v. Vật thể nhỏ không đồng nghĩa chuyển động ảnh nhỏ, và pyramid có thể làm dịch chuyển lớn ở ảnh gốc trở nên nhỏ trên mức ảnh thô. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 10-11, 26-28.
 
 </details>
 
@@ -10216,7 +10216,7 @@ Phương trình ràng buộc optical flow là gì?
 
 **Đáp án:** B. Ix × u + Iy × v + It = 0
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khai triển brightness constancy với chuyển động nhỏ tạo phương trình Ix·u+Iy·v+It=0, trong đó Ix,Iy là đạo hàm không gian và It là đạo hàm thời gian. B có đúng dấu và quan hệ giữa các đại lượng: thay đổi cường độ do dịch chuyển phải bù thay đổi theo thời gian. Đây chỉ là một phương trình vô hướng với hai ẩn u,v tại mỗi pixel, nên chưa tự xác định duy nhất toàn bộ vector flow nếu không thêm ràng buộc. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 10-13.
 
 </details>
 
@@ -10235,7 +10235,7 @@ Nguồn PDF: trang 73
 
 **Đáp án:** B. Chỉ có thể xác định component chuyển động dọc theo biên; không thể xác định đủ 2 thành phần (u,v) từ 1 phương trình
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** **Lưu ý: đáp án B có lỗi diễn đạt về hướng.** Phương trình ∇I·(u,v)=-It chỉ xác định thành phần theo gradient, tức vuông góc với biên, còn thành phần song song biên không được xác định từ quan sát cục bộ của một cạnh. Thêm một vector dọc biên vào nghiệm không đổi tích vô hướng vì nó vuông góc gradient; đó là aperture problem và lý do một phương trình không đủ hai ẩn. Giữ B theo đáp án gốc vì nó nêu đúng sự thiếu ràng buộc, nhưng không được học rằng thành phần 'dọc theo biên' là thành phần đo được. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 13-14.
 
 </details>
 
@@ -10254,7 +10254,7 @@ Lucas-Kanade method giải quyết aperture problem như thế nào?
 
 **Đáp án:** B. Giả thiết flow đều trong một cửa sổ nhỏ → overdetermined system → least squares
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Lucas-Kanade giả định các pixel trong cửa sổ nhỏ có cùng vector dịch chuyển, nên mỗi pixel góp một phương trình cho cùng hai ẩn u,v. Gom chúng tạo hệ thường thừa phương trình và giải bình phương tối thiểu, đúng với B. Tuy nhiên nhiều phương trình chưa bảo đảm đủ thông tin: nếu gradient đều nhỏ hoặc chỉ có một hướng, ma trận hệ vẫn suy biến hoặc kém điều kiện, nên cần vùng có biến thiên mạnh theo các hướng độc lập. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 16-19.
 
 </details>
 
@@ -10273,7 +10273,7 @@ Horn-Schunck method khác Lucas-Kanade ở điểm nào?
 
 **Đáp án:** B. Horn-Schunck thêm ràng buộc smooth toàn cục → dense flow; LK dùng local window
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Horn-Schunck tối ưu một hàm mục tiêu toàn ảnh kết hợp brightness constancy với phạt biến thiên của trường flow, nên thông tin được liên kết qua các pixel và tạo ước lượng dense. Lucas-Kanade thay vào đó gom các phương trình trong cửa sổ cục bộ và giả định một chuyển động chung ở cửa sổ ấy, nên B nêu đúng khác biệt ràng buộc. Không nên coi sparse là thuộc tính bắt buộc của mọi LK: có thể áp dụng cách giải cục bộ ở nhiều vị trí để tạo trường dày, dù KLT thông dụng chỉ theo dõi các điểm chọn trước. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 15-23, 35-36.
 
 </details>
 
@@ -10292,7 +10292,7 @@ Dense optical flow khác Sparse optical flow ở điểm nào?
 
 **Đáp án:** B. Dense tính flow cho tất cả pixel; Sparse chỉ tính tại các keypoints/đặc điểm nổi bật
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Dense flow cung cấp vector chuyển động cho lưới pixel của ảnh, trong khi sparse flow chỉ ước lượng ở một tập vị trí được chọn, thường là keypoints dễ theo dõi. B phân biệt đúng mức độ phủ không gian của đầu ra, không phải chất lượng tuyệt đối hay tốc độ cố định. Dense cần xử lý cả những vùng nghèo texture và thường phải thêm ràng buộc, còn sparse có thể bỏ qua chúng nhưng không mô tả đầy đủ chuyển động của mọi pixel. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 8, 15, 30, 35-36.
 
 </details>
 
@@ -10311,7 +10311,7 @@ Image pyramid dùng để giải quyết vấn đề gì trong optical flow?
 
 **Đáp án:** B. Large motion: coarse-to-fine approach, ước lượng rough flow ở resolution thấp rồi refine
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi giảm độ phân giải, cùng một dịch chuyển vật lý chiếm ít pixel hơn, chẳng hạn 10 pixel ở ảnh gốc còn 1,25 pixel sau ba lần giảm một nửa. Có thể ước lượng chuyển động trên mức thô rồi truyền lên mức mịn để xử lý phần sai lệch còn lại, nên B giải thích cách vượt giới hạn small motion. Pyramid không tự sửa thay đổi chiếu sáng hay mọi biến dạng, và các đối tượng quá nhỏ có thể mất ở mức thô, khiến cách này vẫn có giới hạn. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 26-28.
 
 </details>
 
@@ -10330,7 +10330,7 @@ Trong coarse-to-fine optical flow, thứ tự xử lý là gì?
 
 **Đáp án:** B. Coarse → Fine (từ resolution thấp đến cao, warp ảnh và tính residual flow)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Coarse-to-fine bắt đầu ở mức ảnh độ phân giải thấp, nơi dịch chuyển tính bằng pixel nhỏ hơn và dễ ước lượng. Flow được nội suy, đổi thang phù hợp rồi dùng để warp ảnh ở mức kế tiếp; thuật toán tính residual flow để bổ sung vào dự đoán hiện có, đúng với B. Đi từ fine sang coarse không giải quyết cùng vấn đề tuyến tính hóa ban đầu, và chỉ phóng flow lên mà không tinh chỉnh sẽ bỏ qua chi tiết chuyển động ở độ phân giải cao. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 27-28.
 
 </details>
 
@@ -10349,7 +10349,7 @@ Nguồn PDF: trang 74
 
 **Đáp án:** A. Ước lượng cấu trúc 3D; B. Phân đoạn đối tượng theo chuyển động; C. Video stabilization; D. Nhận dạng hoạt động (action recognition)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Chuyển động ảnh cung cấp correspondence qua thời gian để hỗ trợ suy ra cấu trúc 3D, gom vùng có chuyển động nhất quán, ước lượng rung camera và mô tả hoạt động. Vì vậy cả A, B, C và D là ứng dụng được nêu trong slide. Optical flow không tự cho nghiệm 3D duy nhất nếu thiếu thông tin camera và ràng buộc hình học; nó cũng không tự nhận dạng nhãn hành động, mà là tín hiệu đầu vào cho các bước mô hình hóa và phân tích tiếp theo. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 4-7, 29.
 
 </details>
 
@@ -10368,7 +10368,7 @@ Feature-based tracking (theo dõi dựa trên đặc điểm) hoạt động nh�
 
 **Đáp án:** B. Extract keypoints (Harris, SIFT) từ frame đầu → track qua các frames sau bằng optical flow/matching
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Feature-based tracking chọn các điểm có cấu trúc rõ trong frame rồi tìm vị trí tương ứng của chúng ở các frames tiếp theo bằng flow hoặc matching. Nối các correspondence theo thời gian tạo quỹ đạo điểm, nên B mô tả đúng nguyên lý thay vì theo dõi toàn bộ ảnh như một phần tử duy nhất. Việc chỉ trích điểm ở frame đầu không đủ cho video dài: slide còn nêu bổ sung điểm mới và loại điểm mất dấu khi điểm xuất hiện, biến đổi hoặc bị che khuất. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 30, 34-36.
 
 </details>
 
@@ -10387,7 +10387,7 @@ Background subtraction dùng để làm gì trong video?
 
 **Đáp án:** B. Phát hiện vùng foreground (chuyển động) bằng cách trừ frame hiện tại với background model
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Background subtraction so sánh frame hiện tại với mô hình nền và dùng mức khác biệt để tạo mặt nạ foreground, thường bằng ngưỡng trên trị tuyệt đối sai khác. B đúng về mục tiêu phát hiện vùng không phù hợp với nền, chứ không phải làm mờ hoặc nén video. Foreground không đồng nghĩa tuyệt đối với vật đang chuyển động: một vật mới đứng yên vẫn có thể khác nền, còn mô hình thích nghi có thể dần hấp thụ nó; camera tĩnh là điều kiện thuận lợi cho cách đơn giản. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 46-51.
 
 </details>
 
@@ -10406,7 +10406,7 @@ Thách thức của background subtraction là gì? (Chọn tất cả đúng)
 
 **Đáp án:** A. Thay đổi chiếu sáng; B. Camera rung (jitter); C. Nền động (swaying trees, water); D. Bóng đổ (shadows)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Đổi chiếu sáng làm cường độ nền khác mô hình dù không có vật mới, còn camera rung làm nền lệch vị trí nên tạo sai khác trên nhiều pixel. Cây rung hoặc mặt nước tạo nền nhiều trạng thái, trong khi bóng đổ thay đổi sáng của vùng nền và có thể bị nhầm là foreground. Cả A, B, C và D vì thế đều gây khó khăn; một ngưỡng sai khác toàn cục không tự phân biệt nguyên nhân của thay đổi. *Kiến thức bổ sung (slide chưa phân tích đầy đủ bốn trường hợp này).*
 
 </details>
 
@@ -10425,7 +10425,7 @@ Kalman Filter dùng để làm gì trong tracking?
 
 **Đáp án:** B. Dự đoán vị trí đối tượng tiếp theo và cập nhật dự đoán khi có observation mới
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Kalman filter dùng mô hình động học để dự đoán trạng thái, chẳng hạn vị trí và vận tốc, rồi hiệu chỉnh dự đoán khi nhận đo đạc mới. Nó kết hợp độ bất định của dự đoán và phép đo, nên B đúng về vai trò trong tracking; bộ lọc không tự phát hiện hay nhận dạng vật từ pixel. Kalman tuyến tính chuẩn giả định mô hình tuyến tính và nhiễu Gaussian, còn việc gán detection nào cho track vẫn là bài toán riêng. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 38. *Kiến thức bổ sung về prediction/correction:* [OpenCV, KalmanFilter](https://docs.opencv.org/4.x/dd/d6a/classcv_1_1KalmanFilter.html).
 
 </details>
 
@@ -10444,7 +10444,7 @@ Kalman Filter gồm hai bước chính là gì?
 
 **Đáp án:** B. Prediction (dự đoán trạng thái tiếp theo) và Update/Correction (cập nhật với measurement mới)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Prediction truyền trạng thái và covariance qua mô hình chuyển động để ước lượng tình trạng ở thời điểm kế tiếp. Update/correction dùng measurement mới và phần sai lệch so với dự đoán để hiệu chỉnh trạng thái theo Kalman gain, đồng thời cập nhật covariance. B nêu đúng hai bước lặp; nếu tạm thiếu measurement vẫn có thể dự đoán, nhưng độ bất định thường tăng, không phải đã quan sát chắc chắn được đối tượng. *Kiến thức bổ sung (slide chỉ giới thiệu mô hình Kalman).* Tham khảo: [OpenCV, predict và correct](https://docs.opencv.org/4.x/dd/d6a/classcv_1_1KalmanFilter.html).
 
 </details>
 
@@ -10463,7 +10463,7 @@ Mean Shift tracking dùng gì để biểu diễn đối tượng?
 
 **Đáp án:** B. Histogram màu của vùng đối tượng
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong ví dụ mean-shift tracking của slide, vùng đối tượng được lượng tử hóa màu và biểu diễn bằng histogram phân bố màu tham chiếu. Ở frame tiếp theo, thuật toán dịch cửa sổ tìm vùng có phân bố tương đồng với mô hình đó, nên B đúng với cách biểu diễn được hỏi. Histogram màu không phải lựa chọn duy nhất của mean shift: slide nêu cả texture hoặc tổ hợp đặc trưng, còn bounding box chỉ xác định vùng lấy mẫu chứ không tự mô tả appearance. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 39-42.
 
 </details>
 
@@ -10482,7 +10482,7 @@ Particle Filter khác Kalman Filter ở điểm nào?
 
 **Đáp án:** B. Particle Filter dùng particles (mẫu ngẫu nhiên) để xấp xỉ phân phối, xử lý được nonlinear và non-Gaussian
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Particle filter biểu diễn phân bố trạng thái bằng tập mẫu có trọng số, rồi lan truyền và cập nhật trọng số theo mô hình cùng quan sát. Nó không bắt buộc phân bố phải Gaussian hay động học phải tuyến tính như Kalman chuẩn, nên B đúng về khả năng xử lý mô hình tổng quát hơn. Đây vẫn là xấp xỉ Monte Carlo: số particles, cách lấy mẫu và hiện tượng suy giảm trọng số ảnh hưởng chất lượng, không bảo đảm luôn chính xác hoặc nhanh hơn Kalman. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [Doucet và Johansen, Particle Filtering and Smoothing](https://www.stats.ox.ac.uk/~doucet/doucet_johansen_tutorialPF2011.pdf).
 
 </details>
 
@@ -10501,7 +10501,7 @@ Motion field là gì?
 
 **Đáp án:** B. Chiếu của chuyển động 3D thực trong cảnh lên mặt phẳng ảnh 2D
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một điểm vật lý trong cảnh có vận tốc tương đối với camera, và phép chiếu biến vận tốc đó thành vector trên mặt phẳng ảnh. Tập các vector chiếu tạo motion field nên chọn B, không phải histogram hoặc phổ tần số. Trường này phụ thuộc hình học và độ sâu: với thành phần tịnh tiến camera, các điểm gần thường có chuyển động ảnh lớn hơn điểm xa; optical flow chỉ trùng motion field khi mẫu sáng cung cấp correspondence phù hợp. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 6-9.
 
 </details>
 
@@ -10520,7 +10520,7 @@ Tại sao optical flow ≠ motion field trong thực tế?
 
 **Đáp án:** B. Vì thay đổi chiếu sáng (không phải chuyển động) cũng tạo ra optical flow (VD: quả cầu xoay đồng nhất)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Optical flow đo chuyển động của mẫu sáng nên ánh sáng di chuyển có thể tạo apparent motion trên một vật đứng yên. Ngược lại, quả cầu đồng nhất xoay dưới nguồn sáng cố định có motion field do bề mặt chuyển động nhưng mẫu sáng có thể giữ nguyên, tạo rất ít hoặc không có optical flow. **Lưu ý:** B đúng về khả năng hai trường khác nhau, nhưng ví dụ 'quả cầu xoay đồng nhất' trong ngoặc minh họa trường hợp thứ hai, không trực tiếp minh họa thay đổi chiếu sáng gây flow khi không chuyển động. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 7, 9.
 
 </details>
 
@@ -10539,7 +10539,7 @@ GMM (Gaussian Mixture Model) trong background subtraction dùng để làm gì?
 
 **Đáp án:** B. Mô hình hóa background có thể thay đổi theo thời gian bằng mixture of Gaussians
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một pixel nền có thể xuất hiện ở nhiều mức sáng thường gặp, chẳng hạn do các trạng thái nền thay đổi, nên một Gaussian duy nhất có thể chưa đủ mô tả. GMM dùng nhiều thành phần Gaussian và cập nhật tham số theo thời gian để biểu diễn những trạng thái đó, đúng với B. Khi frame mới không phù hợp các thành phần được xem là nền, pixel trở thành ứng viên foreground; cách chọn thành phần và tốc độ cập nhật ảnh hưởng việc hấp thụ vật đứng yên hoặc phản ứng với nền thay đổi. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 50-51.
 
 </details>
 
@@ -10558,7 +10558,7 @@ Nguồn PDF: trang 75
 
 **Đáp án:** A. Dùng Lucas-Kanade optical flow để track Harris/Shi-Tomasi corners qua frames
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** KLT chọn các điểm dễ theo dõi rồi dùng Lucas-Kanade để ước lượng dịch chuyển của vùng quanh mỗi điểm giữa frames. Ghép các vị trí kế tiếp tạo quỹ đạo, và có thể bổ sung keypoints mới theo chu kỳ khi các điểm cũ mất dấu, nên A là mô tả đúng. Slide dùng Harris, còn lựa chọn Shi-Tomasi cũng dựa trên chất lượng ma trận gradient; đây là tracking đặc trưng cổ điển, không phải mạng học sâu hay thuật toán mặc định theo dõi mọi pixel. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 17-19, 34-36.
 
 </details>
 
@@ -10577,7 +10577,7 @@ Optical flow của camera đang zoom in (các điểm di chuyển ra xa tâm ả
 
 **Đáp án:** B. Expansion flow (diverging pattern)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Zoom in quanh tâm phóng ảnh làm khoảng cách từ nhiều điểm tới tâm tăng, nên các vector chuyển động hướng ra ngoài tạo mẫu phân kỳ hoặc expansion. B đúng với hướng chuyển động được mô tả; zoom out cho mẫu hướng vào tâm, còn quay tạo mẫu khác với radial expansion. Tâm của mẫu phụ thuộc tâm zoom hoặc tâm quang học và không nhất thiết đúng giữa ảnh; chuyển động tiến của camera cũng có thể tạo expansion nên mẫu flow không tự chứng minh nguồn gốc là zoom. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 7-8.
 
 </details>
 
@@ -10596,7 +10596,7 @@ Nguồn PDF: trang 75
 
 **Đáp án:** B. Cần cơ chế xử lý: dự đoán (Kalman), re-detection sau khi xuất hiện lại
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi đối tượng bị che khuất, ảnh có thể không còn cung cấp measurement đủ tin cậy để cập nhật vị trí hoặc appearance. Có thể tiếp tục dự đoán trong một khoảng thời gian bằng mô hình động học rồi tìm lại đối tượng và kiểm tra danh tính khi nó xuất hiện, nên B là hướng xử lý phù hợp. Dự đoán không thay thế được quan sát thật mãi mãi: che khuất lâu làm bất định tăng và dễ nhầm sang vật khác, vì vậy không được khẳng định tracking luôn thành công hoặc luôn thất bại ngay khi có occlusion. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 34, 38. *Kiến thức bổ sung về xử lý mất quan sát và tìm lại đối tượng.*
 
 </details>
 
@@ -10615,7 +10615,7 @@ Farnebäck algorithm là gì?
 
 **Đáp án:** B. Thuật toán dense optical flow dựa trên polynomial expansion
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Farnebäck xấp xỉ lân cận ảnh bằng các đa thức để suy ra dịch chuyển từ sự thay đổi của các hệ số giữa hai frames. Thuật toán tạo trường flow dày với vector ở các vị trí ảnh, nên B đúng về cả loại đầu ra và nguyên lý polynomial expansion. Nó không phải bộ phát hiện biên hay bộ nhận dạng đối tượng; chất lượng còn tùy cấu trúc ảnh, chuyển động, cửa sổ và pyramid, không có bảo đảm luôn phục hồi chuyển động thật. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [OpenCV, dense optical flow theo Farnebäck](https://docs.opencv.org/4.x/d4/dee/tutorial_optical_flow.html).
 
 </details>
 
@@ -10634,7 +10634,7 @@ Template matching tracking (template-based tracking) hoạt động như thế n
 
 **Đáp án:** B. Dùng SSD/NCC để tìm vùng ảnh frame tiếp theo giống nhất với template (patch từ frame trước)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Template-based tracking giữ một patch của đối tượng rồi đánh giá các patch ứng viên ở frame tiếp theo để tìm vị trí tương tự nhất. Với SSD, chọn tổng bình phương sai khác nhỏ nhất; với normalized cross-correlation, chọn tương quan chuẩn hóa lớn nhất, nên B đúng về cách tìm vị trí. Cửa sổ tìm kiếm và cách cập nhật template ảnh hưởng tốc độ cũng như drift; nếu appearance, scale hoặc góc nhìn đổi mạnh thì chỉ so patch theo phép tịnh tiến có thể thất bại. *Kiến thức bổ sung (slide chưa trình bày riêng SSD/NCC trong template tracking).*
 
 </details>
 
@@ -10653,7 +10653,7 @@ Nguồn PDF: trang 76
 
 **Đáp án:** B. cv2.calcOpticalFlowPyrLK dùng pyramid LK cho sparse tracking
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hàm `cv2.calcOpticalFlowPyrLK` nhận các điểm ở frame trước và dùng Lucas-Kanade theo pyramid để ước lượng vị trí tương ứng ở frame sau. Nó là sparse tracking trên tập điểm cung cấp, có thể xử lý nhiều điểm trong một lần gọi nên B đúng còn C và D sai. Cần kiểm tra status và chất lượng hoặc consistency của các điểm trả về; một tọa độ đầu ra chưa bảo đảm điểm vật lý vẫn còn nhìn thấy hoặc đã được theo dõi chính xác. *Kiến thức bổ sung về API (slide chỉ nhắc OpenCV).* Tham khảo: [OpenCV, Lucas-Kanade optical flow](https://docs.opencv.org/4.x/d4/dee/tutorial_optical_flow.html).
 
 </details>
 
@@ -10672,7 +10672,7 @@ Nguồn PDF: trang 76
 
 **Đáp án:** B. Background model được cập nhật dần theo thời gian để thích nghi với thay đổi chậm
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mô hình nền thích nghi cập nhật các thống kê bằng dữ liệu theo thời gian để theo kịp những thay đổi chậm của cảnh. B vì vậy khác mô hình lấy một ảnh cố định làm nền và không bao giờ thay đổi. Tốc độ cập nhật là một đánh đổi: quá chậm dễ báo foreground do nền đổi, quá nhanh có thể đưa vật vừa xuất hiện hoặc đứng lâu vào nền; không phải mọi pixel của frame mới đều cần được xem là nền ngay lập tức. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 50-51.
 
 </details>
 
@@ -10691,7 +10691,7 @@ DeepSORT là phương pháp tracking nào?
 
 **Đáp án:** B. Kết hợp SORT (Kalman + Hungarian) với deep appearance features cho re- identification
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** DeepSORT bổ sung descriptor appearance học bằng mạng sâu vào khung tracking của SORT để hỗ trợ ghép detection với track. Thông tin appearance giúp phân biệt các đối tượng có vị trí gần nhau và giảm đổi ID khi che khuất, trong khi Kalman vẫn mô hình hóa chuyển động và cơ chế assignment vẫn được sử dụng, nên B đúng. Đây không phải optical flow thuần hoặc một mạng loại bỏ hoàn toàn mô hình động học; appearance cũng không bảo đảm tìm lại đúng danh tính trong mọi tình huống. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [Wojke và cộng sự, DeepSORT](https://arxiv.org/abs/1703.07402).
 
 </details>
 
@@ -10710,7 +10710,7 @@ Nguồn PDF: trang 76
 
 **Đáp án:** B. Kết hợp Kalman filter (prediction) và Hungarian algorithm (assignment) cho multi-object tracking
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** SORT dự đoán trạng thái các bounding boxes bằng Kalman filter rồi ghép các detections mới với các tracks dựa trên bài toán assignment, dùng Hungarian algorithm. B mô tả đúng cấu trúc tracking nhiều đối tượng; detector cung cấp các boxes là một thành phần đầu vào riêng. SORT nguyên gốc chủ yếu dựa vào chuyển động và hình học boxes, không dùng deep appearance descriptor như DeepSORT, nên chất lượng detection và che khuất có thể ảnh hưởng mạnh việc giữ ID. *Kiến thức bổ sung (slide chỉ giới thiệu Kalman và assignment, không trình bày SORT).* Tham khảo: [Bewley và cộng sự, Simple Online and Realtime Tracking](https://arxiv.org/abs/1602.00763).
 
 </details>
 
@@ -10729,7 +10729,7 @@ Nguồn PDF: trang 76
 
 **Đáp án:** B. Phân tích temporal pattern của optical flow, skeleton, hoặc video frames để nhận dạng hoạt động
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hoạt động thường được phân biệt bởi cách tư thế, hình dạng hoặc chuyển động thay đổi theo thời gian, không chỉ bởi một ảnh tĩnh. Có thể dùng chuỗi frames, optical flow hoặc tọa độ skeleton để biểu diễn mẫu diễn tiến rồi phân loại hành động, nên B phù hợp. Đây là những lựa chọn tín hiệu chứ không phải mọi hệ thống đều phải dùng cả ba; flow không mang sẵn nhãn hành động và audio có thể bổ sung nhưng không phải nguồn bắt buộc duy nhất. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 4, 6. *Kiến thức bổ sung về biểu diễn skeleton.*
 
 </details>
 
@@ -10748,7 +10748,7 @@ Nguồn PDF: trang 76
 
 **Đáp án:** B. Camera chuyển động tạo ra optical flow toàn cục (global motion) ngay cả khi cảnh tĩnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Khi camera đổi vị trí hoặc hướng, phép chiếu của các điểm trong một cảnh tĩnh cũng đổi, tạo trường chuyển động ảnh trên nhiều vùng. B vì thế đúng về global motion, nhưng 'toàn cục' không có nghĩa mọi pixel có cùng vector: tịnh tiến tạo parallax phụ thuộc độ sâu, quay hoặc zoom tạo mẫu khác nhau. Cảnh đứng yên không loại optical flow do camera, và muốn tìm chuyển động riêng của vật thường cần phân biệt nó với thành phần chuyển động nền do camera. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 6-9.
 
 </details>
 
@@ -10767,7 +10767,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** B. Hoạt động tốt với small motion và textured regions (không phải vùng đồng nhất)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Lucas-Kanade tuyến tính hóa thay đổi cường độ, nên cần dịch chuyển đủ nhỏ để xấp xỉ tốt và vùng có gradient theo nhiều hướng để hệ dễ giải. Vùng có texture hoặc góc phù hợp thường cho hai trị riêng đủ lớn, còn vùng đồng nhất không cung cấp thông tin và cạnh đơn gây aperture problem. B đúng về điều kiện thuận lợi, nhưng 'textured' không tự bảo đảm tốt nếu texture lặp gây mơ hồ, và pyramid chỉ mở rộng phạm vi chuyển động chứ không xóa các giả thiết của LK. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 10-11, 16-19, 27-28.
 
 </details>
 
@@ -10786,7 +10786,7 @@ Trong video surveillance, "object detection + tracking" pipeline thường gồm
 
 **Đáp án:** B. Detect objects (YOLO/SSD) → Associate detections across frames (tracking)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong tracking-by-detection, detector như YOLO hoặc SSD tạo vị trí đối tượng ở từng frame, rồi bộ tracking liên kết các detections theo thời gian để duy trì quỹ đạo và ID. B nêu đúng thứ tự chức năng; detection đơn lẻ không biết một box hiện tại tương ứng với box nào ở frame trước. Bộ tracking thường thêm prediction, gating và xử lý track mới hoặc mất dấu; đây là một pipeline phổ biến, không có nghĩa mọi tracker đều bắt buộc dùng detector YOLO/SSD. *Kiến thức bổ sung (slide chưa trình bày riêng pipeline YOLO/SSD kết hợp tracking).*
 
 </details>
 
@@ -10805,7 +10805,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** B. Chọn corners có eigenvalue nhỏ nhất của structure matrix lớn → "good features to track"
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ma trận cấu trúc trong LK cần có đủ thông tin theo hai hướng để ước lượng cả u và v ổn định. Yêu cầu trị riêng nhỏ nhất đủ lớn bảo đảm không có một hướng gần như thiếu biến thiên, nên B diễn đạt tiêu chí 'good features to track' của Shi-Tomasi. Nếu chỉ trị riêng lớn nhất lớn thì điểm có thể nằm trên cạnh và vẫn khó xác định chuyển động dọc cạnh; tiêu chí chọn điểm không phụ thuộc riêng vào độ sáng tuyệt đối. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 17-19, 34, 36.
 
 </details>
 
@@ -10824,7 +10824,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** B. Tính flow ở Gaussian pyramid từ coarse đến fine level; xử lý được motion lớn hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Pyramidal LK chạy ở mức Gaussian pyramid thô trước để giảm độ lớn dịch chuyển tính bằng pixel, rồi đưa dự đoán lên các mức mịn để tinh chỉnh. B đúng về việc xử lý chuyển động lớn hơn LK một mức; khi lên mức có kích thước gấp đôi cần đổi thang vector flow tương ứng chứ không chỉ sao chép tọa độ. Các mức thô vẫn cần giữ cấu trúc đủ tốt để matching, nên tăng số level không bảo đảm luôn chính xác hơn nếu đối tượng nhỏ hoặc chi tiết bị làm mất. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 26-28.
 
 </details>
 
@@ -10843,7 +10843,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** B. MOSSE, CSK, KCF dùng correlation filter trong Fourier domain để tracking nhanh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** MOSSE và các correlation trackers như CSK, KCF khai thác tính toán trong miền Fourier để đánh giá nhiều dịch chuyển của vùng tìm kiếm hiệu quả. Với KCF, cấu trúc circulant của các mẫu dịch cho phép đơn giản hóa bằng DFT, nên B nêu đúng cơ sở tracking nhanh. Correlation filter học hoặc cập nhật đáp ứng phân biệt mục tiêu với nền, không chỉ theo dõi một màu; tốc độ nhanh không bảo đảm tránh drift khi đối tượng bị che khuất hoặc appearance đổi mạnh. *Kiến thức bổ sung (slide chỉ liệt kê KCF).* Tham khảo: [Henriques và cộng sự, Kernelized Correlation Filters](https://arxiv.org/abs/1404.7584).
 
 </details>
 
@@ -10862,7 +10862,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** A. Dùng 2 identical networks để so sánh template với search region
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Siamese tracker điển hình có hai nhánh dùng chung trọng số để trích đặc trưng của template mục tiêu và vùng tìm kiếm. So sánh hoặc cross-correlate hai biểu diễn tạo bản đồ độ tương đồng giúp chọn vị trí mục tiêu, nên A đúng nếu 'identical' hiểu là cùng cấu trúc và chia sẻ tham số. Hai nhánh nhận đầu vào khác nhau, không phải hai mạng độc lập học hai bộ trọng số bất kỳ; phương pháp thuộc deep learning và không bị giới hạn ở khuôn mặt. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [Bertinetto và cộng sự, Fully-Convolutional Siamese Networks for Object Tracking](https://arxiv.org/abs/1606.09549).
 
 </details>
 
@@ -10881,7 +10881,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** B. Kết hợp optical flow, semantic segmentation, và object detection
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một pipeline phân tích video giao thông có thể dùng semantic segmentation để gán lớp cho pixel, detection để định vị đối tượng và optical flow để liên kết hoặc mô tả biến đổi giữa frames. B nêu cách kết hợp thông tin ngữ nghĩa, đối tượng và thời gian, phong phú hơn chỉ trừ nền. Đây là một kiến trúc khả dĩ chứ không phải yêu cầu bắt buộc của mọi xe tự lái; background subtraction đơn giản đặc biệt khó dùng khi camera di chuyển, và vẫn cần mô hình phù hợp cho từng thành phần. *Kiến thức bổ sung (slide chưa trình bày kiến trúc cụ thể cho ô tô tự lái).*
 
 </details>
 
@@ -10900,7 +10900,7 @@ Nguồn PDF: trang 77
 
 **Đáp án:** B. Track nhiều đối tượng đồng thời; cần giải bài toán data association (gán track cho detection)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** MOT cần duy trì đồng thời nhiều quỹ đạo và danh tính, nên phải quyết định quan sát nào ở frame mới thuộc track nào. B mô tả đúng bài toán data association trong khung tracking-by-detection, khác chỉ định vị một đối tượng duy nhất. Giao nhau, che khuất, detection thiếu hoặc mới xuất hiện làm assignment khó và có thể gây đổi ID; detector riêng không phải thành phần bắt buộc của mọi mô hình MOT, nhưng yêu cầu liên kết danh tính qua thời gian vẫn còn. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 32, 43-44.
 
 </details>
 
@@ -10919,7 +10919,7 @@ Hungarian Algorithm trong MOT dùng để làm gì?
 
 **Đáp án:** B. Gán (assign) detections cho tracks hiện tại theo cách tối ưu (minimum cost assignment)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với ma trận cost giữa các tracks và detections, Hungarian giải bài toán gán một-một để tối thiểu tổng cost theo các ràng buộc đã đặt. B đúng về chức năng ghép cặp tối ưu, còn Kalman hoặc detector mới làm các phần dự đoán và phát hiện. Kết quả chỉ tối ưu đối với cost hiện tại, không chứng minh các ID đúng về vật lý; còn cần loại cặp không hợp lệ, xử lý các phần tử không được gán và các track mới hoặc mất dấu. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 43-44.
 
 </details>
 
@@ -10938,7 +10938,7 @@ Nguồn PDF: trang 78
 
 **Đáp án:** B. Long-term phải xử lý occlusion, out-of-view, và re-identification
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Long-term tracking phải duy trì hoặc phục hồi danh tính khi mục tiêu có thể bị che khuất lâu, rời khung hình rồi xuất hiện lại. B nêu những yêu cầu vượt quá việc cập nhật vị trí liên tục trong một vùng tìm kiếm nhỏ; thường cần cơ chế đánh giá mất dấu và tìm lại mục tiêu. Short-term tracking vẫn có thể gặp che khuất, nhưng không nên xem tăng số frames là đủ biến một tracker thành long-term nếu không có khả năng phục hồi; re-identification cũng khó khi có vật khác giống mục tiêu. *Kiến thức bổ sung (slide chưa định nghĩa riêng long-term và short-term tracking).*
 
 </details>
 
@@ -10957,7 +10957,7 @@ Video optical flow có ứng dụng trong compression không?
 
 **Đáp án:** B. Có, motion compensation trong video codecs (H.264, HEVC) dùng optical flow để dự đoán frame
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** **Lưu ý: B đúng về ứng dụng dự đoán bù chuyển động, nhưng không chính xác khi nói H.264/HEVC dùng optical flow như một yêu cầu chung.** Các codec này mã hóa dự đoán liên ảnh bằng vector chuyển động cho các khối hoặc vùng dự đoán; motion estimation của encoder không nhất thiết là dense optical flow và không bắt buộc phục hồi chuyển động vật lý. Optical flow có thể hỗ trợ những phương pháp dự đoán video, nhưng cần phân biệt nó với cơ chế motion-compensated prediction của codec; lợi ích là giảm phần sai khác cần mã hóa, không phải tự động tăng kích thước file. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [Sullivan và Wiegand về dự đoán chuyển động trong mã hóa video](https://www.microsoft.com/en-us/research/publication/video-compression-from-concepts-to-the-h-264-avc-standard/).
 
 </details>
 
@@ -10976,7 +10976,7 @@ Nguồn PDF: trang 78
 
 **Đáp án:** B. Ước lượng global motion (camera shake) và bù lại để tạo video mượt mà
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Từ các correspondence hoặc flow giữa frames, có thể ước lượng chuyển động camera được nhiều điểm nền hỗ trợ rồi làm mượt quỹ đạo camera. Warp bù lại phần rung không mong muốn giúp video ổn định hơn, nên B đúng về cơ chế chứ không phải chỉ giảm frame rate hoặc cắt thời lượng. Cần tránh để chuyển động riêng của vật chi phối mô hình global motion; việc bù ảnh cũng có thể tạo vùng trống ở mép và đòi hỏi crop, nên không bảo đảm giữ nguyên toàn bộ khung hình. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 4, 7-8. *Kiến thức bổ sung về quy trình ước lượng và bù rung.*
 
 </details>
 
@@ -10995,7 +10995,7 @@ Optical flow được tính dựa trên bao nhiêu giả thiết cơ bản?
 
 **Đáp án:** B. 2: Brightness constancy và Small motion
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hai giả thiết được dùng để dẫn ra phương trình differential optical flow trong slide là brightness constancy và small motion. Giả thiết thứ nhất liên kết cường độ của điểm tương ứng, còn giả thiết thứ hai cho phép tuyến tính hóa bằng Taylor bậc một, nên B đúng trong ngữ cảnh bài học. Đây không phải số lượng giả thiết cố định cho mọi thuật toán optical flow: LK còn thêm tính đồng nhất chuyển động trong cửa sổ, Horn-Schunck thêm smoothness, và các phương pháp khác có thể dùng mô hình appearance khác. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 9-11, 15-16, 20.
 
 </details>
 
@@ -11014,7 +11014,7 @@ Nguồn PDF: trang 78
 
 **Đáp án:** B. Event cameras ghi nhận thay đổi intensity theo từng pixel (asynchronous), phù hợp cho fast motion flow
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Event camera phát sự kiện bất đồng bộ tại từng pixel khi độ sáng log thay đổi đủ vượt ngưỡng, thường kèm tọa độ, thời gian và polarity. Không phải chờ lấy một frame đồng thời cho toàn ảnh, nên độ phân giải thời gian cao có ích cho chuyển động nhanh và ước lượng flow, tương ứng B. Nó đo thay đổi chứ không trực tiếp xuất ảnh cường độ đầy đủ hoặc vector flow; cần thuật toán suy ra chuyển động từ events, và nền không biến thiên có thể không tạo sự kiện. *Kiến thức bổ sung (không có tham chiếu trong slide).* Tham khảo: [Gallego và cộng sự, Event-based Vision: A Survey](https://arxiv.org/abs/1904.08405).
 
 </details>
 
@@ -11033,7 +11033,7 @@ Nguồn PDF: trang 78
 
 **Đáp án:** B. α lớn → flow mượt hơn nhưng kém chính xác tại biên; α nhỏ → flow chi tiết hơn nhưng noisier
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Nếu viết mục tiêu Horn-Schunck theo dạng E=E_data+α²E_smooth, tăng α làm phạt biến thiên flow mạnh hơn, nên trường mượt hơn nhưng có thể bị làm nhòe qua ranh giới chuyển động; giảm α cho dữ liệu chi phối hơn và có thể tăng nhiễu. B đúng theo quy ước này, không có giá trị α=1 bắt buộc cho mọi ảnh. **Lưu ý về ký hiệu:** slide dùng E=E_smooth+λE_data, nên tăng λ có xu hướng ngược với tăng α nói trên; phải xem tham số nhân số hạng nào, không học hướng ảnh hưởng chỉ từ tên chữ cái. Tham chiếu: `IT5409 L6-Motion.pdf`, trang 20-25.
 
 </details>
 
@@ -11052,7 +11052,7 @@ Nguồn PDF: trang 79
 
 **Đáp án:** B. Two-stream networks: 1 stream xử lý RGB frames, 1 stream xử lý stacked optical flow
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Two-stream network cổ điển có spatial stream xử lý RGB để lấy appearance của cảnh và temporal stream xử lý các trường optical flow xếp chồng qua nhiều thời điểm để lấy mẫu chuyển động. Hai nguồn thông tin được kết hợp khi phân loại hành động, nên B đúng về kiến trúc được hỏi. Stacked flow thường gồm cả thành phần ngang và dọc qua các cặp frames, không phải thêm audio hay chỉ một ảnh RGB; đây là một thiết kế cụ thể, không có nghĩa mọi mạng nhận dạng hành động đều bắt buộc hai stream. *Kiến thức bổ sung (slide nêu ứng dụng nhưng không mô tả two-stream networks).* Tham khảo: [Simonyan và Zisserman, Two-Stream Convolutional Networks](https://arxiv.org/abs/1406.2199).
 
 </details>
 
@@ -11074,7 +11074,7 @@ Deep Learning khác Traditional Machine Learning ở điểm gì?
 
 **Đáp án:** B. Deep Learning học tự động đặc trưng từ dữ liệu thô; TML cần hand-crafted features
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide minh họa việc đi từ cạnh ảnh đến hình dạng, bộ phận và đối tượng bằng các tầng xử lý liên tiếp; các bộ lọc được học từ dữ liệu thay vì phải thiết kế từng mô tả thủ công như HOG/SIFT. Vì vậy B nêu đúng khác biệt điển hình giữa deep learning và pipeline trích đặc trưng truyền thống, chứ không phải khác biệt về việc có dùng dữ liệu hay không. Không nên hiểu rằng mọi phương pháp machine learning truyền thống đều bắt buộc dùng đặc trưng thủ công. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 42–46.
 
 </details>
 
@@ -11093,7 +11093,7 @@ CNN (Convolutional Neural Network) phù hợp với xử lý ảnh vì lý do g�
 
 **Đáp án:** B. Khai thác tính local và translational equivariance của ảnh; parameter sharing giảm số tham số
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mỗi neuron tích chập chỉ kết nối với một vùng cục bộ, còn cùng một bộ trọng số được dùng tại nhiều vị trí của ảnh, nên mô hình tận dụng cấu trúc không gian và giảm số tham số. Khi ảnh dịch chuyển, bản đồ đặc trưng có xu hướng dịch chuyển tương ứng: đó là tính equivariant, không phải đầu ra luôn giữ nguyên. B phù hợp với hai nguyên tắc kết nối cục bộ và chia sẻ trọng số trong slide; stride và xử lý biên có thể làm tính equivariant không còn chính xác tuyệt đối. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 59–64.
 
 </details>
 
@@ -11112,7 +11112,7 @@ Convolution layer trong CNN thực hiện điều gì?
 
 **Đáp án:** B. Tích chập input với learnable filters → tạo feature maps
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một bộ lọc lấy tổ hợp có trọng số của các điểm trong vùng ảnh cục bộ, cộng đóng góp từ các kênh đầu vào để tạo một kênh đặc trưng đầu ra. Dùng nhiều bộ lọc cho nhiều feature map, và các trọng số này được cập nhật khi huấn luyện chứ không cố định như bộ lọc Sobel. Vì vậy B mô tả đúng nhiệm vụ của convolution layer, khác với pooling giảm kích thước hoặc softmax chuẩn hóa điểm lớp. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 43–45.
 
 </details>
 
@@ -11131,7 +11131,7 @@ ReLU activation function được định nghĩa là gì?
 
 **Đáp án:** B. max(0, x)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** ReLU giữ nguyên đầu vào dương và trả về 0 với đầu vào âm, đúng công thức `max(0, x)` của B. Ví dụ, `ReLU(-2)=0` còn `ReLU(3)=3`, nên đây là phép biến đổi phi tuyến chứ không phải sigmoid giới hạn đầu ra trong khoảng 0–1. Không có tham số cần học trong ReLU tiêu chuẩn. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 67.
 
 </details>
 
@@ -11150,7 +11150,7 @@ Tại sao ReLU phổ biến hơn Sigmoid trong deep network?
 
 **Đáp án:** B. ReLU không bị vanishing gradient problem như Sigmoid, và tính toán đơn giản
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Ở miền dương, đạo hàm của ReLU bằng 1, còn sigmoid có thể bão hòa khiến đạo hàm rất nhỏ; ReLU cũng chỉ cần so sánh với 0 nên tính toán đơn giản. Điều này giúp truyền gradient tốt hơn trong nhiều mạng sâu, là ý mà B muốn diễn đạt. **Lưu ý:** nói ReLU 'không có vanishing gradient' là quá tuyệt đối: miền âm vẫn có đạo hàm 0 và neuron có thể bị chết. Tham chiếu công thức activation: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 67; phần phân tích gradient là *kiến thức bổ sung (không có tham chiếu trong slide).*
 
 </details>
 
@@ -11169,7 +11169,7 @@ Max Pooling trong CNN dùng để làm gì?
 
 **Đáp án:** B. Giảm kích thước không gian (spatial), tăng invariance với dịch chuyển nhỏ
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Max pooling lấy giá trị lớn nhất trong từng cửa sổ; với cửa sổ 2×2 và stride 2, chiều cao và chiều rộng thường giảm một nửa như ví dụ trong slide. Nếu đặc trưng chỉ dịch nhẹ trong cùng cửa sổ, giá trị cực đại có thể không đổi, nên B nêu đúng tác dụng giảm độ phân giải và tăng độ ổn định cục bộ. **Lưu ý:** max pooling cũng là phép phi tuyến, nên lựa chọn nói nó 'thêm nonlinearity' không sai về toán học; B là đáp án gốc nêu chức năng chính, và pooling không bảo đảm bất biến với mọi phép tịnh tiến. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 64–65.
 
 </details>
 
@@ -11188,7 +11188,7 @@ AlexNet thắng ImageNet ILSVRC 2012 với kiến trúc gồm bao nhiêu conv la
 
 **Đáp án:** B. 5
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** AlexNet có năm lớp convolution học đặc trưng ảnh, sau đó ba lớp fully connected dùng cho phân loại, nên số lớp convolution là 5 chứ không phải tổng số lớp có trọng số là 8. Pooling và activation xen giữa không được tính thành convolution layer. B khớp kiến trúc AlexNet năm 2012 được minh họa trong slide. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 51.
 
 </details>
 
@@ -11207,7 +11207,7 @@ AlexNet giới thiệu những kỹ thuật mới nào? (Chọn tất cả đún
 
 **Đáp án:** A. ReLU activation; B. Dropout regularization; C. Data augmentation; D. GPU training
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** AlexNet sử dụng ReLU để huấn luyện hiệu quả, dropout ở các lớp fully connected để hạn chế overfitting, biến đổi dữ liệu để tăng đa dạng ảnh, và GPU để xử lý khối lượng tính toán lớn. Vì câu hỏi yêu cầu chọn các kỹ thuật có mặt trong hệ thống, cả A, B, C và D phù hợp. **Lưu ý:** 'introduced' nên hiểu là AlexNet đưa các kỹ thuật này vào một hệ thống thành công và phổ biến hóa chúng, không phải phát minh tất cả từ đầu. Chi tiết này là *kiến thức bổ sung (không có tham chiếu đầy đủ trong slide)*; đối chiếu [bài báo AlexNet](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html).
 
 </details>
 
@@ -11226,7 +11226,7 @@ VGGNet (VGG-16/VGG-19) có đặc điểm gì?
 
 **Đáp án:** B. Dùng nhiều 3×3 filters nhỏ nhưng deep; đơn giản, dễ hiểu
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* VGG tăng độ sâu bằng cách xếp nhiều convolution 3×3 với thiết kế lặp lại tương đối đơn giản, thay vì dùng các nhánh song song hoặc residual block. VGG-16 và VGG-19 lần lượt có 16 và 19 lớp có trọng số, không phải toàn bộ đều là convolution. B mô tả đúng đặc điểm nổi bật được khảo sát trong [bài báo VGG](https://arxiv.org/abs/1409.1556).
 
 </details>
 
@@ -11245,7 +11245,7 @@ Tại sao dùng nhiều filter 3×3 thay vì 1 filter lớn (7×7)?
 
 **Đáp án:** B. Nhiều 3×3 có cùng receptive field nhưng ít tham số hơn và thêm nonlinearity
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Ba convolution 3×3 liên tiếp với stride 1 có receptive field lý thuyết 7×7, do mỗi lớp mở rộng vùng nhìn thêm hai điểm theo mỗi chiều. Nếu số kênh vào/ra đều là C và bỏ qua bias, chúng dùng `27C²` trọng số thay vì `49C²` của một convolution 7×7, đồng thời có thể đặt thêm activation giữa các lớp. Vì vậy B đúng về lợi ích thiết kế, nhưng hai cấu trúc không tính ra một hàm giống nhau hoàn toàn; tham khảo [VGG](https://arxiv.org/abs/1409.1556).
 
 </details>
 
@@ -11264,7 +11264,7 @@ ResNet giải quyết vấn đề gì trong deep network?
 
 **Đáp án:** B. Vanishing gradient: skip connections (residual connections) cho phép gradient flow qua
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Shortcut tạo một đường truyền trực tiếp qua residual block, giúp tối ưu mạng sâu dễ hơn và hỗ trợ gradient đi qua nhiều tầng. B gần với tác dụng đó, nhưng vấn đề trung tâm của ResNet là degradation: thêm lớp có thể làm cả lỗi huấn luyện tăng, không đơn thuần là overfitting. **Lưu ý:** ResNet không bảo đảm loại bỏ mọi hiện tượng vanishing gradient; xem [Deep Residual Learning](https://arxiv.org/abs/1512.03385).
 
 </details>
 
@@ -11283,7 +11283,7 @@ Skip connection trong ResNet (Residual Learning) thực hiện điều gì?
 
 **Đáp án:** B. Cộng input của block vào output: F(x) + x → mạng học residual F(x) thay vì mapping trực tiếp
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Trong residual block cùng kích thước, nhánh chính học phần dư F(x), rồi cộng theo từng phần tử với đầu vào x để tạo `y=F(x)+x`. Đây là phép cộng, không phải ghép kênh như DenseNet, và cũng không có nghĩa nhánh F bị bỏ qua. Nếu số kênh hoặc kích thước khác nhau, shortcut có thể dùng phép chiếu để hai nhánh cộng được; tham khảo [ResNet](https://arxiv.org/abs/1512.03385).
 
 </details>
 
@@ -11302,7 +11302,7 @@ Transfer Learning trong Computer Vision hoạt động như thế nào?
 
 **Đáp án:** B. Dùng model pre-trained trên ImageNet, fine-tune cho task mới với ít data
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mô hình đã học trên ImageNet cung cấp các bộ lọc hữu ích; với tập dữ liệu mới nhỏ, có thể giữ cố định phần trích đặc trưng và chỉ học bộ phân loại mới. Khi có thêm dữ liệu, fine-tuning một số hoặc toàn bộ lớp giúp các đặc trưng thích nghi với nhiệm vụ mới, đúng ý B. Lợi ích đến từ việc tái sử dụng kiến thức, không phải yêu cầu tập dữ liệu mới phải có đúng các lớp ImageNet. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 70–72.
 
 </details>
 
@@ -11321,7 +11321,7 @@ Batch Normalization làm gì?
 
 **Đáp án:** B. Normalize activations theo từng batch, giúp ổn định training và cho phép learning rate cao hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Batch Normalization dùng thống kê mini-batch để chuẩn hóa activation, sau đó áp dụng hệ số scale và bias học được; với CNN, thống kê thường gộp theo batch và vị trí không gian cho từng kênh. Cách này có thể ổn định tối ưu và cho phép learning rate cao hơn, nên B đúng hơn các mô tả về thay thế convolution hay loại bỏ hoàn toàn overfitting. Khi suy luận, BN thường dùng thống kê chạy đã tích lũy, không tính lại như lúc huấn luyện; tham khảo [Batch Normalization](https://arxiv.org/abs/1502.03167).
 
 </details>
 
@@ -11340,7 +11340,7 @@ Dropout trong training CNN dùng để làm gì?
 
 **Đáp án:** B. Ngẫu nhiên vô hiệu hóa neurons trong training → regularization, giảm overfitting
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Dropout đặt ngẫu nhiên một phần activation bằng 0 khi huấn luyện, khiến mô hình không phụ thuộc quá mức vào một tổ hợp neuron cố định. Đây là regularization, khác với xóa vĩnh viễn neuron hoặc giảm số lớp của mạng. Khi suy luận dropout thông thường được tắt và dùng quy tắc scale tương ứng, nên B mô tả đúng tác động trong giai đoạn training; tham khảo việc sử dụng dropout trong [AlexNet](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html).
 
 </details>
 
@@ -11359,7 +11359,7 @@ ImageNet dataset gồm bao nhiêu classes?
 
 **Đáp án:** B. 1000
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu đầy đủ trong slide).* Con số 1.000 lớp là tập con ImageNet dùng cho bài toán phân loại ILSVRC, thường gọi là ImageNet-1K, nên B đúng trong ngữ cảnh benchmark CNN này. **Lưu ý:** toàn bộ cơ sở dữ liệu ImageNet rộng hơn, không chỉ có 1.000 loại; không nên đồng nhất tên kho dữ liệu với một phiên bản benchmark. Tham khảo phần phân loại 1.000 loại trong [mô tả ILSVRC chính thức](https://ftp.image-net.org/challenges/LSVRC/2013/index.php).
 
 </details>
 
@@ -11378,7 +11378,7 @@ CIFAR-10 dataset có bao nhiêu classes và kích thước ảnh?
 
 **Đáp án:** B. 10 classes, 32×32
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide xác định rõ CIFAR-10 gồm 10 lớp và ảnh 32×32, nên B khớp cả số lớp lẫn kích thước ảnh. Con số 10 là số loại đối tượng, không phải số kênh ảnh hay số ảnh trong tập dữ liệu. Kích thước nhỏ này được dùng để minh họa xây dựng bộ trích đặc trưng và bộ phân loại trong bài giảng. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 9.
 
 </details>
 
@@ -11397,7 +11397,7 @@ Fully Connected layer (FC layer) khác Convolution layer ở điểm nào?
 
 **Đáp án:** B. FC kết nối mọi neuron với mọi neuron của layer trước (dense); Conv dùng local receptive field và weight sharing
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong fully connected layer, mỗi phần tử đầu ra có trọng số với mọi phần tử đầu vào của lớp trước. Convolution thay bằng kết nối cục bộ và dùng chung bộ lọc ở nhiều vị trí, nên giữ cấu trúc không gian và thường giảm tham số so với dense layer có kích thước tương ứng. B phân biệt đúng kiểu kết nối; 'ít tham số hơn' còn phụ thuộc kích thước kernel và số kênh cụ thể. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 20–22, 59–64.
 
 </details>
 
@@ -11416,7 +11416,7 @@ Receptive field của neuron trong CNN là gì?
 
 **Đáp án:** B. Vùng ảnh đầu vào ảnh hưởng đến giá trị của neuron đó
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Receptive field của một activation là vùng đầu vào có thể ảnh hưởng đến activation đó thông qua các kết nối của mạng. Nó không phải số kênh, số bộ lọc hoặc toàn bộ kích thước feature map; các lớp liên tiếp có thể kết hợp thông tin từ vùng ảnh ngày càng rộng. B khớp minh họa neuron 'nhìn thấy' một vùng ảnh trong slide. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 47–49.
 
 </details>
 
@@ -11435,7 +11435,7 @@ Dilated (Atrous) Convolution tăng receptive field như thế nào?
 
 **Đáp án:** B. Chèn zeros vào filter (dilation rate d), không giảm resolution
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Dilated convolution lấy mẫu đầu vào với khoảng cách giữa các tap của kernel, nên kernel k×k có kích thước hiệu dụng `(k−1)d+1` khi dilation rate là d. Có thể hình dung chèn số 0 giữa các trọng số, nhưng triển khai không cần tạo kernel lớn chứa toàn số 0; số trọng số học vẫn không đổi. B đúng về mở rộng vùng nhìn, còn giữ nguyên độ phân giải cần stride 1 và padding phù hợp, không phải chỉ tăng dilation là tự động đủ.
 
 </details>
 
@@ -11454,7 +11454,7 @@ GoogLeNet (Inception) giới thiệu Inception module là gì?
 
 **Đáp án:** B. Dùng song song 1×1, 3×3, 5×5 convolutions và max pooling → concatenate output
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Inception module xử lý cùng một đầu vào bằng các nhánh convolution 1×1, 3×3, 5×5 và pooling, rồi ghép các đầu ra theo chiều kênh. Các nhánh khai thác mẫu ở nhiều quy mô và phải có kích thước không gian tương thích để concatenate. Vì vậy B khác thiết kế thuần nối tiếp của VGG và phép cộng shortcut của ResNet; tham khảo [bài báo GoogLeNet](https://arxiv.org/abs/1409.4842).
 
 </details>
 
@@ -11473,7 +11473,7 @@ Nguồn PDF: trang 82
 
 **Đáp án:** B. Giảm số channels (dimensionality reduction), add nonlinearity mà không thay đổi spatial size
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Convolution 1×1 trộn thông tin giữa các kênh tại từng vị trí; chọn ít kênh đầu ra hơn sẽ tạo bottleneck trước các kernel lớn và giảm chi phí. Với stride 1, nó không giảm chiều cao/rộng, nên khác pooling theo không gian. **Lưu ý:** convolution tự nó là tuyến tính; phần 'thêm nonlinearity' của B cần activation đặt sau lớp 1×1, không đến từ kernel 1×1 riêng lẻ.
 
 </details>
 
@@ -11492,7 +11492,7 @@ DenseNet khác ResNet ở điểm nào?
 
 **Đáp án:** B. Kết nối mỗi layer với tất cả layers trước đó (concatenate), tăng feature reuse
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Trong một dense block, đầu vào của mỗi lớp là phép ghép feature map của tất cả các lớp trước đó, giúp tái sử dụng đặc trưng và tạo đường truyền ngắn cho gradient. Đây là concatenate theo chiều kênh chứ không cộng theo từng phần tử như residual connection. B đúng trong phạm vi dense block; các transition layer giữa block còn giảm kích thước hoặc số kênh, nên không phải mọi lớp toàn mạng đều nối trực tiếp như nhau. Tham khảo [DenseNet](https://arxiv.org/abs/1608.06993).
 
 </details>
 
@@ -11511,7 +11511,7 @@ MobileNet dùng kỹ thuật nào để giảm params?
 
 **Đáp án:** B. Depthwise Separable Convolution: depthwise conv + pointwise (1×1) conv
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* MobileNet tách convolution thành depthwise xử lý không gian riêng cho từng kênh và pointwise 1×1 kết hợp các kênh. Sự phân tách này giảm tham số và phép nhân cộng so với convolution thông thường, phù hợp thiết bị tài nguyên hạn chế. B chỉ ra cơ chế kiến trúc chủ đạo, không phải chỉ giảm ảnh đầu vào hoặc bỏ hết convolution; tham khảo [MobileNets](https://arxiv.org/abs/1704.04861).
 
 </details>
 
@@ -11530,7 +11530,7 @@ Softmax function được dùng ở output layer để làm gì?
 
 **Đáp án:** B. Chuyển raw scores thành probability distribution (tổng = 1) cho classification
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Softmax biến từng logit zᵢ thành `exp(zᵢ)/Σⱼexp(zⱼ)`, nên các giá trị dương và tổng bằng 1. Slide nhấn mạnh điểm tuyến tính `Wx` chưa phải xác suất vì có thể âm hoặc lớn hơn 1, còn softmax khắc phục hai điều kiện đó, đúng B. Phân phối này dùng cho các lớp loại trừ nhau; tổng bằng 1 không có nghĩa mô hình luôn dự đoán đúng hoặc xác suất đã được hiệu chỉnh hoàn hảo. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 23–25.
 
 </details>
 
@@ -11549,7 +11549,7 @@ Cross-entropy loss function trong classification được tính như thế nào?
 
 **Đáp án:** B. -Σ y_i × log(ŷ_i) - đo khoảng cách giữa predicted probability và true label
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Với nhãn one-hot, cross-entropy `−Σᵢyᵢlog(pᵢ)` rút thành `−log(p_c)` của lớp đúng. Dự đoán xác suất lớp đúng càng thấp thì loss càng cao, như các ví dụ 0,1 và 0,9 trong slide, nên B phản ánh mục tiêu tối ưu xác suất cho nhãn thật. **Lưu ý:** gọi nó là 'khoảng cách' chỉ mang nghĩa mức sai khác trong tối ưu, không phải một metric đối xứng theo định nghĩa toán học. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 27–28.
 
 </details>
 
@@ -11568,7 +11568,7 @@ Data augmentation trong training CNN nhằm mục đích gì?
 
 **Đáp án:** B. Artificially tăng dataset bằng transformations → giảm overfitting, tăng generalization
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Data augmentation tạo các biến thể như lật ngang, crop hoặc điều chỉnh màu từ ảnh huấn luyện, giúp mô hình gặp nhiều cách xuất hiện của cùng đối tượng. Slide yêu cầu phép biến đổi không làm thay đổi danh tính đối tượng, nên B không đồng nghĩa với biến đổi tùy ý bất chấp nhãn. Với detection/segmentation còn phải biến đổi box hoặc mask tương ứng; chi tiết này là kiến thức bổ sung. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 68–70.
 
 </details>
 
@@ -11587,7 +11587,7 @@ Kỹ thuật Fine-tuning trong Transfer Learning thực hiện điều gì?
 
 **Đáp án:** B. Giải phóng một số layers cuối của pre-trained model và retrain với low learning rate trên new task
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Fine-tuning bắt đầu từ trọng số đã học, cho phép một số lớp được cập nhật bằng dữ liệu mới, thường với learning rate nhỏ để tránh phá hủy đặc trưng hữu ích quá nhanh. Slide phân biệt trường hợp chỉ học classifier trên feature extractor đóng băng với trường hợp huấn luyện lại nhiều lớp hơn hoặc cả mạng, nên B phù hợp quy trình sau. Fine-tuning không bắt buộc chỉ mở các lớp cuối; số lớp mở phụ thuộc lượng dữ liệu và độ khác biệt nhiệm vụ. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 71–72.
 
 </details>
 
@@ -11606,7 +11606,7 @@ Nguồn PDF: trang 83
 
 **Đáp án:** B. Tách conv thành depthwise (per-channel) + pointwise (1×1 across channels) → ít params hơn ~8-9x
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Convolution thường dùng `k²C_inC_out` trọng số, trong khi depthwise cộng pointwise dùng `k²C_in+C_inC_out`, bỏ qua bias. Tỷ lệ chi phí tương ứng là `1/C_out+1/k²`; với kernel 3×3 và nhiều kênh đầu ra, tỷ lệ gần 1/9, giải thích con số khoảng 8–9 lần ở B. **Lưu ý:** lợi ích này thuộc depthwise separable convolution và tùy cấu hình, không phải mọi depthwise layer đều giảm đúng 9 lần. Tham khảo [MobileNets](https://arxiv.org/abs/1704.04861).
 
 </details>
 
@@ -11625,7 +11625,7 @@ Nguồn PDF: trang 83
 
 **Đáp án:** B. Dùng để tune hyperparameters và kiểm tra generalization trong quá trình training
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Validation set dùng để so sánh learning rate, kiến trúc, epoch hoặc ngưỡng và theo dõi khả năng tổng quát hóa, trong khi gradient cập nhật trọng số được tính trên training set. Test set nên dành cho đánh giá cuối sau khi đã chọn cấu hình; dùng nó liên tục để chọn hyperparameter sẽ làm rò rỉ thông tin đánh giá. B đúng về vai trò validation, nhưng thử quá nhiều cấu hình cũng có thể khiến việc lựa chọn overfit tập validation.
 
 </details>
 
@@ -11644,7 +11644,7 @@ Deep learning vs Human performance: DeepFace đạt độ chính xác bao nhiêu
 
 **Đáp án:** B. 97.35%
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide ghi DeepFace đạt 97,35% trong face verification, gần mốc 97,5% của con người trong phép so sánh được trình bày. Vì câu hỏi hỏi đúng kết quả này nên B là đáp án phù hợp, không phải một cam kết chính xác 97,35% trên mọi ảnh hoặc mọi quần thể. Face verification kiểm tra hai ảnh có cùng người hay không, khác bài toán nhận dạng một người trong toàn bộ danh sách danh tính. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 5.
 
 </details>
 
@@ -11663,7 +11663,7 @@ Nguồn PDF: trang 83
 
 **Đáp án:** B. Kiến trúc nhỏ gọn đạt AlexNet accuracy với ít params hơn 50x
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SqueezeNet đặt mục tiêu đạt mức accuracy của AlexNet trên ImageNet với ít hơn khoảng 50 lần số tham số, nên B mô tả đúng kết quả mà tác giả báo cáo. Các Fire module dùng nhiều kernel 1×1 và bước squeeze để hạn chế số kênh đi vào convolution 3×3. Con số 50 lần là so sánh với AlexNet trong nghiên cứu gốc, không chứng minh SqueezeNet luôn chính xác nhất hoặc nhanh nhất trên mọi thiết bị; tham khảo [SqueezeNet](https://arxiv.org/abs/1602.07360).
 
 </details>
 
@@ -11682,7 +11682,7 @@ EfficientNet mở rộng CNN theo các chiều nào?
 
 **Đáp án:** B. Compound scaling: đồng thời depth, width, và resolution theo tỉ lệ
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (slide chỉ giới thiệu tên nghiên cứu).* EfficientNet dùng compound scaling để tăng đồng thời depth, width và input resolution theo các hệ số được cân bằng dưới ngân sách tính toán. Chỉ tăng một chiều có thể tạo nút thắt ở các chiều còn lại, nên B phản ánh mục tiêu phân bổ tài nguyên đồng bộ chứ không phải nhân đôi tùy ý mọi kích thước. Tham chiếu giới thiệu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 73; chi tiết từ [EfficientNet](https://arxiv.org/abs/1905.11946).
 
 </details>
 
@@ -11701,7 +11701,7 @@ Stride trong convolution layer ảnh hưởng đến gì?
 
 **Đáp án:** B. Kích thước output feature map (stride lớn → output nhỏ hơn)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Stride là bước di chuyển của kernel: bước lớn hơn lấy mẫu ít vị trí hơn, nên thường tạo feature map nhỏ hơn. Với convolution chuẩn không dilation, kích thước một chiều là `floor((N+2P−K)/S)+1`, thể hiện phụ thuộc vào stride S cùng padding P và kernel K. B đúng về tác động không gian; stride không trực tiếp quyết định số kênh đầu ra, vốn do số bộ lọc quyết định. Tham chiếu minh họa: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 60–63; công thức là kiến thức bổ sung.
 
 </details>
 
@@ -11720,7 +11720,7 @@ Padding trong convolution dùng để làm gì?
 
 **Đáp án:** B. Thêm zeros xung quanh input để kiểm soát kích thước output
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Padding bổ sung các vị trí ở biên để kernel còn xử lý được vùng rìa và để kiểm soát kích thước đầu ra. Ví dụ kernel 3×3, stride 1, padding 1 giữ nguyên kích thước 7×7 trong slide, nên B đúng với zero padding thường dùng. Padding không tự làm tăng số kênh hoặc học thêm đặc trưng; ngoài chèn số 0 còn có kiểu padding khác tùy triển khai. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 63.
 
 </details>
 
@@ -11739,7 +11739,7 @@ Nguồn PDF: trang 84
 
 **Đáp án:** B. Iterative optimization: cập nhật weights theo hướng negative gradient của loss
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Gradient descent lặp lại phép cập nhật `W ← W−α∇L`, dùng gradient để chọn hướng giảm loss và learning rate α để chọn độ dài bước. Slide tính gradient bằng backpropagation rồi cập nhật trọng số, nên B mô tả đúng quy trình tối ưu chứ không phải một phép tính chỉ chạy một lần. CNN có hàm mục tiêu không lồi, vì vậy không có bảo đảm luôn tìm được global minimum. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 31–36.
 
 </details>
 
@@ -11758,7 +11758,7 @@ Mini-batch SGD khác Full-batch GD ở điểm nào?
 
 **Đáp án:** B. Mini-batch dùng subset nhỏ của data mỗi step → nhanh hơn, có thể thoát local minima
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Full-batch GD tính gradient từ toàn bộ training set cho mỗi bước, còn mini-batch SGD lấy một nhóm nhỏ như quy trình lấy batch, forward, backprop và cập nhật trong slide. Mini-batch giảm chi phí mỗi bước và nhu cầu bộ nhớ; gradient ước lượng có nhiễu nên quỹ đạo tối ưu khác full-batch. B đúng về cơ chế, nhưng khả năng thoát một số vùng tối ưu kém không phải bảo đảm thoát mọi local minimum hay đạt accuracy cao hơn. Tham chiếu: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 67.
 
 </details>
 
@@ -11777,7 +11777,7 @@ Nguồn PDF: trang 84
 
 **Đáp án:** B. Adaptive learning rate per parameter, kết hợp momentum và RMSprop
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Adam theo dõi trung bình trượt của gradient và bình phương gradient, hiệu chỉnh bias ban đầu rồi dùng chúng để điều chỉnh bước cập nhật từng tham số. Vì vậy B diễn đạt đúng sự kết hợp ý tưởng momentum với chuẩn hóa theo độ lớn gradient, dù Adam không đơn giản là chạy nối tiếp hai optimizer có sẵn. Adaptive step không loại bỏ learning rate gốc hoặc nhu cầu chọn hyperparameter phù hợp; tham khảo [Adam](https://arxiv.org/abs/1412.6980).
 
 </details>
 
@@ -11796,7 +11796,7 @@ Layer Normalization khác Batch Normalization ở điểm nào?
 
 **Đáp án:** B. Layer Norm normalize qua features (không phải batch) → hoạt động tốt với batch size nhỏ/RNN
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Layer Normalization tính thống kê trên các chiều đặc trưng được chuẩn hóa của từng mẫu, nên không phụ thuộc các mẫu khác trong mini-batch như Batch Normalization. Nhờ vậy nó thuận tiện với batch nhỏ và chuỗi/RNN, nơi thống kê batch có thể khó ổn định. B đúng về trục chuẩn hóa và ngữ cảnh sử dụng, nhưng không khẳng định Layer Norm luôn tốt hơn BN cho mọi CNN; tham khảo [Layer Normalization](https://arxiv.org/abs/1607.06450).
 
 </details>
 
@@ -11815,7 +11815,7 @@ Global Average Pooling (GAP) thay thế FC layer như thế nào?
 
 **Đáp án:** B. GAP lấy average của mỗi feature map → vector; giảm params, hạn chế overfitting
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* GAP lấy trung bình tất cả H×W vị trí trong từng feature map, biến tensor H×W×C thành vector C chiều mà không có trọng số học trong phép pooling. So với flatten rồi dùng một dense layer lớn, cách này giảm số tham số và có thể giảm overfitting. B đúng về sự thay thế phần tổng hợp không gian; mô hình vẫn có thể đặt một classifier có trọng số sau GAP, chứ không bắt buộc bỏ mọi FC layer.
 
 </details>
 
@@ -11834,7 +11834,7 @@ Nguồn PDF: trang 84
 
 **Đáp án:** B. CNN thường là black-box; Grad-CAM, feature visualization giúp hiểu CNN đang nhìn vào đâu
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu đầy đủ trong slide).* Các trọng số và activation của CNN không tự tạo thành giải thích dễ đọc cho từng quyết định, nên gọi mô hình là black-box trong thực hành là hợp lý. Feature visualization khảo sát mẫu mà bộ lọc đáp ứng, còn Grad-CAM tạo bản đồ vùng liên quan đến một điểm lớp bằng gradient; chúng giúp kiểm tra mô hình nhưng không chứng minh đầy đủ quan hệ nhân quả. B đúng hơn hai cực đoan 'hoàn toàn transparent' và 'không thể giải thích'; tham khảo [Grad-CAM](https://arxiv.org/abs/1610.02391).
 
 </details>
 
@@ -11853,7 +11853,7 @@ Nguồn PDF: trang 84
 
 **Đáp án:** B. AlphaGo dùng CNN cho policy và value network; đánh bại con người 9-1
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** AlphaGo kết hợp policy network để ưu tiên nước đi, value network để đánh giá thế cờ và thuật toán tìm kiếm, nên không phải hệ thuần luật hoặc không dùng deep learning. B đúng ở phần vai trò mạng học sâu, còn slide ghi riêng tỷ số 9–1 mà không nêu đủ ngữ cảnh. **Lưu ý:** không coi 9–1 là tỷ số trận chính thức với Fan Hui: bài báo gốc báo cáo 5–0; giữ đáp án gốc nhưng tránh học nhầm sự kiện. Tham chiếu slide: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 6; đối chiếu bổ sung [công bố AlphaGo](https://research.google/pubs/mastering-the-game-of-go-with-deep-neural-networks-and-tree-search/).
 
 </details>
 
@@ -11872,7 +11872,7 @@ Nguồn PDF: trang 84
 
 **Đáp án:** B. Pooling cho partial translation invariance; nhưng CNN nói chung equivariant hơn invariant
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Convolution dùng cùng bộ lọc ở nhiều vị trí nên khi đầu vào dịch chuyển, activation cũng có thể dịch theo; đó là equivariance. Pooling tổng hợp trong vùng nhỏ có thể làm đầu ra ít nhạy với dịch chuyển cục bộ, còn không bảo đảm một CNN bất kỳ hoàn toàn invariant. B phân biệt đúng hai khái niệm; stride, padding và các lớp phía sau ảnh hưởng mức độ giữ tính chất này. Tham chiếu nền tảng: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 64–65; phân biệt equivariance/invariance là *kiến thức bổ sung (không có tham chiếu trực tiếp trong slide).*
 
 </details>
 
@@ -11891,7 +11891,7 @@ Nguồn PDF: trang 85
 
 **Đáp án:** B. RF tăng với mỗi layer; deeper network → larger effective receptive field → capture global context
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Xếp các convolution có kernel lớn hơn 1 thường mở rộng vùng đầu vào có thể tác động lên một activation ở tầng sâu, nhờ kết hợp vùng nhìn của các tầng trước. Điều đó giúp tận dụng ngữ cảnh rộng như ý B, nhưng receptive field còn phụ thuộc kernel, stride và dilation, không chỉ số lớp. **Lưu ý:** không phải mỗi lớp đều làm tăng RF: convolution 1×1 stride 1 có thể giữ nguyên; effective RF cũng không đồng nghĩa toàn bộ RF lý thuyết được sử dụng mạnh như nhau. Tham chiếu minh họa: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 47–49; các giới hạn này là kiến thức bổ sung.
 
 </details>
 
@@ -11910,7 +11910,7 @@ Nguồn PDF: trang 85
 
 **Đáp án:** B. Spatial stream xử lý RGB; temporal stream xử lý stacked optical flow
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide Chương 7).* Trong mô hình two-stream cổ điển, spatial stream đọc ảnh RGB để học ngoại hình/ngữ cảnh, còn temporal stream đọc nhiều trường optical flow để học chuyển động. Kết hợp hai dự đoán tận dụng thông tin bổ sung của hình ảnh và động học, đúng B. Không nên đồng nhất thiết kế này với mọi mạng video hiện đại, vì có biến thể học chuyển động trực tiếp từ frame; tham khảo [Two-Stream Networks](https://arxiv.org/abs/1406.2199).
 
 </details>
 
@@ -11929,7 +11929,7 @@ R-CNN (Region-based CNN) được phát triển bởi ai?
 
 **Đáp án:** B. Ross Girshick et al., CVPR 2014
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide dẫn nghiên cứu 'Rich feature hierarchies for accurate object detection and semantic segmentation' của Girshick và cộng sự tại CVPR 2014, nên B khớp tên nhóm tác giả và hội nghị. R-CNN đưa đặc trưng CNN học được vào quy trình phân loại các vùng đề xuất, thay cho việc chỉ dựa vào mô tả thủ công. Các lựa chọn còn lại không khớp trích dẫn nghiên cứu này trong tài liệu. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 11–14.
 
 </details>
 
@@ -11948,7 +11948,7 @@ R-CNN hoạt động theo pipeline nào?
 
 **Đáp án:** B. Region proposals (Selective Search) → warp → CNN features → SVM classify
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** R-CNN đầu tiên lấy các vùng có khả năng chứa đối tượng từ Selective Search, biến đổi mỗi vùng về kích thước đầu vào cố định, rồi chạy CNN để lấy đặc trưng. Bộ SVM dùng đặc trưng đó phân loại vùng; hệ thống còn có bước hồi quy box để cải thiện vị trí. B đúng pipeline này, khác YOLO dự đoán trực tiếp trên lưới và RPN học proposals từ feature map. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 11–14.
 
 </details>
 
@@ -11967,7 +11967,7 @@ Nhược điểm chính của R-CNN so với Fast R-CNN?
 
 **Đáp án:** B. R-CNN chậm vì phải chạy CNN riêng cho từng region proposal (~2000 lần)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Một ảnh có khoảng 2.000 proposals và R-CNN phải chạy CNN riêng trên từng vùng đã crop/warp, nên các vùng chồng lấn lặp lại nhiều phép tính. Fast R-CNN đảo thứ tự: tính feature map cả ảnh trước rồi trích đặc trưng theo vùng, tái sử dụng phần backbone. Vì vậy B chỉ ra nguyên nhân chậm mang tính kiến trúc, không phải khẳng định R-CNN không dùng được hay luôn có chất lượng thấp. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 14–16.
 
 </details>
 
@@ -11986,7 +11986,7 @@ Fast R-CNN cải thiện R-CNN như thế nào?
 
 **Đáp án:** B. Chạy CNN 1 lần trên toàn ảnh → feature map → RoI Pooling → classify từng region
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Fast R-CNN chỉ chạy phần convolution chung trên toàn ảnh một lần, sau đó ánh xạ từng proposal lên feature map và dùng RoI pooling để lấy đặc trưng có kích thước cố định. Các head cuối dự đoán lớp và hiệu chỉnh box từ đặc trưng vùng đó, nên B nêu đúng phần cải tiến giúp tránh chạy backbone lặp lại. Fast R-CNN vẫn cần proposals bên ngoài; thay nguồn proposals bằng RPN là bước của Faster R-CNN. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 15–21, 24–25.
 
 </details>
 
@@ -12005,7 +12005,7 @@ RoI (Region of Interest) Pooling làm gì?
 
 **Đáp án:** B. Extract fixed-size feature vector từ bất kỳ vùng RoI nào trong feature map
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RoI pooling chiếu một vùng đề xuất lên feature map, chia nó thành lưới cố định và max-pool trong từng ô. Nhờ đó các RoI lớn nhỏ khác nhau đều tạo tensor vùng cùng kích thước, ví dụ 512×7×7, để head tiếp theo xử lý được, đúng B. Nó không tự sinh proposal hoặc phân loại đối tượng; làm tròn tọa độ còn có thể gây lệch căn chỉnh. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 19–21.
 
 </details>
 
@@ -12024,7 +12024,7 @@ Faster R-CNN cải thiện Fast R-CNN như thế nào?
 
 **Đáp án:** B. Thay Selective Search bằng Region Proposal Network (RPN) học được; end- to-end training
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Faster R-CNN thêm RPN để dự đoán proposals từ chính feature map mà backbone đã tính, thay công đoạn Selective Search bên ngoài. Phần sau vẫn trích đặc trưng RoI, phân loại và hồi quy box như Fast R-CNN, nên hệ thống vẫn là two-stage chứ không phải one-stage. B đúng về việc học chung các thành phần với các loss của RPN và detector; 'end-to-end' không có nghĩa mọi thao tác lựa chọn/NMS đều khả vi. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 25–30.
 
 </details>
 
@@ -12043,7 +12043,7 @@ RPN (Region Proposal Network) làm gì?
 
 **Đáp án:** B. Predict objectness score và bbox của các anchor boxes → tạo proposals
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Tại mỗi vị trí feature map, RPN dự đoán mức objectness và các offset hiệu chỉnh anchor thành box đề xuất. Objectness trả lời có đối tượng hay nền, chưa phân biệt đầy đủ các lớp như mèo/chó mà head giai đoạn sau thực hiện. Vì vậy B mô tả đúng đầu ra chủ yếu; NMS có thể được dùng để lọc proposals nhưng không thay thế hai dự đoán học được này. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 26–29.
 
 </details>
 
@@ -12062,7 +12062,7 @@ Anchor boxes trong object detection là gì?
 
 **Đáp án:** B. Prior boxes với aspect ratios và scales định sẵn, dùng làm reference cho prediction
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Anchor là hộp tham chiếu được đặt tại các vị trí trên feature map với các kích thước/tỷ lệ hình dạng lựa chọn trước. Mạng dự đoán offset từ anchor và score phù hợp, nên anchor chưa phải ground truth hay bounding box cuối cùng. B đúng về vai trò prior/reference; tăng nhiều anchor cũng kéo theo nhiều mẫu nền và hyperparameter cần chọn. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 26–28, 42.
 
 </details>
 
@@ -12081,7 +12081,7 @@ YOLO (You Only Look Once) phát hiện đối tượng như thế nào?
 
 **Đáp án:** B. Một stage: chia ảnh thành grid, mỗi cell predict bbox và class đồng thời
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong mô tả YOLO theo lưới, một lần chạy mạng tạo các dự đoán vị trí box, confidence và điểm lớp từ các ô của ảnh/feature map. Không có bước lấy region proposals rồi chạy classifier riêng trên mỗi vùng như two-stage detector, nên B là đáp án phù hợp. Tên 'Look Once' không giới hạn hệ thống chỉ phát hiện một đối tượng; chi tiết grid và anchor thay đổi giữa các phiên bản YOLO. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 31–32.
 
 </details>
 
@@ -12100,7 +12100,7 @@ YOLO nhanh hơn Faster R-CNN vì lý do gì?
 
 **Đáp án:** B. Single-stage: không có separate proposal stage; predict trực tiếp từ image
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** YOLO dự đoán dense trên feature map chung và bỏ giai đoạn proposals cộng xử lý từng RoI riêng, nên giảm công việc đặc thù của two-stage detector. B nêu đúng lý do kiến trúc cho xu hướng nhanh hơn, không phải quy tắc mọi YOLO đều có ít lớp hơn mọi Faster R-CNN. Nhiều phiên bản YOLO vẫn dùng NMS, nên không thể lấy 'không cần NMS' làm nguyên nhân chung. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 30–32, 35–41.
 
 </details>
 
@@ -12119,7 +12119,7 @@ SSD (Single Shot Detector) dùng gì để phát hiện đa scale?
 
 **Đáp án:** B. Multi-scale feature maps: detect objects ở các scales khác nhau từ các levels của feature pyramid
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (slide chỉ giới thiệu SSD trong nhóm one-stage).* SSD đặt các head dự đoán tại nhiều feature map có độ phân giải khác nhau và dùng default box nhiều scale/tỷ lệ. Map độ phân giải cao thuận lợi cho vật nhỏ, còn tầng sâu độ phân giải thấp cung cấp ngữ cảnh cho vật lớn, nên B đúng về phát hiện đa scale. Đây không nhất thiết là FPN với đường top-down/lateral connection; SSD gốc dùng nhiều tầng đặc trưng để dự đoán. Tham khảo [SSD](https://arxiv.org/abs/1512.02325); slide giới thiệu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 32.
 
 </details>
 
@@ -12138,7 +12138,7 @@ IoU (Intersection over Union) trong object detection được dùng để làm g
 
 **Đáp án:** A. Đánh giá chất lượng predicted bbox so với ground truth; B. Xác định positive/negative samples khi training; C. Trong NMS để loại bbox trùng lặp; D. Tính mAP
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** IoU đo phần giao chia phần hợp của hai box, nên dùng để đánh giá độ khớp với ground truth và hỗ trợ gán mẫu dương/âm khi huấn luyện. NMS dùng IoU giữa các box dự đoán để nhận diện trùng lặp; khi tính AP/mAP, IoU dùng trong tiêu chuẩn matching để xác định TP/FP. Do đó cả A–D đúng, nhưng mAP không phải trung bình các giá trị IoU. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 29, 37–41, 50–58; chi tiết gán nhãn huấn luyện là kiến thức bổ sung.
 
 </details>
 
@@ -12157,7 +12157,7 @@ NMS (Non-Maximum Suppression) trong object detection làm gì?
 
 **Đáp án:** B. Loại bỏ redundant overlapping boxes: giữ box confidence cao nhất, loại boxes có IoU > threshold
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** NMS sắp xếp box theo confidence, giữ box có score cao nhất rồi loại các box còn lại chồng lấn với nó vượt ngưỡng IoU; lặp lại trên tập còn lại. Ví dụ trong slide minh họa loại một box trùng thay vì tạo thêm detection, nên B đúng. Khi làm theo từng lớp, việc loại trùng áp dụng trong cùng lớp; ngưỡng quá thấp có thể loại nhầm hai đối tượng ở sát nhau. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 35–41.
 
 </details>
 
@@ -12176,7 +12176,7 @@ mAP (mean Average Precision) được tính như thế nào?
 
 **Đáp án:** B. Trung bình AP qua các classes; AP = area under Precision-Recall curve
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** mAP lấy trung bình AP của các lớp, còn AP tổng hợp precision tại nhiều mức recall sau khi xếp detections theo score và matching với ground truth. B đúng ở phần trung bình AP, không phải accuracy hay IoU. **Lưu ý:** 'AP = area under PR curve' là diễn đạt giản lược: quy tắc nội suy/lấy mẫu phụ thuộc benchmark, và slide nêu rõ 11-point AP không đồng nhất với diện tích tính trực tiếp dưới đường cong thô. Tham chiếu: `IT5409 L7.2-ObjectDetection.pdf`, trang 43; `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 56–58.
 
 </details>
 
@@ -12195,7 +12195,7 @@ Selective Search tạo ra bao nhiêu region proposals xấp xỉ?
 
 **Đáp án:** B. 2000
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide lấy Selective Search làm ví dụ sinh khoảng 2.000 vùng đề xuất trong vài giây trên CPU, nên B khớp con số xấp xỉ được hỏi. Đây là các vùng có khả năng chứa đối tượng, không phải 2.000 detection cuối cùng hoặc 2.000 đối tượng thật. Số proposals thực tế tùy ảnh và cấu hình, còn điểm chính là giảm không gian tìm kiếm so với quét mọi cửa sổ. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 11.
 
 </details>
 
@@ -12214,7 +12214,7 @@ Two-stage detectors (R-CNN family) có đặc điểm gì so với one- stage?
 
 **Đáp án:** B. Chính xác hơn nhưng chậm hơn; có separate proposal và classification stages
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Two-stage detector trước hết sinh vùng ứng viên, sau đó trích đặc trưng và phân loại/hồi quy từng vùng; one-stage dự đoán trực tiếp dense trên feature map. Cách xử lý theo vùng từng có lợi thế accuracy nhưng thêm chi phí suy luận, là xu hướng mà B mô tả. **Lưu ý:** chất lượng và tốc độ còn tùy thế hệ mô hình, backbone và thiết bị; không thể khẳng định mọi two-stage luôn chính xác hơn hoặc chậm hơn mọi one-stage. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 30–32, 48.
 
 </details>
 
@@ -12233,7 +12233,7 @@ Feature Pyramid Network (FPN) dùng để làm gì?
 
 **Đáp án:** B. Tạo multi-scale feature maps với skip connections để detect objects ở mọi scale
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** FPN kết hợp đường bottom-up của backbone với đường top-down và kết nối ngang, đưa thông tin ngữ nghĩa sâu đến các feature map có độ phân giải cao hơn. Nhờ nhiều mức vừa có ngữ nghĩa vừa có chi tiết không gian, detector có thể dùng mức phù hợp cho các kích thước đối tượng, đúng B. FPN không thay trực tiếp chức năng sinh proposals của RPN, và 'mọi scale' là mục tiêu đa scale chứ không bảo đảm phát hiện mọi vật ở mọi kích thước. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 33–34.
 
 </details>
 
@@ -12252,7 +12252,7 @@ DETR (Detection Transformer) khác các phương pháp trước ở điểm gì?
 
 **Đáp án:** B. Dùng Transformer architecture và bipartite matching loss; không cần anchor boxes hay NMS
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* DETR coi detection là dự đoán một tập đối tượng, dùng Transformer với object queries và ghép đôi một-một dự đoán với ground truth bằng bipartite matching. Loss trên tập giúp tránh nhiều dự đoán cho cùng đối tượng, nên DETR gốc không cần anchor hay NMS, đúng B. Nó vẫn có thể dùng CNN backbone để tạo đặc trưng, do đó 'dùng Transformer' không đồng nghĩa bỏ toàn bộ convolution; tham khảo [DETR](https://arxiv.org/abs/2005.12872).
 
 </details>
 
@@ -12271,7 +12271,7 @@ Localization trong object detection là gì?
 
 **Đáp án:** B. Xác định vị trí (bounding box) của đối tượng trong ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Localization xác định đối tượng nằm ở đâu, trong câu này được biểu diễn bằng các tọa độ bounding box như `(x,y,w,h)`. Classification trả lời đối tượng thuộc lớp nào; segmentation cần ranh giới pixel chi tiết hơn, còn tracking thêm quan hệ theo thời gian. B đúng vì chỉ tập trung dự đoán vị trí hộp trong ảnh. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 4–6.
 
 </details>
 
@@ -12290,7 +12290,7 @@ Bài toán Single Object Localization kết hợp hai loss gì?
 
 **Đáp án:** B. Softmax loss (classification) + L2/smooth-L1 loss (bbox regression)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mô hình single-object localization trong slide có hai head: điểm lớp chịu softmax loss và tọa độ box chịu L2 loss; tổng hai phần tạo multitask loss. B mô tả đúng hai vai trò phân loại và hồi quy, còn smooth-L1 là lựa chọn thường gặp ở detector khác chứ không phải công thức minh họa duy nhất. **Lưu ý:** A ghi cross-entropy + MSE cũng có thể mô tả cùng ý vì softmax loss thường là cross-entropy và MSE là L2 bình phương có chuẩn hóa; đáp án gốc B không làm A sai tuyệt đối. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 5–6.
 
 </details>
 
@@ -12309,7 +12309,7 @@ Sliding window approach trong object detection có nhược điểm gì?
 
 **Đáp án:** B. Rất chậm vì phải chạy CNN tại rất nhiều vị trí, scales, và aspect ratios
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Quét sliding window ngây thơ phải xét nhiều vị trí, kích thước và tỷ lệ hình dạng, rồi áp CNN lên nhiều crop chồng lấn. Phần tính toán lặp lại trên các vùng giống nhau khiến chi phí lớn, là nhược điểm B nêu. Đây là vấn đề của cách chạy CNN độc lập từng cửa sổ; các triển khai chia sẻ convolution có thể giảm chi phí đó. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 7–9.
 
 </details>
 
@@ -12328,7 +12328,7 @@ Nguồn PDF: trang 88
 
 **Đáp án:** B. Giảm confidence score của overlapping boxes thay vì loại bỏ hoàn toàn → ít miss adjacent objects
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Standard NMS loại hẳn box chồng lấn cao, còn Soft-NMS giảm score của nó theo mức overlap rồi tiếp tục lựa chọn trên score cập nhật. Điều này có thể giữ lại dự đoán của đối tượng thật nằm sát đối tượng khác, nên B đúng về lý do giảm bỏ sót. Box có score giảm quá thấp vẫn có thể bị lọc cuối cùng; dùng hàm giảm Gaussian hay tuyến tính ảnh hưởng việc có cần ngưỡng IoU cứng hay không. Tham khảo [Soft-NMS](https://arxiv.org/abs/1704.04503).
 
 </details>
 
@@ -12347,7 +12347,7 @@ Nguồn PDF: trang 88
 
 **Đáp án:** B. Cần ground truth bounding boxes và class labels cho từng đối tượng trong ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong huấn luyện detection có giám sát đầy đủ, nhãn lớp cùng tọa độ box của từng đối tượng cung cấp mục tiêu cho classification và localization loss. Nhãn chỉ ở mức toàn ảnh không cho biết đối tượng nằm đâu hoặc có bao nhiêu cá thể, nên không đủ cho quy trình này. B đúng trong phạm vi fully supervised detection; các hướng weakly/self-supervised là chế độ khác, không chứng minh detector chuẩn không cần annotation. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 5–7, 28.
 
 </details>
 
@@ -12366,7 +12366,7 @@ COCO dataset được dùng để benchmark gì?
 
 **Đáp án:** B. Object detection, instance segmentation, keypoint detection, và image captioning
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (slide chỉ nêu COCO như benchmark detection).* COCO có annotation theo đối tượng với box/mask, cùng các bộ nhãn hỗ trợ keypoints người và mô tả ảnh; vì vậy nó phục vụ nhiều bài toán chứ không chỉ classification. B liệt kê đúng detection, instance segmentation, keypoint detection và captioning. Những nhãn này không thay thế lẫn nhau: mỗi nhiệm vụ dùng định dạng và quy tắc đánh giá riêng. Tham chiếu giới thiệu: `IT5409 L7.2-ObjectDetection.pdf`, trang 37; tham khảo [COCO chính thức](https://cocodataset.org/).
 
 </details>
 
@@ -12385,7 +12385,7 @@ Nguồn PDF: trang 88
 
 **Đáp án:** B. Down-weight easy negatives, focus training on hard examples → giải quyết class imbalance
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong dense detection, anchor nền dễ phân loại áp đảo số anchor chứa đối tượng, khiến cross-entropy bị chi phối bởi nhiều mẫu âm dễ. Focal loss nhân thêm hệ số dạng `(1−p_t)^γ`, làm loss của mẫu đã được dự đoán đúng với xác suất cao giảm mạnh để tập trung hơn vào mẫu khó. Vì vậy B đúng; cơ chế này áp dụng cho classification cả mẫu dương lẫn âm, không phải loss hồi quy box hoặc chỉ giữ easy examples. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 32–33.
 
 </details>
 
@@ -12404,7 +12404,7 @@ Nguồn PDF: trang 88
 
 **Đáp án:** B. Thay FC layers bằng conv layers → cho dense predictions (semantic map) cùng kích thước ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** FCN giữ tính không gian bằng các lớp convolution thay cho đầu ra FC chỉ tạo một vector lớp toàn ảnh, rồi dự đoán lớp ở nhiều vị trí cùng lúc. Khi backbone downsample, mạng còn cần upsampling và có thể kết hợp đặc trưng các mức để khôi phục bản đồ nhãn về kích thước ảnh. B đúng về dense prediction, nhưng riêng việc thay FC bằng conv không tự bảo đảm output ngay lập tức bằng resolution đầu vào. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 5–6, 16.
 
 </details>
 
@@ -12423,7 +12423,7 @@ U-Net có đặc điểm nào? (Chọn tất cả đúng)
 
 **Đáp án:** A. Encoder-decoder architecture; B. Skip connections từ encoder sang decoder; C. Phổ biến trong medical image segmentation; D. Symmetric structure
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** U-Net có nhánh encoder thu nhỏ feature map để học ngữ cảnh và nhánh decoder tăng resolution, tạo hình chữ U gần đối xứng. Các kết nối ngang chuyển đặc trưng encoder sang decoder tại mức tương ứng, giúp kết hợp ngữ nghĩa với vị trí/biên; công trình gốc hướng đến biomedical segmentation. Vì vậy cả A–D phù hợp sơ đồ và lĩnh vực trong slide, nhưng 'đối xứng' không có nghĩa hai nhánh có mọi phép toán hay trọng số giống nhau. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 17.
 
 </details>
 
@@ -12442,7 +12442,7 @@ Transpose Convolution (Deconvolution) dùng để làm gì?
 
 **Đáp án:** B. Tăng kích thước feature map (learnable upsampling)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Transpose convolution phân bố đóng góp của mỗi giá trị đầu vào qua kernel học được lên vùng đầu ra và cộng tại các vị trí chồng lấn. Khi cấu hình stride/padding phù hợp, nó tăng kích thước feature map nên B đúng về learnable upsampling trong decoder. Tên 'deconvolution' không có nghĩa phép toán khôi phục chính xác ảnh trước convolution; stride 1 cũng không nhất thiết làm tăng resolution. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 11–15.
 
 </details>
 
@@ -12461,7 +12461,7 @@ Max Unpooling trong decoder hoạt động như thế nào?
 
 **Đáp án:** B. Dùng switch variables (vị trí max lưu từ max pooling) để đặt values lại đúng vị trí khi upsampling
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Max pooling có thể lưu chỉ số vị trí đạt cực đại trong mỗi cửa sổ; max unpooling dùng các chỉ số này để đặt activation trở lại vị trí tương ứng trên map lớn hơn. Những vị trí còn lại thường là 0, nên B đúng và khác với nội suy hoặc sao chép nearest-neighbor. Các giá trị không cực đại đã bị pooling bỏ đi không được khôi phục nguyên vẹn chỉ nhờ các switch này. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 7.
 
 </details>
 
@@ -12480,7 +12480,7 @@ Nearest Neighbor Upsampling đặt giá trị như thế nào?
 
 **Đáp án:** B. Copy giá trị của pixel đến các vị trí lân cận không có giá trị
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Nearest-neighbor upsampling gán mỗi vị trí đầu ra giá trị của điểm lấy mẫu gần nhất trong đầu vào, nên khi phóng gấp đôi có thể thấy một giá trị được lặp trong khối 2×2. Nó không tính trung bình hay học kernel mới, nên B phù hợp hình minh họa. Đầu ra có thể trông thành các khối rõ rệt hơn nội suy bilinear vì không pha trộn các điểm lân cận. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 7.
 
 </details>
 
@@ -12499,7 +12499,7 @@ Bilinear interpolation upsampling tính giá trị mới như thế nào?
 
 **Đáp án:** B. Nội suy tuyến tính từ 4 pixel lân cận
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Bilinear interpolation ước lượng giá trị tại tọa độ chưa trùng điểm lưới bằng tổ hợp có trọng số của bốn điểm bao quanh trong 2D. Trọng số phụ thuộc khoảng cách theo hai trục, không phải lấy max/min hoặc trung bình đều mọi điểm, nên B đúng. Cách nội suy này không có trọng số kernel cần học như transpose convolution; slide RoIAlign minh họa cùng cơ chế lấy mẫu feature tại tọa độ liên tục. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 22–23.
 
 </details>
 
@@ -12518,7 +12518,7 @@ Mask R-CNN = Faster R-CNN + thêm gì?
 
 **Đáp án:** B. Mask head (per-RoI binary mask prediction) cho instance segmentation
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Mask R-CNN bổ sung một nhánh convolution dự đoán binary mask cho từng RoI, song song với các nhánh class và bounding box của detector. Nhờ mask theo vùng đối tượng, mô hình phân biệt được ranh giới từng cá thể, không chỉ vẽ hộp bao, đúng B. RoIAlign còn giúp căn chỉnh vị trí chính xác cho nhiệm vụ pixel; keypoint head là mở rộng khác, không phải nhánh định nghĩa tên Mask R-CNN. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 21–22.
 
 </details>
 
@@ -12537,7 +12537,7 @@ Panoptic segmentation kết hợp gì?
 
 **Đáp án:** B. Semantic segmentation (stuff classes) + Instance segmentation (thing classes)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Panoptic segmentation tạo một bản phân vùng thống nhất: mỗi pixel có nhãn ngữ nghĩa, còn các đối tượng đếm được như người/xe có thêm định danh cá thể. Các vùng stuff như trời hoặc đường được gán lớp nhưng không cần tách thành các instance đếm được, nên B mô tả đúng hai hướng được kết hợp. Nó không chỉ là đặt box detection lên ảnh hoặc tracking theo thời gian; tham khảo [Panoptic Segmentation](https://arxiv.org/abs/1801.00868).
 
 </details>
 
@@ -12556,7 +12556,7 @@ DeepLab dùng kỹ thuật nào để tăng receptive field không giảm resolu
 
 **Đáp án:** B. Atrous (dilated) convolution với rate > 1
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Atrous convolution lấy mẫu với khoảng trống giữa các vị trí của kernel, tăng vùng nhìn hiệu dụng mà không tăng số trọng số. Với stride 1 và padding phù hợp, feature map không bị thu nhỏ như dùng pooling/stride 2, nên B phù hợp yêu cầu giữ chi tiết không gian của segmentation. Rate lớn không tự là upsampling và không khôi phục được các chi tiết đã mất trước đó; tham khảo [DeepLab](https://arxiv.org/abs/1606.00915).
 
 </details>
 
@@ -12575,7 +12575,7 @@ Semantic segmentation vs Instance segmentation khác nhau thế nào?
 
 **Đáp án:** B. Semantic gán class cho mỗi pixel; Instance thêm phân biệt giữa các cá thể cùng class
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Semantic segmentation gán lớp cho từng pixel nhưng có thể coi hai người cùng lớp là một tập pixel 'person' mà không tách danh tính. Instance segmentation cần mask riêng cho mỗi người, nên thêm thông tin cá thể ngoài nhãn lớp, đúng B. Chênh lệch không được định nghĩa bằng tốc độ hoặc việc mô hình nào là tập con của mô hình nào, mà bằng đầu ra cần dự đoán. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 3, 21–22.
 
 </details>
 
@@ -12594,7 +12594,7 @@ Nguồn PDF: trang 90
 
 **Đáp án:** B. Đặt giá trị vào 1 vị trí (góc trên trái), các vị trí còn lại = 0
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong ví dụ bed-of-nails, mỗi giá trị của map nhỏ được đặt ở vị trí đầu của một ô tương ứng trên map lớn, còn các vị trí mới khác là 0. Cách này tạo các điểm khác 0 thưa như các 'đinh', khác nearest-neighbor lặp toàn ô và max unpooling chọn vị trí từ chỉ số pooling. Vì vậy B khớp sơ đồ cụ thể; góc trên trái là quy ước trong hình minh họa. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 7.
 
 </details>
 
@@ -12613,7 +12613,7 @@ Nguồn PDF: trang 90
 
 **Đáp án:** B. Giảm spatial resolution (downsampling) và tăng channels → học high- level features
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Encoder thường dùng pooling hoặc strided convolution để giảm chiều cao/rộng, đồng thời tăng số kênh để biểu diễn các đặc trưng ngữ nghĩa phức tạp hơn. Đó là nhánh đi xuống trong sơ đồ segmentation, nên B đúng với kiến trúc encoder-decoder được hỏi. Số kênh không bắt buộc tăng ở mọi lớp, và encoder vẫn có convolution/activation chứ không chỉ FC. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 6, 16–17.
 
 </details>
 
@@ -12632,7 +12632,7 @@ Nguồn PDF: trang 90
 
 **Đáp án:** B. Tăng resolution (upsampling) về kích thước ảnh gốc, refine spatial details
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Decoder đưa các feature map thấp resolution trở về map lớn hơn bằng upsampling, rồi dùng các lớp xử lý để dự đoán và tinh chỉnh nhãn ở từng vị trí. Kết hợp thông tin từ encoder giúp phục hồi chi tiết mà chỉ phóng lớn map thô không đủ thể hiện, nên B phù hợp. Mục tiêu là đầu ra dense ở độ phân giải yêu cầu, không chỉ một nhãn cho toàn ảnh hoặc tiếp tục downsampling. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 16–17.
 
 </details>
 
@@ -12651,7 +12651,7 @@ DeepLabv3+ kết hợp gì?
 
 **Đáp án:** B. Atrous Spatial Pyramid Pooling (ASPP) + encoder-decoder với skip connections
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* DeepLabv3+ dùng encoder với ASPP để thu ngữ cảnh đa scale, rồi thêm decoder phối hợp đặc trưng sâu đã upsample với đặc trưng mức thấp để tinh chỉnh biên. B đúng vì kết hợp ưu điểm vùng nhìn rộng và chi tiết không gian, không chỉ lặp lại U-Net hoặc một atrous convolution riêng. Các kết nối đưa thông tin mức thấp vào decoder là phần phục hồi vị trí, còn ASPP xử lý nhiều quy mô ngữ cảnh; tham khảo [DeepLabv3+](https://arxiv.org/abs/1802.02611).
 
 </details>
 
@@ -12670,7 +12670,7 @@ ASPP (Atrous Spatial Pyramid Pooling) dùng để làm gì?
 
 **Đáp án:** B. Capture multi-scale context bằng cách áp dụng atrous conv với nhiều dilation rates song song
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* ASPP chạy các nhánh atrous convolution có dilation rate khác nhau trên cùng feature map để khảo sát vùng ngữ cảnh với kích thước hiệu dụng khác nhau. Sau đó các đầu ra được kết hợp, giúp xử lý đối tượng và bối cảnh đa scale mà không phải chỉ chọn một rate cố định, đúng B. Đây là tổng hợp ngữ cảnh, không đồng nghĩa phép upsampling hoặc giảm tham số; các phiên bản còn có nhánh 1×1 hay image pooling. Tham khảo [DeepLab](https://arxiv.org/abs/1606.00915).
 
 </details>
 
@@ -12689,7 +12689,7 @@ Pixel Accuracy trong semantic segmentation được tính thế nào?
 
 **Đáp án:** B. Số pixel được phân loại đúng / Tổng số pixel
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Pixel Accuracy đếm tổng pixel có nhãn dự đoán đúng và chia cho tổng pixel được đánh giá, nên B khớp định nghĩa PA trong slide. Precision `TP/(TP+FP)`, IoU và F1 dùng mẫu số/cách tổng hợp khác, không thay trực tiếp cho tỷ lệ này. Nếu nền chiếm phần lớn ảnh, PA cao vẫn có thể che giấu việc phân loại kém ở lớp nhỏ; mean pixel accuracy theo lớp giảm một phần sự chi phối đó. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 18–19.
 
 </details>
 
@@ -12708,7 +12708,7 @@ Nguồn PDF: trang 90
 
 **Đáp án:** B. Kết nối encoder layer tương ứng với decoder layer → preserve spatial details
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Skip connections trong U-Net chuyển feature map từ nhánh encoder sang mức decoder có độ phân giải tương ứng, thường qua copy/crop rồi concatenate. Đặc trưng nông chứa vị trí và biên rõ hơn, bổ sung cho đặc trưng ngữ nghĩa sâu đã trải qua downsampling, đúng B. Đây không chỉ là kết nối giữa hai lớp encoder và cũng không đồng nhất phép cộng residual của ResNet. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 17.
 
 </details>
 
@@ -12727,7 +12727,7 @@ Instance segmentation output cho mỗi detected object là gì?
 
 **Đáp án:** B. Bounding box + class label + binary mask cho từng instance
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong cách tiếp cận Mask R-CNN, mỗi detection có nhãn lớp, bounding box và mask xác định các pixel thuộc cá thể đó. Box chỉ là vùng bao chữ nhật; mask diễn tả hình dạng chi tiết và tách hai vật cùng lớp thành hai instance, nên B đầy đủ hơn A/C. **Lưu ý:** không phải mọi phương pháp instance segmentation đều bắt buộc xuất box tường minh, nhưng bộ đầu ra này đúng với detector có mask head trong slide. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 21–22.
 
 </details>
 
@@ -12746,7 +12746,7 @@ Nguồn PDF: trang 91
 
 **Đáp án:** B. Dataset benchmark cho semantic segmentation trong urban scenes
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Cityscapes cung cấp cảnh đường phố đô thị với annotation pixel, phục vụ semantic understanding và đánh giá segmentation. Vì vậy B xác định đúng miền dữ liệu và nhiệm vụ nổi bật, khác dữ liệu âm thanh hoặc kho chỉ có nhãn classification. Không nên hiểu nó chỉ có duy nhất một bài toán: dữ liệu còn hỗ trợ phân tích instance và thông tin stereo/video; tham khảo [Cityscapes](https://www.cityscapes-dataset.com/).
 
 </details>
 
@@ -12765,7 +12765,7 @@ CondConv (Conditionally Parameterized Convolution) là gì?
 
 **Đáp án:** B. Kết hợp nhiều expert kernels theo input-dependent weights → conditional computation
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* CondConv học nhiều expert kernel cùng bộ định tuyến sinh hệ số phụ thuộc ảnh đầu vào, rồi tổng hợp kernel dùng cho mẫu đó. Vì thế các ảnh khác nhau có thể dùng tổ hợp trọng số khác nhau, thay cho một kernel cố định chia sẻ cho mọi mẫu như convolution chuẩn. B đúng về conditional computation; không nhất thiết phải chạy riêng toàn bộ phép convolution của từng expert rồi mới cộng đầu ra. Tham khảo [CondConv](https://arxiv.org/abs/1904.04971).
 
 </details>
 
@@ -12784,7 +12784,7 @@ Nguồn PDF: trang 91
 
 **Đáp án:** B. Chia ảnh thành patches, flatten thành tokens, xử lý bằng Transformer encoder
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* ViT chia ảnh thành các patch, flatten và chiếu tuyến tính mỗi patch thành embedding, thêm thông tin vị trí rồi đưa chuỗi token qua Transformer encoder. Self-attention học tương tác giữa các patch thay cho việc chủ yếu xếp convolution cục bộ như CNN, đúng B. Pre-training là yếu tố quan trọng trong nghiên cứu gốc, nhưng không phải điều kiện toán học bắt buộc để kiến trúc có thể chạy; tham khảo [Vision Transformer](https://arxiv.org/abs/2010.11929).
 
 </details>
 
@@ -12803,7 +12803,7 @@ Nguồn PDF: trang 91
 
 **Đáp án:** B. Học visual representations từ unlabeled data bằng pretext tasks
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Self-supervised learning tự tạo tín hiệu huấn luyện từ dữ liệu, chẳng hạn khôi phục phần bị che hoặc so khớp các biến thể của cùng ảnh, để học representation mà không cần nhãn lớp do người gán ở bước đó. B đúng về nguồn giám sát của pretext task; mô hình học được sau đó vẫn có thể fine-tune bằng dữ liệu có nhãn. Không có kết luận chung rằng nó luôn kém supervised, và lĩnh vực áp dụng không bị giới hạn ở NLP.
 
 </details>
 
@@ -12822,7 +12822,7 @@ Contrastive Learning (SimCLR, MoCo) học gì?
 
 **Đáp án:** B. Representations sao cho augmented views của cùng image similar, views của images khác nhau dissimilar
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SimCLR/MoCo dùng các view của cùng ảnh làm cặp dương, học embedding gần nhau hơn so với các cặp âm từ ảnh khác trong cơ chế contrastive tương ứng. Điều này khuyến khích đặc trưng giữ nội dung hữu ích qua augmentation, thay vì học trực tiếp nhãn lớp hoặc caption, nên B đúng. Hai ảnh khác nhau vẫn có thể cùng lớp thật; chúng bị dùng làm âm vì không có nhãn ngữ nghĩa trong thiết lập cơ bản, không phải vì chắc chắn khác nội dung. Tham khảo [SimCLR](https://arxiv.org/abs/2002.05709).
 
 </details>
 
@@ -12841,7 +12841,7 @@ Nguồn PDF: trang 91
 
 **Đáp án:** B. Visualization: dùng gradients để tạo coarse localization map cho vùng model "nhìn vào" khi phân loại
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Grad-CAM dùng gradient của điểm lớp mục tiêu để tính mức quan trọng của các kênh ở một convolution layer, rồi kết hợp feature map thành heatmap. Heatmap thô chỉ vùng đóng góp cho dự đoán lớp được xét, nên B là công cụ visualization, không phải augmentation hoặc regularization. Nó không tự tăng accuracy và không chứng minh mọi vùng được tô đều là nguyên nhân duy nhất của quyết định; tham khảo [Grad-CAM](https://arxiv.org/abs/1610.02391).
 
 </details>
 
@@ -12860,7 +12860,7 @@ Nguồn PDF: trang 91
 
 **Đáp án:** B. Chỉ cần image-level labels, không cần bounding box → học localization
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Với giám sát yếu bằng nhãn toàn ảnh, mô hình biết lớp nào xuất hiện nhưng không được cho sẵn box của từng đối tượng. Nó phải học chọn vùng giải thích sự hiện diện của lớp, thường thông qua cơ chế chọn vùng/phân loại hoặc multiple-instance learning, nên B đúng. Bài toán vẫn có thể detection nhưng dễ tập trung vào phần đặc trưng nhất của vật thay vì toàn vật; tham khảo [Weakly Supervised Deep Detection Networks](https://arxiv.org/abs/1511.02853).
 
 </details>
 
@@ -12879,7 +12879,7 @@ Nguồn PDF: trang 92
 
 **Đáp án:** B. Train small student model để mimick predictions của large teacher model
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Knowledge distillation huấn luyện student để khớp phân phối dự đoán hoặc đặc trưng của teacher, nhằm chuyển kiến thức sang mô hình dễ triển khai hơn. Soft targets có thể chứa thông tin về quan hệ giữa các lớp mà nhãn one-hot không biểu thị, nên B khác việc chỉ sao chép trọng số pretrained hoặc thêm ảnh augmentation. Slide có nêu chủ đề distillation; cơ chế teacher/student ở đây là *kiến thức bổ sung (không có tham chiếu chi tiết trong slide)*. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 26; [Knowledge Distillation](https://arxiv.org/abs/1503.02531).
 
 </details>
 
@@ -12898,7 +12898,7 @@ Neural Architecture Search (NAS) dùng để làm gì?
 
 **Đáp án:** B. Automatically search for optimal neural network architecture
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (slide chỉ nhắc nghiên cứu sử dụng AutoML).* NAS tìm cấu trúc mạng trong một không gian ứng viên, đánh giá/chọn theo tiêu chí như accuracy và ngân sách tính toán. Nó thay thế một phần việc thiết kế thủ công số lớp, loại block hoặc độ rộng, nên B đúng về mục tiêu tìm kiến trúc chứ không phải augmentation hay pruning một mạng cố định. **Lưu ý:** 'optimal' là tốt theo tiêu chí và phạm vi tìm kiếm thực tế, không bảo đảm tối ưu toàn cục; EfficientNet dùng NAS để thiết kế baseline. Tham khảo [EfficientNet](https://arxiv.org/abs/1905.11946); slide: `IT5409 L7.3.0-CvDlIntroAdditionalLecture4Pages.pdf`, trang 73.
 
 </details>
 
@@ -12917,7 +12917,7 @@ Nguồn PDF: trang 92
 
 **Đáp án:** B. Localize anatomical keypoints (joints) như vai, khuỷu, cổ tay
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Human pose estimation cần xác định vị trí các mốc giải phẫu như vai, khuỷu và cổ tay để biểu diễn cấu hình cơ thể. Một bounding box chỉ xác định vùng người, còn mask chỉ nêu pixel thuộc người; cả hai chưa cho vị trí từng khớp, nên B đúng. Slide minh họa Mask R-CNN cũng có thể mở rộng cho pose bằng head tương ứng, nhưng pose không đồng nghĩa tracking người qua thời gian. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 25; giải thích vai trò các khớp là kiến thức bổ sung.
 
 </details>
 
@@ -12936,7 +12936,7 @@ YOLOv8 so với YOLOv1 có những cải tiến gì?
 
 **Đáp án:** B. Anchor-free, decoupled head, improved backbone, mosaic augmentation
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* YOLOv8 dùng head anchor-free tách nhánh dự đoán, cùng backbone/neck được cải tiến; augmentation như mosaic có thể tăng đa dạng dữ liệu huấn luyện, nên B liệt kê các thay đổi phù hợp so với YOLOv1. **Lưu ý:** YOLOv1 vốn cũng không dùng hệ anchor template như các bản anchor-based về sau, vì vậy 'anchor-free' không phải thuộc tính hoàn toàn mới so với v1; mosaic là kỹ thuật training, không phải một layer kiến trúc. Tham khảo [tài liệu YOLOv8](https://docs.ultralytics.com/models/yolov8/).
 
 </details>
 
@@ -12955,7 +12955,7 @@ Nguồn PDF: trang 92
 
 **Đáp án:** B. Học joint embedding của text và images cho zero-shot classification
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* CLIP học image encoder và text encoder sao cho embedding của ảnh và mô tả tương ứng gần nhau trong cùng không gian. Khi phân loại zero-shot, có thể biến tên/mô tả các lớp thành embedding văn bản và so độ tương đồng với embedding ảnh, không cần huấn luyện classifier riêng cho từng bộ lớp. B đúng về joint embedding; CLIP không chỉ học ảnh, và khả năng zero-shot không bảo đảm chất lượng tốt trên mọi miền. Tham khảo [CLIP](https://arxiv.org/abs/2103.00020).
 
 </details>
 
@@ -12974,7 +12974,7 @@ FCN (Long, Shelhamer, Darrell) xuất hiện năm nào và ở đâu?
 
 **Đáp án:** B. CVPR 2015
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Slide trích 'Fully Convolutional Networks for Semantic Segmentation' của Long, Shelhamer và Darrell tại CVPR 2015, nên B khớp năm và nơi công bố được hỏi. Công trình chuyển mạng phân loại sang dự đoán dense và kết hợp downsampling/upsampling cho phân vùng. Không nên nhầm thời điểm một bản preprint có thể xuất hiện với hội nghị của bài báo trong câu hỏi. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 6, 16.
 
 </details>
 
@@ -12993,7 +12993,7 @@ Trong FCN, các conv layers cuối (fully convolutional) tạo ra output có kí
 
 **Đáp án:** B. H×W (spatial map, cùng hoặc nhỏ hơn input) với C channels (classes)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Lớp dự đoán fully convolutional giữ lưới không gian và tạo C điểm lớp tại mỗi vị trí, thành tensor dạng C×H×W như sơ đồ. Chọn argmax theo chiều lớp tạo map H×W, nên B đúng chứ không phải mặc định vector 1×1. H và W ở đầu ra có thể thấp hơn ảnh gốc nếu đã dùng stride/pooling; upsampling đưa map về độ phân giải cần thiết. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 5–6.
 
 </details>
 
@@ -13012,7 +13012,7 @@ Nguồn PDF: trang 92
 
 **Đáp án:** B. Stride lớn → giảm resolution → mất spatial detail → cần upsampling cho dense prediction
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Stride lớn lấy mẫu ít vị trí hơn và giảm độ phân giải feature map, khiến thông tin về biên/vật nhỏ khó giữ đầy đủ. Với segmentation cần nhãn dense, mạng phải tăng độ phân giải đầu ra hoặc phối hợp các mức đặc trưng để bù cho map đã thu nhỏ, đúng B. Upsampling không tự khôi phục chính xác mọi chi tiết đã bị bỏ qua, nên việc chọn stride ảnh hưởng cả chi phí lẫn độ chính xác không gian. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 6, 9–10, 16.
 
 </details>
 
@@ -13031,7 +13031,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Mỗi pixel được gán nhãn class có ngữ nghĩa (semantic label) như "cat", "road", "sky"
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** 'Semantic' chỉ việc các pixel được gán nhãn có ý nghĩa như sky, grass hoặc cat, thay vì chia thành vùng không có tên lớp. Hai cá thể cùng lớp có thể mang chung một nhãn, nên B đúng và khác yêu cầu instance segmentation. Bài toán có thể nhiều lớp, không bị giới hạn foreground/background. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 3.
 
 </details>
 
@@ -13050,7 +13050,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Classification gán 1 label cho cả ảnh; Detection localize và classify nhiều objects
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Trong bài toán classification một nhãn của slide, đầu ra là lớp cho toàn ảnh mà không có vị trí; detection cần một tập nhãn và box cho các đối tượng trong ảnh. B đúng vì bổ sung localization và khả năng nhiều đối tượng, nên nhãn image-level không đủ diễn tả detection output. **Lưu ý:** classification cũng có phiên bản multi-label; khác biệt nền tảng vẫn là detection định vị từng đối tượng, không phải mọi classifier đều chỉ được xuất một nhãn. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 2, 4–7.
 
 </details>
 
@@ -13069,7 +13069,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Xác suất một anchor box chứa một đối tượng (bất kể class)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Objectness đánh giá một anchor có chứa đối tượng hay chỉ là nền, không xác định ngay lớp cụ thể của đối tượng. RPN còn dự đoán offset box; sau đó detector mới phân loại các proposals thành những lớp như người hoặc xe, nên B phân biệt đúng hai mức dự đoán. Score này không phải kích thước box và cũng không đồng nhất giá trị IoU trực tiếp với ground truth. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 26–28.
 
 </details>
 
@@ -13088,7 +13088,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Chủ động chọn negative samples khó (high loss) trong training để tăng performance
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Hard negative mining chọn những mẫu nền mà mô hình đang dễ nhầm thành đối tượng, thường có loss cao, để đưa vào huấn luyện tiếp. Các mẫu này cung cấp tín hiệu phân biệt hữu ích hơn việc thêm rất nhiều nền đã phân loại đúng, nên B đúng. Slide cascade minh họa dùng false positives của tầng hiện tại làm negative cho tầng sau; đây không phải tìm positive mới hay augmentation ảnh âm. Tham chiếu: `IT5409 L7.2-ObjectDetection.pdf`, trang 18.
 
 </details>
 
@@ -13107,7 +13107,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Rất nhiều negative (background) so với positive (object) anchors → cần sampling strategies
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Dense detector kiểm tra rất nhiều anchor trong ảnh, nhưng chỉ một phần nhỏ khớp đối tượng thật, nên background negatives có thể nhiều hơn positives vài bậc độ lớn. Nếu dùng loss và lấy mẫu không kiểm soát, mô hình dễ tối ưu bằng cách dự đoán nền cho hầu hết vị trí, đúng vấn đề B nêu. Sampling, hard negative mining hoặc focal loss là các hướng xử lý khác nhau; không bắt buộc mọi hệ thống phải dùng đồng thời tất cả. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 32–33, 42.
 
 </details>
 
@@ -13126,7 +13126,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Tính AP tại IoU threshold = 0.5 trung bình qua các classes
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** AP@0.5 tính chất lượng PR với ngưỡng IoU 0,5 cho việc ghép detection với ground truth, rồi lấy trung bình qua các lớp, đúng B. Đối tượng nhỏ/lớn là tiêu chí phân nhóm đánh giá riêng, không phải định nghĩa của mAP@0.5. **Lưu ý:** A cũng nêu một bước đúng của metric này; B đầy đủ hơn vì nói rõ tính AP và trung bình qua lớp, nên giữ đáp án gốc nhưng không xem A là phát biểu sai hoàn toàn. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 50–58.
 
 </details>
 
@@ -13145,7 +13145,7 @@ Nguồn PDF: trang 93
 
 **Đáp án:** B. Average AP tại IoU từ 0.5 đến 0.95 với step 0.05 → đánh giá toàn diện hơn
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** COCO AP tổng hợp trên 10 ngưỡng IoU từ 0,50 đến 0,95, cách nhau 0,05, đồng thời tổng hợp qua các lớp. Những ngưỡng cao yêu cầu định vị chính xác hơn, nên metric này phản ánh cả khả năng tìm vật và độ khớp box tốt hơn việc chỉ đánh giá tại 0,5. B khớp công thức trung bình nhiều AP_T trong slide; nó không chỉ dành cho vật lớn và không phải trung bình trực tiếp IoU. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 58.
 
 </details>
 
@@ -13164,7 +13164,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. R-CNN nhanh hơn để inference
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Câu hỏi yêu cầu chọn phát biểu KHÔNG đúng: R-CNN gốc chạy CNN trên khoảng 2.000 crop nên không nhanh hơn YOLO về suy luận theo so sánh kiến trúc thông thường. Vì vậy B là phát biểu cần loại, trong khi YOLO bỏ separate proposal/RoI stage và hướng đến xử lý real-time. **Lưu ý:** A 'R-CNN chính xác hơn' chỉ là xu hướng của một số so sánh lịch sử, không phải định luật cho mọi phiên bản/backbone; cần benchmark cụ thể khi so chất lượng. Tham chiếu: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 14–15, 30–32, 48.
 
 </details>
 
@@ -13183,7 +13183,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. Học offset cho grid sampling → adaptive receptive field theo nội dung ảnh
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Deformable convolution học các offset bổ sung cho vị trí lấy mẫu của kernel, cho phép vùng lấy mẫu thích nghi với cấu trúc đối tượng. Với tọa độ không nguyên, feature thường được nội suy trước khi nhân trọng số, nên B khác convolution trên lưới cố định. Kỹ thuật này có thể xử lý biến dạng hình học nói chung, không chỉ rotation và không đồng nghĩa tăng cố định kernel size. Tham khảo [Deformable Convolutional Networks](https://arxiv.org/abs/1703.06211).
 
 </details>
 
@@ -13202,7 +13202,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. One-stage detector với FPN + Focal Loss → đạt accuracy cao ngang two- stage
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** RetinaNet là one-stage detector, dùng feature pyramid để dự đoán đa scale và focal loss để giảm ảnh hưởng của nhiều mẫu nền dễ. B đúng về cấu trúc và kết quả cạnh tranh với two-stage trong nghiên cứu gốc; RetinaNet gốc vẫn dùng anchors. **Lưu ý:** 'accuracy ngang two-stage' là kết quả trong điều kiện nghiên cứu, không bảo đảm mọi cấu hình có cùng accuracy hay giữ vị trí dẫn đầu ở mọi thời điểm. Tham chiếu nền tảng: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 32–34; đối chiếu bổ sung [Focal Loss/RetinaNet](https://arxiv.org/abs/1708.02002).
 
 </details>
 
@@ -13221,7 +13221,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. PointNet học features trực tiếp từ point cloud; dùng trong 3D object detection
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (slide chỉ giới thiệu point cloud như biểu diễn 3D).* PointNet đọc trực tiếp tập điểm và dùng phép tổng hợp đối xứng để đầu ra không phụ thuộc thứ tự liệt kê điểm. Điều này cho phép học feature trên dữ liệu 3D không có lưới pixel đều như ảnh, nên phần đầu B đúng. **Lưu ý:** PointNet gốc tập trung classification và segmentation; dùng feature kiểu PointNet trong detector 3D không có nghĩa PointNet gốc tự là một detector box đầy đủ. Tham khảo [PointNet](https://arxiv.org/abs/1612.00593); slide: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 63.
 
 </details>
 
@@ -13240,7 +13240,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. Scene Understanding là broader task bao gồm segmentation, depth estimation, object relationships
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Semantic segmentation trả lời từng pixel thuộc lớp nào, còn scene understanding còn có thể xét vật thể, hình học 3D, độ sâu và quan hệ giữa các vật. Ví dụ scene graph thêm quan hệ giữa các đối tượng mà bản đồ pixel chỉ gán nhãn lớp không thể hiện đầy đủ. Vì vậy B đúng về phạm vi rộng hơn; scene understanding không bị giới hạn một nhãn cho toàn ảnh. Tham chiếu các nhiệm vụ mở rộng: `IT5409 L7.3.1-DlForCvDetection.pdf`, trang 59–63; cách bao quát thuật ngữ là kiến thức bổ sung.
 
 </details>
 
@@ -13259,7 +13259,7 @@ GAN (Generative Adversarial Network) trong CV được dùng để làm gì? (Ch
 
 **Đáp án:** A. Image synthesis; B. Image inpainting; C. Style transfer; D. Data augmentation
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Generator học tạo nội dung ảnh, còn discriminator tạo tín hiệu phân biệt thật/giả; các biến thể có thể sinh ảnh mới, điền vùng bị thiếu hoặc chuyển ảnh giữa các miền/phong cách. Ảnh sinh cũng có thể dùng bổ sung dữ liệu nếu nhãn và chất lượng phù hợp, nên cả A–D là các ứng dụng khả dĩ, không phải bốn chức năng mọi GAN tự có. Phải kiểm tra nhiễu nhãn và khác biệt phân phối trước khi dùng augmentation. Tham khảo [GAN](https://arxiv.org/abs/1406.2661), [Context Encoders](https://arxiv.org/abs/1604.07379) và [CycleGAN](https://arxiv.org/abs/1703.10593).
 
 </details>
 
@@ -13278,7 +13278,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. Sinh ảnh dựa trên điều kiện đầu vào (class label, text, sketch)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* cGAN cung cấp điều kiện như nhãn lớp hoặc ảnh hướng dẫn cho quá trình sinh, để đầu ra không chỉ phụ thuộc một vector nhiễu ngẫu nhiên. Trong thiết lập chuẩn, cả generator và discriminator đều nhận thông tin điều kiện, nên B đúng còn bỏ discriminator không còn mô tả GAN chuẩn. Text/sketch cần cách mã hóa và thiết kế phù hợp chứ không phải mọi cGAN mặc định hỗ trợ mọi loại điều kiện; tham khảo [cGAN](https://arxiv.org/abs/1411.1784) và [pix2pix](https://arxiv.org/abs/1611.07004).
 
 </details>
 
@@ -13297,7 +13297,7 @@ Nguồn PDF: trang 94
 
 **Đáp án:** B. Học compressed representation; encoder: input → latent code; decoder: latent code → reconstruct
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Autoencoder gồm encoder biến ảnh thành mã latent và decoder tái tạo ảnh từ mã đó, được học bằng mục tiêu reconstruction. B mô tả đúng luồng xử lý và khả năng học representation mà không cần nhãn lớp cho mỗi ảnh. **Lưu ý:** latent không bắt buộc luôn ít chiều hơn input; autoencoder còn có biến thể overcomplete với ràng buộc sparsity/denoising, nên 'compressed' là thiết lập thường gặp chứ không phải định nghĩa duy nhất.
 
 </details>
 
@@ -13316,7 +13316,7 @@ Variational Autoencoder (VAE) khác AE ở điểm nào?
 
 **Đáp án:** B. Latent space là distribution (Gaussian) thay vì point; có thể sample để generate new data
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* VAE thường dùng encoder dự đoán tham số của phân phối latent xấp xỉ, như mean và variance của Gaussian, rồi lấy mẫu latent đưa qua decoder. Mục tiêu kết hợp tái tạo và regularization theo prior, giúp việc lấy mẫu từ prior để sinh dữ liệu có ý nghĩa hơn so với latent tùy ý của AE, đúng ý B. **Lưu ý:** Gaussian là lựa chọn phổ biến, không bắt buộc cho mọi VAE, và mô hình cần học phân phối có cấu trúc chứ không chỉ thay point bằng random noise. Tham khảo [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114).
 
 </details>
 
@@ -13335,7 +13335,7 @@ Nguồn PDF: trang 95
 
 **Đáp án:** B. Propagate segmentation mask qua các frames; cần temporal consistency
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* VOS xác định mask của đối tượng qua chuỗi frame và cần giữ tương ứng theo thời gian khi vật di chuyển, đổi hình dạng hoặc bị che. Trong thiết lập có mask hướng dẫn ban đầu, mô hình có thể truyền thông tin từ các frame đã phân vùng sang frame mới, nên B phù hợp. Không phải mọi VOS đều cần annotation frame đầu, nhưng xử lý độc lập mỗi ảnh có thể làm mất danh tính đối tượng hoặc tạo mask nhấp nháy; tham khảo [Space-Time Memory Networks](https://arxiv.org/abs/1904.00607).
 
 </details>
 
@@ -13354,7 +13354,7 @@ Nguồn PDF: trang 95
 
 **Đáp án:** B. Visualize vùng ảnh quan trọng cho classification decision bằng cách dùng GAP + weights
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* CAM cổ điển dùng GAP rồi classifier tuyến tính; trọng số của một lớp trở thành hệ số kết hợp các feature map trước GAP thành bản đồ kích hoạt cho lớp đó. Vùng có đóng góp lớn được tô nổi để khảo sát căn cứ phân loại, nên B đúng và không phải kỹ thuật tạo thêm nhãn hoặc augmentation. Khác Grad-CAM, CAM gốc gắn với cấu trúc GAP/classifier phù hợp và không cần dùng gradient để suy ra hệ số kênh. Tham khảo [Class Activation Mapping](https://arxiv.org/abs/1512.04150).
 
 </details>
 
@@ -13373,7 +13373,7 @@ Nguồn PDF: trang 95
 
 **Đáp án:** B. Apply augmentations at test time và average predictions → tăng accuracy
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* TTA tạo nhiều biến thể của cùng ảnh lúc suy luận, chạy mô hình trên từng biến thể rồi kết hợp dự đoán, chẳng hạn trung bình xác suất. Với box/mask phải ánh xạ dự đoán về cùng hệ tọa độ trước khi gộp; khác training augmentation ở thời điểm áp dụng, nên B đúng về cơ chế. **Lưu ý:** cách này thường tăng chi phí inference và chỉ có thể cải thiện accuracy, không bảo đảm luôn tăng nếu phép biến đổi không phù hợp dữ liệu.
 
 </details>
 
@@ -13392,7 +13392,7 @@ Nguồn PDF: trang 95
 
 **Đáp án:** B. Loại bỏ redundant weights/filters → model nhỏ hơn, nhanh hơn với ít accuracy loss
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Pruning loại các kết nối hoặc channel/filter ít quan trọng, thường kết hợp fine-tuning để hạn chế suy giảm chất lượng, nên B đúng về mục tiêu nén mô hình. Pruning có cấu trúc có thể giảm phép tính của tensor dense; pruning trọng số rời rạc có thể chỉ giảm dung lượng nếu thiết bị/runtime không tận dụng sparsity. Vì vậy 'nhanh hơn với ít accuracy loss' là mục tiêu cần kiểm chứng, không phải kết quả tự động; tham khảo [Learning both Weights and Connections](https://arxiv.org/abs/1506.02626).
 
 </details>
 
@@ -13411,7 +13411,7 @@ Nguồn PDF: trang 95
 
 **Đáp án:** B. Channel attention: recalibrate channel feature responses adaptively
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* SE block tổng hợp thông tin không gian của từng channel ở bước squeeze, rồi học hệ số để tăng/giảm đáp ứng các channel ở bước excitation. Như vậy nó mô hình hóa quan hệ giữa kênh và tái cân bằng feature theo nội dung đầu vào, đúng B. Hệ số channel không phải một attention map riêng tại từng vị trí không gian hay temporal attention; tham khảo [Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507).
 
 </details>
 
@@ -13430,7 +13430,7 @@ Nguồn PDF: trang 95
 
 **Đáp án:** B. Kết hợp channel attention + spatial attention để refine features
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* CBAM suy ra channel attention để chọn 'đặc trưng nào' quan trọng, sau đó spatial attention để chọn 'vị trí nào' quan trọng trên feature map. Hai bản đồ được áp dụng để tái cân bằng feature, nên B đầy đủ hơn chỉ channel hoặc chỉ spatial attention. Thiết kế này không đồng nhất cơ chế self-attention toàn token của Transformer; tham khảo [CBAM](https://arxiv.org/abs/1807.06521).
 
 </details>
 
@@ -13449,7 +13449,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Dùng channel shuffle và depthwise conv → lightweight cho mobile
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* ShuffleNet giảm chi phí bằng pointwise group convolution và depthwise convolution, đồng thời channel shuffle trộn lại kênh để các nhóm không bị cô lập thông tin qua nhiều lớp. B nêu đúng định hướng lightweight cho thiết bị di động, nhưng pointwise group convolution là thành phần quan trọng cần bổ sung vào mô tả. Tốc độ thực còn tùy kích thước mô hình và phần cứng, không suy ra mọi ShuffleNet đều real-time hoặc có accuracy cao nhất. Tham khảo [ShuffleNet](https://arxiv.org/abs/1707.01083).
 
 </details>
 
@@ -13468,7 +13468,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Định dạng trung gian cho phép chuyển model giữa các framework (PyTorch, TF, etc.)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* ONNX biểu diễn mô hình bằng graph tính toán, operator, tensor và tham số theo một định dạng trao đổi chung. Nhờ export/import và runtime hỗ trợ, mô hình có thể chuyển qua các công cụ khác nhau, nên B đúng hơn gọi ONNX là ngôn ngữ lập trình hoặc phần cứng. Tính tương thích phụ thuộc operator/opset và công cụ đích; không phải mọi mô hình đều chuyển đổi hoàn hảo chỉ bằng đổi đuôi file. Tham khảo [giới thiệu ONNX](https://onnx.ai/onnx/intro/).
 
 </details>
 
@@ -13487,7 +13487,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Kết hợp labeled và unlabeled data; pseudo-labeling hoặc consistency regularization
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Semi-supervised learning dùng cả dữ liệu có nhãn lẫn dữ liệu chưa có nhãn cho nhiệm vụ mục tiêu, nên B khác supervised chỉ dùng nhãn sẵn có. Pseudo-labeling lấy dự đoán đáng tin làm nhãn tạm, còn consistency regularization buộc dự đoán ổn định qua các biến đổi phù hợp; nhãn sai quá tự tin có thể bị khuếch đại. Slide có liệt kê semi-supervised, còn hai cơ chế này là *kiến thức bổ sung (không có tham chiếu chi tiết trong slide)*; không đồng nhất hoàn toàn với self-supervised pretext learning. Tham chiếu: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 26.
 
 </details>
 
@@ -13506,7 +13506,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Học nhận dạng class mới với rất ít examples (1-shot, 5-shot); dùng meta- learning
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Few-shot recognition cần thích nghi với lớp mới từ rất ít mẫu có nhãn, chẳng hạn mỗi lớp một hoặc năm mẫu, dựa trên representation hoặc kiến thức đã học trước. Meta-learning có thể huấn luyện qua nhiều bài toán nhỏ để học cách thích nghi nhanh, nên B nêu một hướng phù hợp. **Lưu ý:** few-shot không bắt buộc dùng meta-learning và không cấm fine-tuning; 'shot' thường là số mẫu hỗ trợ mỗi lớp, không phải chỉ có một lớp trong toàn bài toán.
 
 </details>
 
@@ -13525,7 +13525,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Chọn intelligently những samples có ích nhất để labeling → giảm annotation effort
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Active learning chọn các ảnh cần được gán nhãn dựa trên tiêu chí như độ bất định, tính đại diện hoặc độ đa dạng, rồi dùng nhãn mới để cải thiện mô hình. B đúng vì mục tiêu là tiết kiệm công sức annotation so với gán nhãn ngẫu nhiên cùng số lượng. Vẫn cần nguồn cung cấp nhãn như người gán, và chọn các outlier quá bất định có thể không hữu ích, nên không có bảo đảm luôn hơn fully supervised.
 
 </details>
 
@@ -13544,7 +13544,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Adapt model trained on source domain để hoạt động tốt trên target domain khác phân phối
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** Domain adaptation xử lý chênh lệch phân phối giữa source và target, ví dụ ảnh tổng hợp so với ảnh camera thật, để mô hình học ở nguồn hoạt động tốt hơn ở đích. Có thể thích nghi feature hoặc dùng dữ liệu target với lượng nhãn khác nhau, nên B đúng và thuộc nhóm tái sử dụng kiến thức liên quan transfer learning. Không phải cứ fine-tune là chắc chắn khử được domain shift, nhất là khi điều kiện nguồn/đích hoặc tập lớp khác nhau quá lớn. Tham chiếu chủ đề: `IT5409 L7.3.2-DlForCvSegmentation.pdf`, trang 26; cơ chế và ví dụ là *kiến thức bổ sung (không có tham chiếu chi tiết trong slide).*
 
 </details>
 
@@ -13563,7 +13563,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. AR dùng CV (SLAM, object recognition, pose estimation) để overlay virtual objects lên real world
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Trong AR dựa trên camera, ước lượng pose và bản đồ giúp gắn đối tượng ảo vào vị trí nhất quán khi người dùng di chuyển; nhận dạng đối tượng còn cho biết nên gắn nội dung vào vật nào. B đúng về vai trò của CV trong căn chỉnh lớp ảo với cảnh thật, không chỉ lấy vị trí GPS thô. **Lưu ý:** không phải mọi hệ AR bắt buộc dùng đồng thời SLAM, recognition và pose estimation; có hệ dùng marker hoặc cảm biến khác cho một phần công việc.
 
 </details>
 
@@ -13582,7 +13582,7 @@ Nguồn PDF: trang 96
 
 **Đáp án:** B. Estimate cả 3D position và 3D orientation (6 degrees of freedom) của object
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Pose 6DoF của một vật thể cứng gồm ba bậc tự do tịnh tiến và ba bậc tự do quay trong không gian 3D. Vì vậy B cần cả position lẫn orientation; chỉ một trong hai chưa đủ để đặt vật ảo/robot đúng cấu hình. Các tọa độ phải được hiểu trong một hệ tham chiếu xác định, và cách dùng quaternion bốn thành phần không làm số bậc tự do quay tăng thành bốn.
 
 </details>
 
@@ -13601,7 +13601,7 @@ Nguồn PDF: trang 97
 
 **Đáp án:** B. Đồng thời xây dựng bản đồ môi trường và định vị camera trong bản đồ đó
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Visual SLAM đồng thời ước lượng camera đang ở đâu và xây dựng biểu diễn môi trường từ quan sát ảnh. Map hỗ trợ định vị các frame mới, còn pose hỗ trợ đưa các quan sát vào cùng map; loop closure có thể giảm drift khi trở lại vùng đã đi qua. B đúng, không chỉ dùng GPS và không bị giới hạn trong nhà; monocular SLAM còn có thể không xác định được scale tuyệt đối nếu thiếu ràng buộc bổ sung. Tham khảo [ORB-SLAM](https://arxiv.org/abs/1502.00956).
 
 </details>
 
@@ -13620,7 +13620,7 @@ Nguồn PDF: trang 97
 
 **Đáp án:** B. Dùng 2 cameras để ước lượng depth qua disparity
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Stereo dùng hai góc nhìn có quan hệ hình học đã biết, tìm các điểm tương ứng rồi suy ra khoảng cách từ chênh lệch vị trí ảnh. B đúng về hai camera và disparity; không cần chỉ hoạt động ban ngày nếu vẫn có tín hiệu ảnh đủ để so khớp. Độ chính xác phụ thuộc hiệu chuẩn, baseline, texture và occlusion, nên không thể kết luận stereo không bao giờ đo depth chính xác. Tham khảo [OpenCV: Depth Map from Stereo Images](https://docs.opencv.org/4.x/dd/d53/tutorial_py_depthmap.html).
 
 </details>
 
@@ -13639,7 +13639,7 @@ Disparity trong stereo vision liên quan đến depth như thế nào?
 
 **Đáp án:** B. Tỉ lệ nghịch: depth Z = baseline × focal_length / disparity
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Với cặp stereo đã rectification trong mô hình chuẩn, `Z=fB/d`: baseline B và focal length f cố định thì disparity d lớn biểu thị điểm gần hơn, đúng B. Focal length và disparity cần dùng đơn vị tương thích, thường đều theo pixel, để Z có đơn vị như B. Khi disparity gần 0, depth lớn và sai số disparity nhỏ cũng gây sai số depth đáng kể; công thức không áp dụng trực tiếp cho hai ảnh chưa căn chỉnh bất kỳ. Tham khảo [OpenCV stereo](https://docs.opencv.org/4.x/dd/d53/tutorial_py_depthmap.html).
 
 </details>
 
@@ -13658,7 +13658,7 @@ Nguồn PDF: trang 97
 
 **Đáp án:** B. Có thể học depth với supervised (gt depth) hoặc self-supervised (photometric consistency)
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Mạng monocular có thể học từ ground-truth depth hoặc dùng chuỗi ảnh với mục tiêu tái tạo/photometric consistency để tạo tín hiệu self-supervised. Vì vậy B đúng về hai hướng học, dù một ảnh đơn không xác định duy nhất metric depth nếu không có giả định hoặc kiến thức đã học. **Lưu ý:** C không có bảo đảm 'chính xác như stereo', còn D cũng có thể đúng theo nghĩa ước lượng bằng phương pháp không neural; B là đáp án gốc mô tả phương pháp học trong ngữ cảnh này. Tham khảo [Monodepth2](https://arxiv.org/abs/1806.01260).
 
 </details>
 
@@ -13677,7 +13677,7 @@ Nguồn PDF: trang 97
 
 **Đáp án:** B. LiDAR cho depth trực tiếp và chính xác; Camera cho texture/color nhưng depth là implicit
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* LiDAR đo khoảng cách qua tín hiệu laser phản hồi, còn camera RGB thông thường quan sát màu/texture dưới phép chiếu 3D xuống 2D nên không có depth đo trực tiếp cho từng pixel. B đúng về khác biệt thông tin cảm biến và lý do có thể kết hợp hai loại cho perception. **Lưu ý:** LiDAR vẫn có nhiễu, giới hạn tầm và ảnh hưởng thời tiết/bề mặt; 'chính xác' không có nghĩa không sai, và camera stereo hoặc camera depth là những cấu hình khác camera RGB đơn.
 
 </details>
 
@@ -13696,7 +13696,7 @@ Nguồn PDF: trang 97
 
 **Đáp án:** B. Biểu diễn không gian 3D bằng grid ô voxels, mỗi ô có xác suất occupied/free
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* Occupancy mapping chia không gian thành các ô và cập nhật xác suất bị chiếm chỗ từ quan sát cảm biến; dạng 3D dùng voxel như B mô tả. Vùng chưa quan sát phải phân biệt với vùng đã biết là trống, để hệ thống không mặc định mọi chỗ chưa thấy đều an toàn. **Lưu ý:** occupancy grid còn có dạng 2D phổ biến, nên B đúng cho phiên bản 3D chứ không định nghĩa toàn bộ họ phương pháp chỉ có voxel. Tham khảo [OctoMap](https://octomap.github.io/).
 
 </details>
 
@@ -13715,7 +13715,7 @@ Nguồn PDF: trang 97
 
 **Đáp án:** B. Transform perspective từ camera view sang overhead (top-down) view để dễ planning
 
-**Giải thích:** <!-- TODO -->
+**Giải thích:** *Kiến thức bổ sung (không có tham chiếu trong slide).* BEV biểu diễn cảnh trong hệ nhìn từ trên xuống, thuận tiện so vị trí xe, làn đường và khoảng trống cho lập kế hoạch, nên B đúng về mục tiêu. Có thể tạo BEV từ camera phía trước hoặc nhiều camera bằng hình học hoặc mô hình học, không bắt buộc phải có drone. **Lưu ý:** phép đổi phối cảnh phẳng chỉ đúng trên mặt phẳng giả định; cảnh 3D tổng quát cần thông tin/ước lượng hình học và không tự hé lộ các vùng bị che. Tham khảo [BEVFormer](https://arxiv.org/abs/2203.17270).
 
 </details>
 
